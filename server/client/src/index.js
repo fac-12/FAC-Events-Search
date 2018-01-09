@@ -8,11 +8,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
-            <Switch>
-                <Route path="/" component={LandingPage} />
+      <Switch>
+        <Route path="/" component={LandingPage} />
       </Switch>
-      </BrowserRouter>
+    </BrowserRouter>
   </Provider>
 );
