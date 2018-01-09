@@ -10,7 +10,7 @@
     "scripts": {
         "start": "node ./server/index.js",
         "server": "nodemon ./server/index.js",
-        "client": "npm run start --prefix client",
+        "client": "npm run start --prefix ./server/client",
         "dev": "concurrently \"npm run server\" \"npm run client\""
     },
     "repository": {
