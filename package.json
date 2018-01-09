@@ -26,8 +26,10 @@
     "dependencies": {
         "cookie-session": "^2.0.0-beta.3",
         "express": "^4.16.2",
+        "fs": "0.0.1-security",
         "passport": "^0.4.0",
-        "passport-github2": "^0.1.11"
+        "passport-github2": "^0.1.11",
+        "url": "^0.11.0"
     },
     "devDependencies": {
         "concurrently": "^3.5.1",
