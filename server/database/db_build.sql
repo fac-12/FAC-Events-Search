@@ -1,5 +1,11 @@
 BEGIN;
 	DROP TABLE IF EXISTS events, users, included_orgs, comments, interest;
+	CREATE TABLE included_orgs
+	(
+		id serial PRIMARY KEY,
+		name VARCHAR(100),
+		url VARCHAR(150)
+	);
 	CREATE TABLE events
 	(
 		id serial PRIMARY KEY,
@@ -37,17 +43,11 @@ BEGIN;
 		date DATE NOT NULL,
 		comment TEXT
 	);
-	CREATE TABLE included_orgs
-	(
-		id serial PRIMARY KEY,
-		name VARCHAR(100),
-		url VARCHAR(150)
-	);
 	CREATE TABLE reviews
 	(
 		events_id INTEGER REFERENCES events(id),
 		users_id INTEGER REFERENCES users(id),
 		review TEXT,
 		stars INTEGER
-	)
-	COMMIT;
+	);
+	COMMIT
