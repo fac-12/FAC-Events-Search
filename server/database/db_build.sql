@@ -22,10 +22,11 @@ BEGIN;
 	);
 	CREATE TABLE users
 	(
-		id serial PRIMARY KEY,
+		id VARCHAR(20) PRIMARY KEY,
 		name VARCHAR(100),
 		github_username VARCHAR(100) NOT NULL,
 		email VARCHAR(50),
+		photo_url VARCHAR(100),
 		cohort INTEGER,
 		bio TEXT
 	);
@@ -37,8 +38,8 @@ BEGIN;
 	CREATE TABLE event_comments
 	(
 		id serial PRIMARY KEY,
-		events_id INTEGER REFERENCES events(id) ON UPDATE CASCADE,
-		users_id INTEGER REFERENCES users(id) ON UPDATE CASCADE,
+		events_id INTEGER REFERENCES events(id),
+		users_id INTEGER REFERENCES users(id),
 		time TIME NOT NULL,
 		date DATE NOT NULL,
 		comment TEXT
@@ -50,4 +51,4 @@ BEGIN;
 		review TEXT,
 		stars INTEGER
 	);
-	COMMIT
+	COMMIT;
