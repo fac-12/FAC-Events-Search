@@ -17,6 +17,9 @@ require("./routes/authRoutes")(app);
 
 app.use(passport.session());
 
+// set authentication routes
+require("./routes/authRoutes")(app);
+
 app.disable("x-powered-by");
 // app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
