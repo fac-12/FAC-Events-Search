@@ -2,17 +2,32 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions";
 import { bindActionCreators } from "redux";
+import Navbar from "../components/Navbar";
 
 class Header extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+    case null:
+      return;
+    case false:
+      return (
+        <li>
+          <a href="/auth/github"> Sign In </a>
+        </li>
+      );
+    default:
+      return <Navbar />;
+    }
+  }
   render() {
     return (
       <div>
-        <div>
-          <a> EventFinder </a>
-        </div>
-        <ul>
-          <a href="/auth/github"> Sign In </a>
-        </ul>
+        <nav>
+          <div>
+            <a> EventFinder </a>
+          </div>
+          <ul>{this.renderContent()}</ul>
+        </nav>
       </div>
     );
   }
