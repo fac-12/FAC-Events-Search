@@ -5,8 +5,18 @@ import { bindActionCreators } from "redux";
 
 class Header extends Component {
   render() {
-    return <div> Header !</div>;
+    return (
+      <div>
+        <div>
+          <a> EventFinder </a>
+        </div>
+        <ul>
+          <a href="/auth/github"> Sign In </a>
+        </ul>
+      </div>
+    );
   }
 }
 
-export default Header;
+const mapStateToProps = ({ auth }) => ({ auth });
+export default connect(mapStateToProps)(Header);

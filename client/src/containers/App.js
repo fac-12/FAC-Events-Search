@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import LandingPage from "./LandingPage";
-import ProfilePage from "./ProfilePage";
-import Header from "../containers/Header";
-import Footer from "./Footer";
-import EventsPage from "./EventsPage";
-import HostsPage from "./HostsPage";
-import AboutPage from "./AboutPage";
+import LandingPage from "../components/LandingPage";
+import ProfilePage from "../components/ProfilePage";
+import Header from "./Header";
+import Footer from "../components/Footer";
+import EventsPage from "../components/EventsPage";
+import HostsPage from "../components/HostsPage";
+import AboutPage from "../components/AboutPage";
 
 class App extends Component {
   componentDidMount() {
