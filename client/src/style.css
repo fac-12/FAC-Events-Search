@@ -12,3 +12,62 @@ a {
   color: white;
   height: calc(100vh - 200px);
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #193549;
+  color: #fff;
+}
+.host-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hosts-title {
+  margin-left: 10px;
+}
+
+.hosts-section > p {
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.add-host {
+  margin-left: 15px;
+}
+.add-host > h2 {
+  font-size: 18px;
+}
+.add-host > p {
+  max-width: 400px;
+  margin: 10px;
+}
+.event-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-options > h2 {
+  font-size: 16px;
+}
+
+.event-options > label {
+  margin: 5px;
+  font-size: 12px;
+}
+
+.submit-btn {
+  background: transparent;
+  width: 60px;
+  height: 30px;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: block;
+}
