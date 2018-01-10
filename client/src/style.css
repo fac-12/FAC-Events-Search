@@ -13,6 +13,15 @@ a {
   height: calc(100vh - 200px);
 }
 
+.banner-title,
+.banner-tagline {
+  text-align: center;
+}
+
+.banner-title {
+  font-size: 24px;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
