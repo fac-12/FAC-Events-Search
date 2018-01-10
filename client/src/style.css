@@ -6,3 +6,9 @@
 a {
   color: blue;
 }
+
+.About {
+  background: #183447;
+  color: white;
+  height: calc(100vh - 200px);
+}
