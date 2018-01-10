@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 import LandingPage from "./LandingPage";
 import ProfilePage from "./ProfilePage";
 import Header from "../containers/Header";
@@ -8,7 +10,11 @@ import EventsPage from "./EventsPage";
 import HostsPage from "./HostsPage";
 import AboutPage from "./AboutPage";
 
-export default class App extends Component {
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -25,3 +31,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default connect(null, actions)(App);
