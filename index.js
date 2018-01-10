@@ -12,9 +12,6 @@ app.use(
 );
 
 app.use(passport.initialize());
-// set authentication routes
-require("./routes/authRoutes")(app);
-
 app.use(passport.session());
 
 // set authentication routes
