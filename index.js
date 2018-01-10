@@ -23,3 +23,5 @@ app.disable("x-powered-by");
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = { app };
