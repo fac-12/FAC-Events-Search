@@ -12,7 +12,7 @@ const navOptions = {
 };
 
 const renderLink = (path, name, location) => (
-  <li>
+  <li key={path}>
     <Link to={path} style={location === path ? highlight : {}}>
       {name}
     </Link>

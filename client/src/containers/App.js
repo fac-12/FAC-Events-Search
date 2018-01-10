@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import LandingPage from "../components/LandingPage";
@@ -20,11 +20,45 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/profile" component={ProfilePage} />
-          <Route exact path="/events" component={EventsPage} />
-          <Route exact path="/hosts" component={HostsPage} />
-          <Route exact path="/about" component={AboutPage} />
+          <Route
+            exact
+            path="/"
+            render={props =>
+              this.props.auth ? (
+                <Redirect to="/events" />
+              ) : (
+                <LandingPage {...props} />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/profile"
+            render={props =>
+              this.props.auth ? <ProfilePage {...props} /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            exact
+            path="/events"
+            render={props =>
+              this.props.auth ? <EventsPage {...props} /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            exact
+            path="/hosts"
+            render={props =>
+              this.props.auth ? <HostsPage {...props} /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            exact
+            path="/about"
+            render={props =>
+              this.props.auth ? <AboutPage {...props} /> : <Redirect to="/" />
+            }
+          />
           <Footer />
         </div>
       </BrowserRouter>
@@ -32,4 +66,6 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+const mapStateToProps = ({ auth }) => ({ auth });
+
+export default connect(mapStateToProps, actions)(App);
