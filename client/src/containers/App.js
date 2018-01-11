@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import LandingPage from "../components/LandingPage";
+import LandingPage from "../components/TheLandingPage";
 import ProfilePage from "../components/ProfilePage";
 import Header from "./Header";
 import Footer from "../components/TheFooter";
