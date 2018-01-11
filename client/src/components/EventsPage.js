@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import EventCard from "./eventCard";
 
 class EventsPage extends Component {
   componentDidMount() {
@@ -36,6 +37,10 @@ class EventsPage extends Component {
           <input type="text" />
           <button type="submit" />
           <input type="date" />
+        </section>
+        <section>
+          <h1> Upcoming Events </h1>
+          <EventCard />
         </section>
       </div>
     );
