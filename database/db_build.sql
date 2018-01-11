@@ -14,8 +14,8 @@ BEGIN;
 		event_time TIME NOT NULL,
 		host_org_name VARCHAR(100) NOT NULL,
 		venue_name VARCHAR(100),
-		venue_address VARCHAR(100) NOT NULL,
-		venue_postcode VARCHAR(10) NOT NULL,
+		venue_address VARCHAR(50) NOT NULL,
+		venue_postcode VARCHAR(50) NOT NULL,
 		event_url VARCHAR(100),
 		event_desc TEXT
 	);

@@ -11,7 +11,7 @@ module.exports = app => {
       const returnMsg = await addEvent(allData.data.results[0]);
       res.send(returnMsg);
     } catch (e) {
-      console.log(e);
+      console.log("Add event error", e);
     }
   });
 
@@ -20,7 +20,7 @@ module.exports = app => {
       const eventsData = await queries.getEvents();
       res.send(eventsData);
     } catch (e) {
-      console.log(e);
+      console.log("Fetch events error", e);
     }
   });
 };
