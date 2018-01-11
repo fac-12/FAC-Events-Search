@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./services/passportConfig");
 
@@ -13,9 +14,13 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // set authentication routes
 require("./routes/authRoutes")(app);
+// set db update routes
+require("./routes/dbRoutes")(app);
 
 app.disable("x-powered-by");
 // app.use(express.static(path.join(__dirname, "..", "client", "build")));
