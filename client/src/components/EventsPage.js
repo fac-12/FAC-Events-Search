@@ -14,8 +14,9 @@ class EventsPage extends Component {
   render() {
     return (
       <div>
+        <AddEventPage />
         <section className="events-page-container">
-          <section className="sideBar">
+          <section className="side-bar">
             <Router>
               <nav className="side-nav">
                 <ul>
@@ -39,8 +40,9 @@ class EventsPage extends Component {
             </Router>
             <section>
               <section>
-                <input type="text" />
-                <button type="submit" />
+                <input type="text" placeholder="Search" />
+
+                <button type="submit"> Search </button>
               </section>
               <input type="date" />
             </section>

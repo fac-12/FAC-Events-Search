@@ -148,6 +148,16 @@ a:-webkit-any-link {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.event-info > h2 {
+  font-size: 18px;
+}
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  padding: 10px;
+}
 .events-view {
   margin-left: 100px;
 }

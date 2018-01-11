@@ -16,7 +16,7 @@ class EventCard extends Component {
         {events.map(item => (
           <div key={item.id} className="event-card">
             <section className="events-container">
-              <section className="event-Info">
+              <section className="event-info">
                 <h2> {item.event_name} </h2>
                 <p> {item.host_org_name} </p>
                 <p> {item.venue_name} </p>
