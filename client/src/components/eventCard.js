@@ -12,9 +12,9 @@ class EventCard extends Component {
     const { events } = this.props;
 
     return (
-      <div className="event-card">
+      <div className="events-card-container">
         {events.map(item => (
-          <div key={item.id}>
+          <div key={item.id} className="event-card">
             <section className="events-container">
               <section className="event-Info">
                 <h2> {item.event_name} </h2>

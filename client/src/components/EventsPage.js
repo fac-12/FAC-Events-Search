@@ -14,34 +14,39 @@ class EventsPage extends Component {
   render() {
     return (
       <div>
-        <AddEventPage />
-        <section className="events-container">
+        <section className="events-page-container">
           <section className="sideBar">
             <Router>
-              <ul>
-                <li>
-                  <Link to="/">Add Event</Link>
-                </li>
-                <li>
-                  <Link to="">My Events</Link>
-                </li>
-                <li>
-                  <Link to="">Popular</Link>
-                </li>
-                <li>
-                  <Link to="">Suggested</Link>
-                </li>
-                <li>
-                  <Link to="">All Events</Link>
-                </li>
-              </ul>
+              <nav className="side-nav">
+                <ul>
+                  <li>
+                    <Link to="/">Add Event</Link>
+                  </li>
+                  <li>
+                    <Link to="">My Events</Link>
+                  </li>
+                  <li>
+                    <Link to="">Popular</Link>
+                  </li>
+                  <li>
+                    <Link to="">Suggested</Link>
+                  </li>
+                  <li>
+                    <Link to="">All Events</Link>
+                  </li>
+                </ul>
+              </nav>
             </Router>
-            <input type="text" />
-            <button type="submit" />
-            <input type="date" />
+            <section>
+              <section>
+                <input type="text" />
+                <button type="submit" />
+              </section>
+              <input type="date" />
+            </section>
           </section>
-          <section className="right-side">
-            <h1> Upcoming Events </h1>
+          <section className="events-view">
+            <h1 className="events-view-title"> Upcoming Events </h1>
             <EventCard />
           </section>
         </section>
