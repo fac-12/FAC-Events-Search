@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "./Banner";
+import Banner from "./TheBanner";
 import EventsPreview from "../containers/EventsPreviews";
 
 export default () => (

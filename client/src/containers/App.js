@@ -5,7 +5,7 @@ import * as actions from "../actions";
 import LandingPage from "../components/LandingPage";
 import ProfilePage from "../components/ProfilePage";
 import Header from "./Header";
-import Footer from "../components/Footer";
+import Footer from "../components/TheFooter";
 import EventsPage from "../components/EventsPage";
 import HostsPage from "../components/HostsPage";
 import AboutPage from "../components/AboutPage";
