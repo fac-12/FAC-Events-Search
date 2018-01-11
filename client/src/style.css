@@ -131,7 +131,6 @@ a:-webkit-any-link {
   display: flex;
   align-items: center;
   align-content: center;
-  flex-wrap: wrap;
   width: 100vw;
   height: 50vw;
   background-color: #193549;
@@ -149,6 +148,7 @@ a:-webkit-any-link {
 
 .eventsPreview_content > ul {
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
 }
