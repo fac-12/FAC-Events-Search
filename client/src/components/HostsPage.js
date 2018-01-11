@@ -9,6 +9,10 @@ class HostsPage extends Component {
     this.state = { url: "" };
   }
 
+  componentDidMount() {
+    this.props.setLocation(this.props.location.pathname);
+  }
+
   postHostName = hostName => {
     axios
       .post("/api/hostName", {
