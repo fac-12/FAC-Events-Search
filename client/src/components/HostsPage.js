@@ -39,7 +39,7 @@ class HostsPage extends Component {
   render() {
     return (
       <div className="Hosts">
-        <section className="container">
+        <section className="host_container">
           <section className="host-form">
             <section className="hosts-section">
               <h2 className="hosts-title">Hosts</h2>

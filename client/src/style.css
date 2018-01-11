@@ -67,7 +67,7 @@ a:-webkit-any-link {
   font-size: 24px;
 }
 
-.container {
+.host_container {
   display: flex;
   justify-content: space-between;
   background-color: #193549;
@@ -125,7 +125,81 @@ a:-webkit-any-link {
   margin-top: 10px;
   display: block;
 }
+/* Styling for events card */
 
+.event-card {
+  background-color: #fefefe;
+  color: black;
+  margin: 10px 0;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #d8dfe2;
+  padding: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.info-bar-interest {
+  font-size: 12px;
+  margin-left: 1.5rem;
+}
+.event-info > h2 {
+  font-size: 18px;
+}
+.events-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for events page */
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+.events-view {
+  margin-left: 5rem;
+}
+/* side-bar styling */
+
+.search-bar-input {
+  padding: 0.5rem;
+  border-radius: 0.1rem;
+  box-shadow: none;
+}
+.search-bar-btn {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  box-shadow: none;
+}
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  padding: 0.6rem;
+}
+.events-page-container {
+  display: flex;
+  justify-content: center;
+  background-color: #113444;
+}
+.side-nav ul li {
+  list-style: none;
+}
+
+.events-view-title {
+  font-weight: 300;
+  margin: 10px 0;
+  color: white;
+}
 /* STYLING FOR LANDING PAGE */
 .eventsPreview_container {
   display: flex;
