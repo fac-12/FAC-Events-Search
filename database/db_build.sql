@@ -1,5 +1,5 @@
 BEGIN;
-	DROP TABLE IF EXISTS events, users, included_orgs, comments, interest, suggested;
+	DROP TABLE IF EXISTS event_comments, interest, suggested, reviews, events, users, included_orgs;
 	CREATE TABLE included_orgs
 	(
 		id serial PRIMARY KEY,
@@ -13,7 +13,6 @@ BEGIN;
 		event_date DATE NOT NULL,
 		event_time TIME NOT NULL,
 		host_org_name VARCHAR(100) NOT NULL,
-		host_org_id INTEGER REFERENCES included_orgs(id),
 		venue_name VARCHAR(100),
 		venue_address VARCHAR(100) NOT NULL,
 		venue_postcode VARCHAR(10) NOT NULL,
@@ -32,28 +31,28 @@ BEGIN;
 	);
 	CREATE TABLE interest
 	(
-		events_id INTEGER REFERENCES events(id),
-		users_id INTEGER REFERENCES users(id)
+		events_id INTEGER REFERENCES events(id) ON UPDATE CASCADE,
+		users_id VARCHAR(20) REFERENCES users(id) ON UPDATE CASCADE
 	);
 	CREATE TABLE event_comments
 	(
 		id serial PRIMARY KEY,
-		events_id INTEGER REFERENCES events(id),
-		users_id INTEGER REFERENCES users(id),
+		events_id INTEGER REFERENCES events(id) ON UPDATE CASCADE,
+		users_id VARCHAR(20) REFERENCES users(id) ON UPDATE CASCADE,
 		time TIME NOT NULL,
 		date DATE NOT NULL,
 		comment TEXT
 	);
 	CREATE TABLE reviews
 	(
-		events_id INTEGER REFERENCES events(id),
-		users_id INTEGER REFERENCES users(id),
+		events_id INTEGER REFERENCES events(id) ON UPDATE CASCADE,
+		users_id VARCHAR(20) REFERENCES users(id) ON UPDATE CASCADE,
 		review TEXT,
 		stars INTEGER
 	);
 	CREATE TABLE suggested
 	(
-		orgs_id INTEGER REFERENCES included_orgs(id),
-		users_id INTEGER REFERENCES users(id)
-	)
+		orgs_id INTEGER REFERENCES included_orgs(id) ON UPDATE CASCADE,
+		users_id VARCHAR(20) REFERENCES users(id) ON UPDATE CASCADE
+	);
 	COMMIT;
