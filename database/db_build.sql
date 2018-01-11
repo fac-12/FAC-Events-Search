@@ -9,14 +9,14 @@ BEGIN;
 	CREATE TABLE events
 	(
 		id serial PRIMARY KEY,
-		event_name VARCHAR(100) NOT NULL,
+		event_name VARCHAR(150) NOT NULL,
 		event_date DATE NOT NULL,
 		event_time TIME NOT NULL,
-		host_org_name VARCHAR(100) NOT NULL,
+		host_org_name VARCHAR(150) NOT NULL,
 		venue_name VARCHAR(100),
-		venue_address VARCHAR(50) NOT NULL,
-		venue_postcode VARCHAR(50) NOT NULL,
-		event_url VARCHAR(100),
+		venue_address VARCHAR(150),
+		venue_postcode VARCHAR(150),
+		event_url VARCHAR(150),
 		event_desc TEXT
 	);
 	CREATE TABLE users
