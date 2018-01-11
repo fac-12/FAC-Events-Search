@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AddEventForm from "./AddEventPage";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -12,7 +11,6 @@ class EventsPage extends Component {
     return (
       <div>
         <h1> Events Page (to be built) </h1>
-        <AddEventForm />
       </div>
     );
   }

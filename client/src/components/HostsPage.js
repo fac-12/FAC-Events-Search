@@ -11,7 +11,7 @@ class HostsPage extends Component {
 
   postHostName = hostName => {
     axios
-      .post("/api/addMeetupEvent", {
+      .post("/api/hostName", {
         hostName
       })
       .then(res => console.log(res))
