@@ -51,4 +51,9 @@ BEGIN;
 		review TEXT,
 		stars INTEGER
 	);
+	CREATE TABLE suggested
+	(
+		orgs_id INTEGER REFERENCES included_orgs(id),
+		users_id INTEGER REFERENCES users(id)
+	)
 	COMMIT;

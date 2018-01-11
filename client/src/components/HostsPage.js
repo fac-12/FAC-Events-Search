@@ -1,11 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import axios from "axios";
 
 class HostsPage extends Component {
-  componentDidMount() {
-    this.props.setLocation(this.props.location.pathname);
+  constructor() {
+    super();
+    this.state = { url: "" };
   }
+
+  postHostName = hostName => {
+    axios
+      .post("/api/hostName", {
+        hostName
+      })
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
+  };
+
+  checkMeetup = url => {
+    if (url.includes("www.meetup.com")) {
+      const hostName = url.split("/")[3];
+      // this.postHostName(hostName);
+      console.log(hostName);
+    }
+  };
+
+  clickHandler = e => {
+    e.preventDefault();
+    const { url } = this.state;
+    this.checkMeetup(url);
+  };
 
   render() {
     return (
@@ -27,8 +52,19 @@ class HostsPage extends Component {
                 Input the organization’s meetup url below to add a new host for
                 automatic event inclusion.
               </p>
-              <input type="text" />
-              <input className="submit-btn" type="submit" value="submit" />
+              <form>
+                <input
+                  type="text"
+                  value={this.state.url}
+                  onChange={event => this.setState({ url: event.target.value })}
+                />
+                <input
+                  className="submit-btn"
+                  type="submit"
+                  value="submit"
+                  onClick={this.clickHandler}
+                />
+              </form>
             </section>
           </section>
           <section className="event-options">
