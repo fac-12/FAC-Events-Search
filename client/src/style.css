@@ -149,6 +149,9 @@ a:-webkit-any-link {
 .eventsPreview_content > ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  height: 22rem;
+  overflow: hidden;
   padding: 0;
   margin: 0;
 }
@@ -160,7 +163,8 @@ a:-webkit-any-link {
   justify-content: space-between;
   background-color: white;
   border-radius: 10px;
-  width: 15rem;
+  width: 18rem;
+  height: 9rem;
   padding: 1rem;
   margin: 1rem;
 }
@@ -177,10 +181,12 @@ a:-webkit-any-link {
 .smallEventCard_top_left > h1 {
   font-size: 1rem;
   margin: 0.2rem;
+  font-weight: 500;
 }
 
 .smallEventCard_top_left > p {
   font-size: 0.8rem;
+  font-weight: 300;
   margin: 0.2rem;
 }
 
@@ -194,16 +200,19 @@ a:-webkit-any-link {
 
 .smallEventCard_top_right > h2 {
   font-size: 0.8rem;
+  font-weight: 500;
   margin: 0.2rem;
 }
 
 .smallEventCard_top_right > p {
   font-size: 0.8rem;
   margin: 0.2rem;
+  font-weight: 300;
 }
 
 .smallEventCard_footer {
   color: gray;
   font-size: 0.5rem;
   border: 0px solid gray;
+  font-weight: 300;
 }
