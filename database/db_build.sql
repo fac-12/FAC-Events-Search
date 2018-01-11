@@ -1,5 +1,5 @@
 BEGIN;
-	DROP TABLE IF EXISTS events, users, included_orgs, comments, interest;
+	DROP TABLE IF EXISTS events, users, included_orgs, comments, interest, suggested;
 	CREATE TABLE included_orgs
 	(
 		id serial PRIMARY KEY,
