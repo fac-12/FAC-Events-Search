@@ -1,9 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar";
 
 export default () => (
   <div className="Hosts">
-    <Navbar />
     <section className="container">
       <section className="host-form">
         <section className="hosts-section">

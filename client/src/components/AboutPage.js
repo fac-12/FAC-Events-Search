@@ -1,11 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import "../style.css";
 
 export default () => (
   <div className="About">
-    <Navbar />
     <div>
       <section>
         <h1> Why we built this </h1>
