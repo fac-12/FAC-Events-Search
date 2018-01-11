@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 
 class Header extends Component {
   renderNav() {
-    console.log("render state is:", this.props.auth, this.props.curLocation);
     switch (this.props.auth) {
     case null:
       return;
