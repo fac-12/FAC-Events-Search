@@ -8,7 +8,7 @@ class AddEventForm extends Component {
     this.state = { url: "" };
   }
 
-  postId = id => async onSubmit => {
+  postId = id => async () => {
     try {
       const idpostReq = await axios.post("/addMeetupEvent", {
         id
@@ -39,7 +39,7 @@ class AddEventForm extends Component {
         </label>
         <input
           type="text"
-          value={this.state.id}
+          value={this.state.url}
           onChange={event => this.setState({ url: event.target.value })}
         />
       </form>
