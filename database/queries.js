@@ -24,26 +24,23 @@ const checkEvent = data =>
     .then(res => res.length > 0)
     .catch(e => console.log("db error", e));
 
-const addEvent = data => {
-  console.log(data);
-  return db
-    .query(
-      `INSERT INTO events(event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9) RETURNING event_name`,
-      [
-        data.event_name,
-        data.event_date,
-        data.event_time,
-        data.host_org_name,
-        data.venue_name,
-        data.venue_address,
-        data.venue_postcode,
-        data.event_url,
-        data.event_desc
-      ]
-    )
-    .then(res => res[0].event_name)
-    .catch(e => console.log("db error", e));
-};
+const addEvent = data => db
+  .query(
+    `INSERT INTO events(event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9) RETURNING event_name`,
+    [
+      data.event_name,
+      data.event_date,
+      data.event_time,
+      data.host_org_name,
+      data.venue_name,
+      data.venue_address,
+      data.venue_postcode,
+      data.event_url,
+      data.event_desc
+    ]
+  )
+  .then(res => res[0].event_name)
+  .catch(e => console.log("db error", e));
 
 const getEvents = () => db.query("SELECT * FROM events");
 
