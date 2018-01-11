@@ -3,6 +3,13 @@ const { githubClientID, githubClientSecret } = require("../config/keys");
 const GithubStrategy = require("passport-github2").Strategy;
 const queries = require("../database/queries");
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+passport.deserializeUser((id, done) => {
+  queries.checkUser(id).then(user => done(null, user));
+});
+
 passport.use(
   new GithubStrategy(
     {
@@ -24,10 +31,3 @@ passport.use(
     }
   )
 );
-
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-passport.deserializeUser((id, done) => {
-  queries.checkUser(id).then(user => done(null, user));
-});
