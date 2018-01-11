@@ -1,4 +1,4 @@
-import { FETCH_USER, CUR_LOCATION } from "./types";
+import { FETCH_USER, CUR_LOCATION, FETCH_EVENTS } from "./types";
 import axios from "axios";
 
 export const fetchUser = () => async dispatch => {
@@ -10,3 +10,9 @@ export const setLocation = location => ({
   type: CUR_LOCATION,
   payload: location
 });
+
+export const fetchAllEvents = () => async dispatch => {
+  const events = await axios.get("api/events");
+  console.log("events are", events.data);
+  dispatch({ type: FETCH_EVENTS, payload: events.data });
+};
