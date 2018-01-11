@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="body_container">
           <Header />
           <Route
             exact

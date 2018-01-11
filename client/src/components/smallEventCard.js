@@ -1,31 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import SmallEventCardContent from "./SmallEventCardContent";
 
-export default props => {
-  const { id, title, host, date, day, time } = props.data;
+class SmallEventCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hover: false };
+  }
 
-  const onHover = () => {
-    console.log("hovering");
-  };
-  return (
-    <li
-      key={id}
-      onMouseEnter={title.length > 40 ? onHover : () => {}}
-      className="smallEventCard_container"
-    >
-      <div className="smallEventCard_top">
-        <div className="smallEventCard_top_left">
-          <h1>
-            {title.length > 40 ? title.slice(0, 37).concat("...") : title}
-          </h1>
-          <p>{host}</p>
-        </div>
-        <div className="smallEventCard_top_right">
-          <h2>{date}</h2>
-          <p>{day}</p>
-          <p>{time}</p>
-        </div>
-      </div>
-      <p className="smallEventCard_footer">10 people interested</p>
-    </li>
-  );
-};
+  render() {
+    const onHover = () => {
+      this.setState({ hover: true });
+    };
+    const offHover = () => {
+      this.setState({ hover: false });
+    };
+    return (
+      <li
+        key={this.props.data.id}
+        onMouseEnter={this.props.data.title.length > 40 ? onHover : () => {}}
+        onMouseLeave={this.props.data.title.length > 40 ? offHover : () => {}}
+      >
+        <SmallEventCardContent hover={this.state.hover} {...this.props} />
+      </li>
+    );
+  }
+}
+
+export default SmallEventCard;
