@@ -2,6 +2,19 @@ import React from "react";
 
 export default () => (
   <div>
-    <h1> EventCard (to be built) </h1>
+    <section>
+      <h2>
+      <p> </p>
+      <p> </p>
+    </section>
+    <section>
+    <p></p>
+    <p></p>
+    <p></p>
+    </section>
+    <section>
+      <button> </button>
+      <button> </button>
+    </section>
   </div>
 );
