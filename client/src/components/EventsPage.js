@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import EventCard from "./eventCard";
+import axios from 'axios';
 
 class EventsPage extends Component {
   componentDidMount() {
@@ -40,7 +41,7 @@ class EventsPage extends Component {
         </section>
         <section>
           <h1> Upcoming Events </h1>
-          <EventCard />
+          <EventCard  Host={} EventName={} Venue={} Time={} />
         </section>
       </div>
     );
