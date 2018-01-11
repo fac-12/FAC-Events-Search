@@ -41,4 +41,6 @@ const addEvent = data =>
     )
     .then(res => res[0].event_name);
 
-module.exports = { addUser, checkUser, checkEvent, addEvent };
+const getEvents = () => db.query("SELECt * FROM events");
+
+module.exports = { addUser, checkUser, checkEvent, addEvent, getEvents };
