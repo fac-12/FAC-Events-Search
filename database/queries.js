@@ -2,9 +2,8 @@ const db = require("./db_connection");
 
 const checkUser = id => db.query("SELECT * FROM users WHERE id = $1", [id]);
 
-const addUser = profile => {
-  console.log(profile);
-  return db.query(
+const addUser = profile =>
+  db.query(
     `INSERT INTO users(id, name, github_username,email, bio, photo_url) VALUES($1,$2,$3,$4,$5,$6) RETURNING id, name, github_username, email, bio, photo_url`,
     [
       profile.id,
@@ -15,7 +14,6 @@ const addUser = profile => {
       profile._json.avatar_url
     ]
   );
-};
 
 const checkEvent = data =>
   db
