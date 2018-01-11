@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../actions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import EventCard from "./eventCard";
-import axios from 'axios';
+import * as actions from "../actions";
+import AddEventPage from "./AddEventPage";
+import axios from "axios";
 
 class EventsPage extends Component {
   componentDidMount() {
     this.props.setLocation(this.props.location.pathname);
   }
-
   render() {
     return (
       <div>
+        <AddEventPage />
         <section>
           <Router>
             <ul>
               <li>
-                <Link to="/addEvent" component={AddEventPage}>
-                  Add Event
-                </Link>
+                <Link to="/">Add Event</Link>
               </li>
               <li>
                 <Link to="">My Events</Link>
@@ -41,11 +40,12 @@ class EventsPage extends Component {
         </section>
         <section>
           <h1> Upcoming Events </h1>
-          <EventCard  Host={} EventName={} Venue={} Time={} />
+          <EventCard />
         </section>
       </div>
     );
   }
 }
+const mapStateToProps = ({ events }) => ({ events });
 
-export default connect(null, actions)(EventsPage);
+export default connect(mapStateToProps, actions)(EventsPage);
