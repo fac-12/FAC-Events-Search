@@ -10,8 +10,8 @@ const addUser = profile =>
       profile.displayName,
       profile.username,
       profile._json.email,
-      profile._json.bio,
-      profile.photos[0].value
+      profile._json.bio
+      // profile.photos[0].value
     ]
   );
 
