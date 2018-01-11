@@ -15,12 +15,16 @@ const addEvent = data =>
       event_url: data.event_url,
       event_desc: data.description
     };
-    const eventExists = await queries.checkEvent(eventData);
-    if (eventExists) {
-      resolve("An event with that name, date and time already exists.");
-    } else {
-      const eventAdded = await queries.addEvent(eventData);
-      resolve(`Thank you! Your event, ${eventAdded}, has been added.`);
+    try {
+      const eventExists = await queries.checkEvent(eventData);
+      if (eventExists) {
+        resolve("An event with that name, date and time already exists.");
+      } else {
+        const eventAdded = await queries.addEvent(eventData);
+        resolve(`Thank you! Your event, ${eventAdded}, has been added.`);
+      }
+    } catch (e) {
+      console.log("add Event error:", e);
     }
   });
 
