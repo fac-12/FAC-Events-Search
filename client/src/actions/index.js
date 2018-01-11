@@ -13,6 +13,5 @@ export const setLocation = location => ({
 
 export const fetchAllEvents = () => async dispatch => {
   const events = await axios.get("api/events");
-  console.log("events are", events.data);
   dispatch({ type: FETCH_EVENTS, payload: events.data });
 };
