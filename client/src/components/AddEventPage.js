@@ -8,21 +8,19 @@ class AddEventForm extends Component {
     this.state = { url: "" };
   }
 
-  postId = id => async () => {
-    try {
-      const idpostReq = await axios.post("/addMeetupEvent", {
+  postId = id => {
+    axios
+      .post("/api/addMeetupEvent", {
         id
-      });
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
   };
 
   checkMeetup = url => {
     if (url.includes("www.meetup.com")) {
       const id = url.split("/")[5];
       this.postId(id);
-      console.log(id);
     }
   };
 

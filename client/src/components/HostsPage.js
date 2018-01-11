@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 import axios from "axios";
 
 class HostsPage extends Component {
@@ -7,14 +9,13 @@ class HostsPage extends Component {
     this.state = { url: "" };
   }
 
-  postHostForm = hostName => async () => {
-    try {
-      const idpostReq = await axios.post("/addMeetupEvent", {
+  postHostName = hostName => {
+    axios
+      .post("/api/addMeetupEvent", {
         hostName
-      });
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
   };
 
   checkMeetup = url => {
@@ -105,4 +106,4 @@ class HostsPage extends Component {
   }
 }
 
-export default HostsPage;
+export default connect(null, actions)(HostsPage);
