@@ -67,7 +67,7 @@ a:-webkit-any-link {
   font-size: 24px;
 }
 
-.container {
+.host_container {
   display: flex;
   justify-content: space-between;
   background-color: #193549;
@@ -124,4 +124,19 @@ a:-webkit-any-link {
   border-radius: 5px;
   margin-top: 10px;
   display: block;
+}
+
+.event-card {
+  background-color: black;
+  color: white;
+  width: 500px;
+}
+
+.events-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-bar {
+  background-color: gray;
 }
