@@ -28,6 +28,7 @@ class EventCard extends Component {
               </section>
             </section>
             <section className="info-bar">
+              <p className="info-bar-interest"> 10 faccers are interested </p>
               <button> Add Me</button>
               <button> More Info </button>
             </section>

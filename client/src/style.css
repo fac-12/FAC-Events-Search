@@ -125,6 +125,7 @@ a:-webkit-any-link {
   margin-top: 10px;
   display: block;
 }
+/* Styling for events card */
 
 .event-card {
   background-color: #fefefe;
@@ -132,12 +133,6 @@ a:-webkit-any-link {
   margin: 10px 0;
   width: 500px;
   border-radius: 5px;
-}
-
-.events-container {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
 }
 
 .info-bar {
@@ -148,24 +143,49 @@ a:-webkit-any-link {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.info-bar-interest {
+  font-size: 12px;
+  margin-left: 1.5rem;
+}
 .event-info > h2 {
   font-size: 18px;
-}
-.side-bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: white;
-  padding: 10px;
-}
-.events-view {
-  margin-left: 100px;
 }
 .events-card-container {
   display: flex;
   flex-direction: column;
 }
 
+/* Styling for events page */
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+.events-view {
+  margin-left: 5rem;
+}
+/* side-bar styling */
+
+.search-bar-input {
+  padding: 0.5rem;
+  border-radius: 0.1rem;
+  box-shadow: none;
+}
+.search-bar-btn {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  box-shadow: none;
+}
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  padding: 0.6rem;
+}
 .events-page-container {
   display: flex;
   justify-content: center;

@@ -5,7 +5,6 @@ import EventCard from "./eventCard";
 import * as actions from "../actions";
 import AddEventPage from "./AddEventPage";
 import "../style.css";
-import axios from "axios";
 
 class EventsPage extends Component {
   componentDidMount() {
@@ -40,9 +39,15 @@ class EventsPage extends Component {
             </Router>
             <section>
               <section>
-                <input type="text" placeholder="Search" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="search-bar-input"
+                />
 
-                <button type="submit"> Search </button>
+                <button type="submit" className="search-bar-btn">
+                  Search
+                </button>
               </section>
               <input type="date" />
             </section>
