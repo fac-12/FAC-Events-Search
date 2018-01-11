@@ -4,6 +4,9 @@
   font-family: "Lato", sans-serif;
 }
 
+
+/* Header Styling*/
+
 a {
   text-decoration: none;
 }
@@ -37,16 +40,16 @@ a:-webkit-any-link {
   display: flex;
 }
 
-.nav_container > li {
+.nav_container>li {
   list-style-type: none;
 }
 
-.nav_container > li > a {
+.nav_container>li>a {
   padding: 5px;
   font-size: 1.2rem;
 }
 
-.nav_container > li > span {
+.nav_container>li>span {
   font-size: 1.6rem;
   padding: 0 2px;
   color: #0f3445;
@@ -73,6 +76,7 @@ a:-webkit-any-link {
   background-color: #193549;
   color: #fff;
 }
+
 .host-form {
   display: flex;
   flex-direction: column;
@@ -83,7 +87,7 @@ a:-webkit-any-link {
   margin-left: 10px;
 }
 
-.hosts-section > p {
+.hosts-section>p {
   display: flex;
   justify-content: center;
   max-width: 400px;
@@ -94,24 +98,27 @@ a:-webkit-any-link {
 .add-host {
   margin-left: 15px;
 }
-.add-host > h2 {
+
+.add-host>h2 {
   font-size: 18px;
 }
-.add-host > p {
+
+.add-host>p {
   max-width: 400px;
   margin: 10px;
 }
+
 .event-options {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.event-options > h2 {
+.event-options>h2 {
   font-size: 16px;
 }
 
-.event-options > label {
+.event-options>label {
   margin: 5px;
   font-size: 12px;
 }
@@ -125,6 +132,8 @@ a:-webkit-any-link {
   margin-top: 10px;
   display: block;
 }
+
+
 /* Styling for events card */
 
 .event-card {
@@ -148,15 +157,19 @@ a:-webkit-any-link {
   font-size: 12px;
   margin-left: 1.5rem;
 }
-.event-info > h2 {
+
+.event-info>h2 {
   font-size: 18px;
 }
+
 .events-card-container {
   display: flex;
   flex-direction: column;
 }
 
+
 /* Styling for events page */
+
 .events-container {
   display: flex;
   justify-content: space-between;
@@ -164,9 +177,12 @@ a:-webkit-any-link {
   margin-left: 1.2rem;
   margin-right: 1.2rem;
 }
+
 .events-view {
   margin-left: 5rem;
 }
+
+
 /* side-bar styling */
 
 .search-bar-input {
@@ -174,11 +190,13 @@ a:-webkit-any-link {
   border-radius: 0.1rem;
   box-shadow: none;
 }
+
 .search-bar-btn {
   padding: 0.5rem;
   border-radius: 0.2rem;
   box-shadow: none;
 }
+
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -186,11 +204,13 @@ a:-webkit-any-link {
   background-color: white;
   padding: 0.6rem;
 }
+
 .events-page-container {
   display: flex;
   justify-content: center;
   background-color: #113444;
 }
+
 .side-nav ul li {
   list-style: none;
 }
@@ -200,7 +220,10 @@ a:-webkit-any-link {
   margin: 10px 0;
   color: white;
 }
+
+
 /* STYLING FOR LANDING PAGE */
+
 .eventsPreview_container {
   display: flex;
   align-items: center;
@@ -214,20 +237,22 @@ a:-webkit-any-link {
   margin: 0 auto;
 }
 
-.eventsPreview_content > h1 {
+.eventsPreview_content>h1 {
   color: #71adb5;
   font-size: 1.5rem;
   margin-left: 1.5rem;
 }
 
-.eventsPreview_content > ul {
+.eventsPreview_content>ul {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
 }
 
+
 /* STYLING FOR SMALL EVENT CARD CONTAINER COMPONENT */
+
 .smallEventCard_container {
   display: flex;
   flex-direction: column;
@@ -248,12 +273,12 @@ a:-webkit-any-link {
   border: 0px solid gray;
 }
 
-.smallEventCard_top_left > h1 {
+.smallEventCard_top_left>h1 {
   font-size: 1rem;
   margin: 0.2rem;
 }
 
-.smallEventCard_top_left > p {
+.smallEventCard_top_left>p {
   font-size: 0.8rem;
   margin: 0.2rem;
 }
@@ -266,12 +291,12 @@ a:-webkit-any-link {
   border: 0px solid gray;
 }
 
-.smallEventCard_top_right > h2 {
+.smallEventCard_top_right>h2 {
   font-size: 0.8rem;
   margin: 0.2rem;
 }
 
-.smallEventCard_top_right > p {
+.smallEventCard_top_right>p {
   font-size: 0.8rem;
   margin: 0.2rem;
 }
