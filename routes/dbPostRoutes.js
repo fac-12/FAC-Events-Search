@@ -1,6 +1,6 @@
 const axios = require("axios");
 const queries = require("../database/queries");
-const { addEvent } = require("../services/dbHelpers");
+const { addEvent, addHost } = require("../services/dbHelpers");
 
 module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
@@ -15,12 +15,17 @@ module.exports = app => {
     }
   });
 
-  app.get("/api/events", async (req, res) => {
+  app.post("/api/addHost", async (req, res) => {
+    const urlArr = req.body.url.split("/");
+    const urlOrg = urlArr[urlArr.length - 1]
+      ? urlArr[urlArr.length - 1]
+      : urlArr[urlArr.length - 2];
     try {
-      const eventsData = await queries.getEvents();
-      res.send(eventsData);
+      const hostData = await axios.get(`https://api.meetup.com/${urlOrg}`);
+      const returnMsg = await addHost(hostData.data);
+      res.send(returnMsg);
     } catch (e) {
-      console.log("Fetch events error", e);
+      console.log("Add host error", e);
     }
   });
 

@@ -28,4 +28,23 @@ const addEvent = data =>
     }
   });
 
-module.exports = { addEvent };
+const addHost = data =>
+  new Promise(async (resolve, reject) => {
+    const hostData = {
+      name: data.name,
+      url: data.link
+    };
+    try {
+      const hostExists = await queries.checkHost(hostData.url);
+      if (hostExists) {
+        resolve("That organization is already included.");
+      } else {
+        const hostAdded = await queries.addHost(hostData);
+        resolve(`Thank you! The organization ${hostAdded} has been added.`);
+      }
+    } catch (e) {
+      console.log("add Host error:", e);
+    }
+  });
+
+module.exports = { addEvent, addHost };

@@ -19,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // set authentication routes
 require("./routes/authRoutes")(app);
-// set db update routes
-require("./routes/dbRoutes")(app);
+// set db routes
+require("./routes/dbGetRoutes")(app);
+require("./routes/dbPostRoutes")(app);
 
 app.disable("x-powered-by");
 // app.use(express.static(path.join(__dirname, "..", "client", "build")));
