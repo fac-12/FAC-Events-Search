@@ -45,6 +45,23 @@ const addEvent = data =>
 
 const getEvents = () => db.query("SELECT * FROM events");
 
+const getHosts = () => db.query("SELECT * FROM included_orgs");
+
+const addHost = data =>
+  db
+    .query(
+      `INSERT INTO included_orgs(name, url) VALUES($1,$2) RETURNING name`,
+      [data.name, data.url]
+    )
+    .then(res => res[0].name)
+    .catch(e => console.log("db error", e));
+
+const checkHost = url =>
+  db
+    .query("SELECT * FROM included_orgs WHERE url = $1", [url])
+    .then(res => res.length > 0)
+    .catch(e => console.log("db error", e));
+
 const addInterest = (event, user) =>
   db.query(`INSERT INTO interest(events_id,users_id) VALUES($1,$2)`, [
     event,
@@ -63,5 +80,9 @@ module.exports = {
   checkEvent,
   addEvent,
   getEvents,
-  addInterest
+  addInterest,
+  removeInterest,
+  addHost,
+  checkHost,
+  getHosts
 };

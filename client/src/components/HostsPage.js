@@ -4,37 +4,9 @@ import * as actions from "../actions";
 import axios from "axios";
 
 class HostsPage extends Component {
-  constructor() {
-    super();
-    this.state = { url: "" };
-  }
-
   componentDidMount() {
     this.props.setLocation(this.props.location.pathname);
   }
-
-  postHostName = hostName => {
-    axios
-      .post("/api/hostName", {
-        hostName
-      })
-      .then(res => console.log(res))
-      .catch(e => console.log(e));
-  };
-
-  checkMeetup = url => {
-    if (url.includes("www.meetup.com")) {
-      const hostName = url.split("/")[3];
-      // this.postHostName(hostName);
-      console.log(hostName);
-    }
-  };
-
-  clickHandler = e => {
-    e.preventDefault();
-    const { url } = this.state;
-    this.checkMeetup(url);
-  };
 
   render() {
     return (
