@@ -121,21 +121,30 @@ a:-webkit-any-link {
   margin-bottom: 0.5rem;
 }
 
-.host_container {
+/* Hosts Page Styling */
+.hosts_container {
+  color: white;
   display: flex;
-  justify-content: space-between;
-  background-color: #0f3445;
-  color: #fff;
+  width: 70vw;
+  margin: 0 auto;
 }
 
-.host-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.about_container > section > article {
+  margin: 0.5rem;
+  font-weight: 300;
 }
 
-.hosts-title {
+.hosts_info {
+  margin: 1rem;
+  font-weight: 300;
+  flex: 1;
+}
+
+.hosts_title {
   margin-left: 10px;
+}
+
+.hosts_about {
 }
 
 .hosts-section > p {
@@ -159,17 +168,19 @@ a:-webkit-any-link {
   margin: 10px;
 }
 
-.event-options {
+.hosts_options {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 1rem;
 }
 
-.event-options > h2 {
+.hosts_options > h2 {
   font-size: 16px;
 }
 
-.event-options > label {
+.hosts_options > label {
   margin: 5px;
   font-size: 12px;
 }
