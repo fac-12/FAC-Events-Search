@@ -23,4 +23,28 @@ module.exports = app => {
       console.log("Fetch events error", e);
     }
   });
+
+  app.post("/api/addInterest", async (req, res) => {
+    try {
+      const returnMsg = await queries.addInterest(
+        req.body.event,
+        req.body.user
+      );
+      res.send(returnMsg);
+    } catch (e) {
+      console.log("Add interest error", e);
+    }
+  });
+
+  app.post("/api/removeInterest", async (req, res) => {
+    try {
+      const returnMsg = await queries.removeInterest(
+        req.body.event,
+        req.body.user
+      );
+      res.send(returnMsg);
+    } catch (e) {
+      console.log("Remove interest error", e);
+    }
+  });
 };

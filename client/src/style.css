@@ -96,6 +96,7 @@ a:-webkit-any-link {
   background-color: #0f3445;
   color: #fff;
 }
+
 .host-form {
   display: flex;
   flex-direction: column;
@@ -117,13 +118,16 @@ a:-webkit-any-link {
 .add-host {
   margin-left: 15px;
 }
+
 .add-host > h2 {
   font-size: 18px;
 }
+
 .add-host > p {
   max-width: 400px;
   margin: 10px;
 }
+
 .event-options {
   display: flex;
   flex-direction: column;
@@ -148,6 +152,7 @@ a:-webkit-any-link {
   margin-top: 10px;
   display: block;
 }
+
 /* Styling for events card */
 
 .event-card {
@@ -171,15 +176,18 @@ a:-webkit-any-link {
   font-size: 12px;
   margin-left: 1.5rem;
 }
+
 .event-info > h2 {
   font-size: 18px;
 }
+
 .events-card-container {
   display: flex;
   flex-direction: column;
 }
 
 /* Styling for events page */
+
 .events-container {
   display: flex;
   justify-content: space-between;
@@ -187,9 +195,11 @@ a:-webkit-any-link {
   margin-left: 1.2rem;
   margin-right: 1.2rem;
 }
+
 .events-view {
   margin-left: 5rem;
 }
+
 /* side-bar styling */
 
 .search-bar-input {
@@ -197,11 +207,13 @@ a:-webkit-any-link {
   border-radius: 0.1rem;
   box-shadow: none;
 }
+
 .search-bar-btn {
   padding: 0.5rem;
   border-radius: 0.2rem;
   box-shadow: none;
 }
+
 .side-bar {
   display: flex;
   flex-direction: column;
@@ -209,11 +221,13 @@ a:-webkit-any-link {
   background-color: white;
   padding: 0.6rem;
 }
+
 .events-page-container {
   display: flex;
   justify-content: center;
   background-color: #113444;
 }
+
 .side-nav ul li {
   list-style: none;
 }
@@ -223,6 +237,7 @@ a:-webkit-any-link {
   margin: 10px 0;
   color: white;
 }
+
 /* STYLING FOR LANDING PAGE */
 .banner {
   height: 40vh;
@@ -294,6 +309,7 @@ a:-webkit-any-link {
 }
 
 /* STYLING FOR SMALL EVENT CARD CONTAINER COMPONENT */
+
 .smallEventCard_container {
   display: flex;
   flex-direction: column;
@@ -352,4 +368,53 @@ a:-webkit-any-link {
   font-size: 0.5rem;
   border: 0px solid gray;
   font-weight: 300;
+}
+
+/* Profile Page Styling */
+
+.profile_container {
+  margin: 2rem auto;
+  color: white;
+}
+.profile_container > h1 {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.profile_info {
+  display: flex;
+}
+.profile_info > img {
+  height: 8rem;
+  margin-left: 2rem;
+  border: 2px solid #73adb4;
+}
+.profile_form {
+  display: flex;
+  flex-direction: column;
+}
+.profile_form > button {
+  width: 4rem;
+  align-self: flex-end;
+}
+.profile_field {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0rem;
+}
+
+.profile_field > input,
+.profile_field > textarea {
+  width: 12rem;
+}
+
+.profile_field > textarea {
+  height: 5rem;
+}
+
+.profile_field > label {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d8d8d8;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 8rem;
 }

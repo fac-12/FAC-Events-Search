@@ -15,3 +15,8 @@ export const fetchAllEvents = () => async dispatch => {
   const events = await axios.get("api/events");
   dispatch({ type: FETCH_EVENTS, payload: events.data });
 };
+
+export const addInterest = (event, user) => {
+  console.log(event, user);
+  //const success = await axios.post("api/addInterest", {event, user})
+}
