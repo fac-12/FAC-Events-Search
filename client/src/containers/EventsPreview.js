@@ -20,7 +20,11 @@ class EventsPreview extends Component {
       <div className="eventsPreview_container">
         <div className="eventsPreview_content">
           <h1>Upcoming Events</h1>
-          <ul>{this.props.events.map(item => this.renderSmallCard(item))}</ul>
+          <ul>
+            {this.props.events
+              .slice(0, 10)
+              .map(item => this.renderSmallCard(item))}
+          </ul>
         </div>
       </div>
     );

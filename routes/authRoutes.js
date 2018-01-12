@@ -21,7 +21,7 @@ module.exports = app => {
     "/auth/github/callback",
     passport.authenticate("github"),
     (req, res) => {
-      res.redirect("/events");
+      res.redirect("/profile");
     }
   );
 };
