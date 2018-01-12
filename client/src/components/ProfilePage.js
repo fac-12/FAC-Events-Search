@@ -72,7 +72,7 @@ class ProfilePage extends Component {
             </div>
             <button type="submit">Submit</button>
           </form>
-          <img src={this.props.auth[0].photo_url} />
+          <img src={this.props.auth[0].photo_url} alt="user" />
         </div>
       </div>
     );

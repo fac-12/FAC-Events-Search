@@ -1,4 +1,4 @@
-import { FETCH_USER, CUR_LOCATION, FETCH_EVENTS } from "./types";
+import { FETCH_USER, CUR_LOCATION, FETCH_EVENTS, FETCH_HOSTS } from "./types";
 import axios from "axios";
 
 export const fetchUser = () => async dispatch => {
@@ -16,7 +16,12 @@ export const fetchAllEvents = () => async dispatch => {
   dispatch({ type: FETCH_EVENTS, payload: events.data });
 };
 
-export const addInterest = (event, user) => {
+export const addInterest = (event, user) => async dispatch => {
   console.log(event, user);
-  //const success = await axios.post("api/addInterest", {event, user})
-}
+  // const success = await axios.post("api/addInterest", {event, user})
+};
+
+export const fetchHosts = () => async dispatch => {
+  const hosts = await axios.get("api/hosts");
+  dispatch({ type: FETCH_HOSTS, payload: hosts.data });
+};

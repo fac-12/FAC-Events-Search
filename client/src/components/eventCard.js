@@ -4,10 +4,6 @@ import { connect } from "react-redux";
 import "../style.css";
 
 class EventCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { events } = this.props;
 
