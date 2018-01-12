@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 class ProfilePage extends Component {
+  constructor(props) {
+    super(props);
+    const { github_username, name, email, cohort, bio } = this.props.auth[0];
+    this.state = { github_username, name, email, cohort, bio };
+  }
   componentDidMount() {
     console.log(this.props.auth);
     this.props.setLocation(this.props.location.pathname);
@@ -20,17 +25,27 @@ class ProfilePage extends Component {
                 readOnly
                 id="github"
                 name="github"
-                value={`@${this.props.auth[0].github_username}`}
+                value={`@${this.state.github_username}`}
               />
             </div>
             <div className="profile_field">
               <label htmlFor="name">Name:</label>
-              <input id="name" name="name" value={this.props.auth[0].name} />
+              <input
+                id="name"
+                name="name"
+                value={this.state.name}
+                onChange={event => this.setState({ name: event.target.value })}
+              />
             </div>
 
             <div className="profile_field">
               <label htmlFor="email">Email:</label>
-              <input id="email" name="email" value={this.props.auth[0].email} />
+              <input
+                id="email"
+                name="email"
+                value={this.state.email}
+                onChange={event => this.setState({ email: event.target.value })}
+              />
             </div>
             <div className="profile_field">
               <label htmlFor="cohort">FAC Cohort:</label>
@@ -39,12 +54,20 @@ class ProfilePage extends Component {
                 placeholder="Please enter your cohort number"
                 id="cohort"
                 name="cohort"
+                value={this.state.cohort}
+                onChange={event =>
+                  this.setState({ cohort: event.target.value })
+                }
               />
             </div>
             <div className="profile_field">
               <label htmlFor="bio">Brief Bio:</label>
-              <textarea id="bio" name="bio">
-                {this.props.auth[0].bio}
+              <textarea
+                id="bio"
+                name="bio"
+                onChange={event => this.setState({ bio: event.target.value })}
+              >
+                {this.state.bio}
               </textarea>
             </div>
             <button type="submit">Submit</button>
