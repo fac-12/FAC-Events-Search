@@ -353,3 +353,52 @@ a:-webkit-any-link {
   border: 0px solid gray;
   font-weight: 300;
 }
+
+/* Profile Page Styling */
+
+.profile_container {
+  margin: 2rem auto;
+  color: white;
+}
+.profile_container > h1 {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.profile_info {
+  display: flex;
+}
+.profile_info > img {
+  height: 8rem;
+  margin-left: 2rem;
+  border: 2px solid #73adb4;
+}
+.profile_form {
+  display: flex;
+  flex-direction: column;
+}
+.profile_form > button {
+  width: 4rem;
+  align-self: flex-end;
+}
+.profile_field {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0rem;
+}
+
+.profile_field > input,
+.profile_field > textarea {
+  width: 12rem;
+}
+
+.profile_field > textarea {
+  height: 5rem;
+}
+
+.profile_field > label {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d8d8d8;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 8rem;
+}
