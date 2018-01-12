@@ -12,50 +12,37 @@ class EventsPage extends Component {
   }
   render() {
     return (
-      <div>
-        <AddEventPage />
-        <section className="events-page-container">
-          <section className="side-bar">
-            <Router>
-              <nav className="side-nav">
-                <ul>
-                  <li>
-                    <Link to="/">Add Event</Link>
-                  </li>
-                  <li>
-                    <Link to="">My Events</Link>
-                  </li>
-                  <li>
-                    <Link to="">Popular</Link>
-                  </li>
-                  <li>
-                    <Link to="">Suggested</Link>
-                  </li>
-                  <li>
-                    <Link to="">All Events</Link>
-                  </li>
-                </ul>
-              </nav>
-            </Router>
-            <section>
-              <section>
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="search-bar-input"
-                />
-
-                <button type="submit" className="search-bar-btn">
-                  Search
-                </button>
-              </section>
-              <input type="date" />
-            </section>
+      <div className="events_page_container">
+        <nav className="sidebar_container">
+          <AddEventPage />
+          <section className="sidebar_filter">
+            <h3>Filter Events</h3>
+            <ul>
+              <li>
+                <Link to="/events">My Events</Link>
+              </li>
+              <li>
+                <Link to="/events">Popular</Link>
+              </li>
+              <li>
+                <Link to="/events">Suggested</Link>
+              </li>
+              <li>
+                <Link to="/events">All Events</Link>
+              </li>
+            </ul>
           </section>
-          <section className="events-view">
-            <h1 className="events-view-title"> Upcoming Events </h1>
-            <EventCard />
+          <section className="sidebar_search">
+            <h3>Search for Events</h3>
+            <input type="text" placeholder="Search" />
+            <button type="submit" className="sidebar_search_btn">
+              Search
+            </button>
           </section>
+        </nav>
+        <section className="events_view">
+          <h1 className="events_view_title"> Upcoming Events </h1>
+          <EventCard />
         </section>
       </div>
     );
