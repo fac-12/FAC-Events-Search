@@ -84,10 +84,41 @@ a:-webkit-any-link {
   color: #0f3445;
 }
 
-.About {
-  background: #183447;
+/*About page Styling*/
+
+.about_container {
   color: white;
-  height: calc(100vh - 200px);
+  display: flex;
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.about_container > section {
+  margin: 1rem;
+  font-weight: 300;
+}
+
+.about_container > section > article {
+  margin: 0.5rem;
+  font-weight: 300;
+}
+
+.about_container h2 {
+  margin: 2rem 1rem 0rem 0rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.about_container p {
+  margin: 1rem 1rem 1rem 0rem;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.about_container li {
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 
 .host_container {
