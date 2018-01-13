@@ -12,7 +12,7 @@ module.exports = app => {
       console.log(eventData);
       res.send(eventData);
     } catch (e) {
-      console.log("Add event error", e);
+      console.log("Add event error ", e);
     }
   });
 
