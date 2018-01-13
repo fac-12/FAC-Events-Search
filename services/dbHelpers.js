@@ -1,45 +1,60 @@
-const queries = require("../database/queries");
+const { checkEvent, addEvent } = require("../queries/eventQueries");
+const { checkHost, addHost } = require("../queries/hostQueries");
 
-const addEvent = data =>
+const checkAddEvent = data =>
   new Promise(async (resolve, reject) => {
     const datetime = new Date(data.time);
     const options = { year: "numeric", month: "long", day: "numeric" };
-    const eventData = {
-      event_name: data.name,
-      event_date: datetime.toLocaleDateString("en-GB", options),
-      event_time: datetime.toLocaleTimeString("en-GB"),
-      host_org_name: data.group.name,
-      venue_name: data.venue.name,
-      venue_address: data.venue.address_1,
-      venue_postcode: data.venue.city,
-      event_url: data.event_url,
-      event_desc: data.description
-    };
-    try {
-      const eventExists = await queries.checkEvent(eventData);
-      if (eventExists) {
-        resolve("An event with that name, date and time already exists.");
-      } else {
-        const eventAdded = await queries.addEvent(eventData);
-        resolve(`Thank you! Your event, ${eventAdded}, has been added.`);
+    if (data.venue) {
+      const eventData = {
+        event_name: data.name,
+        event_date: datetime.toLocaleDateString("en-GB", options),
+        event_time: datetime.toLocaleTimeString("en-GB"),
+        host_org_name: data.group.name,
+        venue_name: data.venue.name,
+        venue_address: data.venue.address_1,
+        venue_postcode: data.venue.city,
+        event_url: data.event_url,
+        event_desc: data.description
+      };
+      try {
+        const eventExists = await checkEvent(eventData);
+        if (eventExists) {
+          resolve({
+            msg: "An event with that name, date and time already exists."
+          });
+        } else {
+          const eventAdded = await addEvent(eventData);
+          resolve({
+            msg: `Thank you! Your event, ${
+              eventAdded.event_name
+            }, has been added.`,
+            event: { eventAdded }
+          });
+        }
+      } catch (e) {
+        console.log("add Event error:", e);
       }
-    } catch (e) {
-      console.log("add Event error:", e);
+    } else {
+      resolve({
+        msg:
+          "Sorry, this event must be added manually due to a flaw with Meetup."
+      });
     }
   });
 
-const addHost = data =>
+const checkAddHost = data =>
   new Promise(async (resolve, reject) => {
     const hostData = {
       name: data.name,
       url: data.link
     };
     try {
-      const hostExists = await queries.checkHost(hostData.url);
+      const hostExists = await checkHost(hostData.url);
       if (hostExists) {
         resolve("That organization is already included.");
       } else {
-        const hostAdded = await queries.addHost(hostData);
+        const hostAdded = await addHost(hostData);
         resolve(`Thank you! The organization ${hostAdded} has been added.`);
       }
     } catch (e) {
@@ -47,4 +62,4 @@ const addHost = data =>
     }
   });
 
-module.exports = { addEvent, addHost };
+module.exports = { checkAddEvent, checkAddHost };

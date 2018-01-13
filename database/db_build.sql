@@ -1,11 +1,5 @@
 BEGIN;
 	DROP TABLE IF EXISTS event_comments, interest, suggested, reviews, events, users, included_orgs;
-	CREATE TABLE included_orgs
-	(
-		id serial PRIMARY KEY,
-		name VARCHAR(100),
-		url VARCHAR(150)
-	);
 	CREATE TABLE events
 	(
 		id serial PRIMARY KEY,
@@ -28,6 +22,12 @@ BEGIN;
 		photo_url VARCHAR(100),
 		cohort INTEGER,
 		bio TEXT
+	);
+	CREATE TABLE included_orgs
+	(
+		id serial PRIMARY KEY,
+		name VARCHAR(100),
+		url VARCHAR(150)
 	);
 	CREATE TABLE interest
 	(

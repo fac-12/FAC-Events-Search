@@ -1,10 +1,11 @@
 const axios = require("axios");
-const queries = require("../database/queries");
+const { getEvents } = require("../queries/eventQueries");
+const { getHosts } = require("../queries/hostQueries");
 
 module.exports = app => {
   app.get("/api/events", async (req, res) => {
     try {
-      const eventsData = await queries.getEvents();
+      const eventsData = await getEvents();
       res.send(eventsData);
     } catch (e) {
       console.log("Fetch events error", e);
@@ -13,7 +14,7 @@ module.exports = app => {
 
   app.get("/api/hosts", async (req, res) => {
     try {
-      const hostsData = await queries.getHosts();
+      const hostsData = await getHosts();
       res.send(hostsData);
     } catch (e) {
       console.log("Fetch hosts error", e);
