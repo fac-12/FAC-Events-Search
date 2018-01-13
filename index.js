@@ -32,7 +32,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.disable("x-powered-by");
-// app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
