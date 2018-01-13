@@ -9,7 +9,6 @@ class AddEventForm extends Component {
   }
 
   checkMeetup = url => {
-    console.log(url);
     if (url.includes("www.meetup.com")) {
       const id = url.split("/")[5];
       this.props.addEvent(id);
@@ -20,7 +19,7 @@ class AddEventForm extends Component {
 
   clickHandler = e => {
     e.preventDefault();
-    this.checkMeetup(this.state);
+    this.checkMeetup(this.state.url);
   };
 
   render() {

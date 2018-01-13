@@ -8,8 +8,9 @@ module.exports = app => {
       const allData = await axios.get(
         `https://api.meetup.com/2/events?event_id=${req.body.id}`
       );
-      const returnMsg = await checkAddEvent(allData.data.results[0]);
-      res.send(returnMsg);
+      const eventData = await checkAddEvent(allData.data.results[0]);
+      console.log(eventData);
+      res.send(eventData);
     } catch (e) {
       console.log("Add event error", e);
     }
