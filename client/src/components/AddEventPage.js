@@ -1,34 +1,28 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class AddEventForm extends Component {
   constructor() {
     super();
-
     this.state = { url: "" };
   }
 
-  postId = id => {
-    axios
-      .post("/api/addMeetupEvent", {
-        id
-      })
-      .then(res => console.log(res))
-      .catch(e => console.log(e));
-  };
-
   checkMeetup = url => {
+    console.log(url);
     if (url.includes("www.meetup.com")) {
       const id = url.split("/")[5];
-      this.postId(id);
+      this.props.addEvent(id);
+    } else {
+      //handle if not a meetup url
     }
   };
 
   clickHandler = e => {
     e.preventDefault();
-    const { url } = this.state;
-    this.checkMeetup(url);
+    this.checkMeetup(this.state);
   };
+
   render() {
     return (
       <form>
@@ -45,4 +39,4 @@ class AddEventForm extends Component {
   }
 }
 
-export default AddEventForm;
+export default connect(null, actions)(AddEventForm);

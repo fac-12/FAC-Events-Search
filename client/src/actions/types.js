@@ -3,3 +3,4 @@ export const CUR_LOCATION = "CUR_LOCATION";
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const FETCH_HOSTS = "FETCH_HOSTS";
 export const ADD_HOST = "ADD_HOST";
+export const ADD_EVENT = "ADD_EVENT";

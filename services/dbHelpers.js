@@ -1,6 +1,7 @@
-const queries = require("../database/queries");
+const { checkEvent, addEvent } = require("../queries/eventQueries");
+const { checkHost, addHost } = require("../queries/hostQueries");
 
-const addEvent = data =>
+const checkAddEvent = data =>
   new Promise(async (resolve, reject) => {
     const datetime = new Date(data.time);
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -16,11 +17,11 @@ const addEvent = data =>
       event_desc: data.description
     };
     try {
-      const eventExists = await queries.checkEvent(eventData);
+      const eventExists = await checkEvent(eventData);
       if (eventExists) {
         resolve("An event with that name, date and time already exists.");
       } else {
-        const eventAdded = await queries.addEvent(eventData);
+        const eventAdded = await addEvent(eventData);
         resolve(`Thank you! Your event, ${eventAdded}, has been added.`);
       }
     } catch (e) {
@@ -28,18 +29,18 @@ const addEvent = data =>
     }
   });
 
-const addHost = data =>
+const checkAddHost = data =>
   new Promise(async (resolve, reject) => {
     const hostData = {
       name: data.name,
       url: data.link
     };
     try {
-      const hostExists = await queries.checkHost(hostData.url);
+      const hostExists = await checkHost(hostData.url);
       if (hostExists) {
         resolve("That organization is already included.");
       } else {
-        const hostAdded = await queries.addHost(hostData);
+        const hostAdded = await addHost(hostData);
         resolve(`Thank you! The organization ${hostAdded} has been added.`);
       }
     } catch (e) {
@@ -47,4 +48,4 @@ const addHost = data =>
     }
   });
 
-module.exports = { addEvent, addHost };
+module.exports = { checkAddEvent, checkAddHost };
