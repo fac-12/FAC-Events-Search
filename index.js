@@ -23,6 +23,14 @@ require("./routes/authRoutes")(app);
 require("./routes/dbGetRoutes")(app);
 require("./routes/dbPostRoutes")(app);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(_dirname, "client", "build", "index.html"));
+  });
+}
+
 app.disable("x-powered-by");
 // app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
