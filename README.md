@@ -12,6 +12,10 @@ Our heroku database url is postgres://ljgmdukbulvykn:ee0db791d0f97be746902f36257
 
 The basic scaffolding is all up now, but there is still clearly lots and lots of work to get done this week!
 
+## Tech Stack 
+
+React, Redux, postgresql, express 
+
 ## User Stories
 
 Some of these are a bit granular, so as to be useful for us as a checklist.
