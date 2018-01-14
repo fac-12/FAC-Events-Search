@@ -6,7 +6,7 @@ import "../style.css";
 class EventCard extends Component {
   render() {
     const { events } = this.props;
-
+    console.log(events);
     return (
       <div className="events-card-container">
         {events.map(item => (
