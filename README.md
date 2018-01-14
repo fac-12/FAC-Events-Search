@@ -1,7 +1,6 @@
 # FAC-Events-Search
 
 ## Intro
-<<<<<<< HEAD
 
 We hope that this app makes it easier to find, share and discuss events of interest to the London FAC community without having to wade through Meetup.com or monitor Gitter channels, while building a sense of broader FAC community.
 
@@ -9,32 +8,32 @@ Our initial prototype is available here: https://invis.io/RBF7TJ4J8
 
 ## Accessing the site and database for Code Review
 
-=======
+
 We hope that this app makes it easier to find, share and discuss events of interest to the London FAC community without having to wade through Meetup.com or monitor Gitter channels, while building a sense of broader FAC community.
 
 Our initial prototype is available here:  https://invis.io/RBF7TJ4J8
 
 ## Accessing the site and database for Code Review
->>>>>>> master
+
 Our app in its current state is available at fac-eventfinder.herokuapp.com
 
 Our heroku database url is postgres://ljgmdukbulvykn:ee0db791d0f97be746902f36257f9256fdbd6c9e90c7c741ecbb70cfe32523c9@ec2-54-217-243-160.eu-west-1.compute.amazonaws.com:5432/d8d8busu9hibb8
 
 The basic scaffolding is all up now, but there is still clearly lots and lots of work to get done this week!
 
-<<<<<<< HEAD
-=======
+
+
 ## Tech Stack 
 
 React, Redux, postgresql, express 
 
->>>>>>> master
+
 ## User Stories
 
 Some of these are a bit granular, so as to be useful for us as a checklist.
 
 #### Sign up/Sign In & Landing Page
-<<<<<<< HEAD
+
 
 * [x] The user can log in with their github account.
 * [ ] The user cannot log in if they are not a member of founders and coders on github. They will receive an appropriate message of explanation.
@@ -82,7 +81,7 @@ Some of these are a bit granular, so as to be useful for us as a checklist.
 * [ ] Users can review past events with star system. Those ratings will be summarized and displayed for individual host organizations.
 * [ ] Users can connect their Meetup account so they can rsvp etc through the app
 * [ ] Users can add events to the database via a Chrome extension
-=======
+
 - [x] The user can log in with their github account.
 - [ ] The user cannot log in if they are not a member of founders and coders on github. They will receive an appropriate message of explanation.
 - [ ] The landing page will have a preview of upcoming events. If the user clicks on one, they will be directed to the associated meetup page.
@@ -126,4 +125,3 @@ Some of these are a bit granular, so as to be useful for us as a checklist.
 - [ ] Users can connect their Meetup account so they can rsvp etc through the app
 - [ ] Users can add events to the database via a Chrome extension
 
->>>>>>> master
