@@ -10,9 +10,9 @@ export const fetchAllEvents = () => async dispatch => {
   }
 };
 
-export const addEvent = id => async dispatch => {
+export const addEvent = data => async dispatch => {
   try {
-    const event = await axios.post("/api/addMeetupEvent", { id });
+    const event = await axios.post("/api/addMeetupEvent", { data });
     if (event.data.event) {
       dispatch({ type: ADD_EVENT, payload: event.data.event });
     } else {

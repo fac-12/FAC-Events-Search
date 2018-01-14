@@ -498,6 +498,7 @@ a:-webkit-any-link {
   width: 70vw;
   height: 50vh;
 }
+
 .form_container > h1 {
   font-weight: 500;
   color: white;
@@ -518,19 +519,10 @@ a:-webkit-any-link {
   margin: 2rem 2rem;
 }
 
-.form_left {
-  display: flex;
-  flex-direction: column;
-}
-
-.form_right {
-  display: flex;
-  flex-direction: column;
-}
-
 .form_field > input {
   justify-content: center;
   width: 12rem;
+  color: black;
 }
 
 .form_field > label {

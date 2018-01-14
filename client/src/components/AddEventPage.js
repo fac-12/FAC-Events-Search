@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { addEvent, manualAddEvent } from "../actions/eventActions";
+import { addEvent } from "../actions/eventActions";
 
 class AddEventForm extends Component {
   constructor() {
@@ -32,7 +32,7 @@ class AddEventForm extends Component {
   };
 
   onSubmit(values) {
-    this.props.manualAddEvent(values, () => {
+    this.props.addEvent(values, () => {
       this.props.history.push("/events");
     });
   }
@@ -52,45 +52,43 @@ class AddEventForm extends Component {
           className="form_fields_container"
           onSubmit={handleSubmit(this.onSubmit.bind(this))}
         >
-          <section class="form_left">
-            <Field
-              label="EventName"
-              name="EventName"
-              component={this.renderField}
-            />
-            <Field
-              label="startDate"
-              name="startDate"
-              component={this.renderField}
-            />
-            <Field label="Host" name="Host" component={this.renderField} />
-            <Field label="Time" name="Time" component={this.renderField} />
-          </section>
-          <section class="form_right">
-            <Field
-              label="VenueName"
-              name="VenueName"
-              component={this.renderField}
-            />
+          <Field
+            label="EventName"
+            name="EventName"
+            component={this.renderField}
+          />
+          <Field
+            label="startDate"
+            name="startDate"
+            component={this.renderField}
+          />
+          <Field label="Host" name="Host" component={this.renderField} />
+          <Field label="Time" name="Time" component={this.renderField} />
 
-            <Field
-              label="VenueAddress"
-              name="VenueAddress"
-              component={this.renderField}
-            />
-            <Field
-              label="PostCode"
-              name="PostCode"
-              component={this.renderField}
-            />
-            <Field
-              label="Url"
-              name="Url"
-              value={this.state.url}
-              onChange={event => this.setState({ url: event.target.value })}
-              component={this.renderField}
-            />
-          </section>
+          <Field
+            label="VenueName"
+            name="VenueName"
+            component={this.renderField}
+          />
+
+          <Field
+            label="VenueAddress"
+            name="VenueAddress"
+            component={this.renderField}
+          />
+          <Field
+            label="PostCode"
+            name="PostCode"
+            component={this.renderField}
+          />
+          <Field
+            label="Url"
+            name="Url"
+            value={this.state.url}
+            onChange={event => this.setState({ url: event.target.value })}
+            component={this.renderField}
+          />
+
           <section className="interaction">
             <label>
               <button type="submit" onClick={this.clickHandler}>
@@ -113,4 +111,4 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: "PostEventForm"
-})(connect(null, { addEvent, manualAddEvent })(AddEventForm));
+})(connect(null, { addEvent })(AddEventForm));
