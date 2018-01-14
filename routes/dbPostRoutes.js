@@ -9,7 +9,7 @@ module.exports = app => {
         `https://api.meetup.com/2/events?event_id=${req.body.id}`
       );
       const eventData = await checkAddEvent(allData.data.results[0]);
-      console.log(eventData);
+      console.log("Sent data is: ", eventData);
       res.send(eventData);
     } catch (e) {
       console.log("Add event error ", e);

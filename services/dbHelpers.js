@@ -29,7 +29,7 @@ const checkAddEvent = data =>
             msg: `Thank you! Your event, ${
               eventAdded.event_name
             }, has been added.`,
-            event: { eventAdded }
+            event: eventAdded
           });
         }
       } catch (e) {
