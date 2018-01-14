@@ -14,7 +14,9 @@ class EventsPage extends Component {
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
-          <Link to="/event/new"> Add Event </Link>
+          <Link to="/event/new" className="sidebar_addEvent_btn">
+            Add Event
+          </Link>
           <section className="sidebar_filter">
             <h3>Filter Events</h3>
             <ul>

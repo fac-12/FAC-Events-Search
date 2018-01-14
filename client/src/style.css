@@ -290,6 +290,17 @@ a:-webkit-any-link {
   box-shadow: none;
 }
 
+.sidebar_addEvent_btn {
+  width: 7rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  margin-left: 2rem;
+  padding: 0.5rem;
+  background-color: #1e6d80 !important;
+  border: none;
+  color: white !important;
+}
+
 .events_view_title {
   font-weight: 400;
   margin: 10px 0;
