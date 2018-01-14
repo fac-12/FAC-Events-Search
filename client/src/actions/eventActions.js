@@ -1,4 +1,4 @@
-import { FETCH_EVENTS } from "./types";
+import { FETCH_EVENTS, MANUAL_ADD_EVENT } from "./types";
 import axios from "axios";
 
 export const fetchAllEvents = () => async dispatch => {
@@ -21,6 +21,16 @@ export const addEvent = id => async dispatch => {
   } catch (e) {
     console.log(e);
   }
+};
+
+export const manualAddEvent = (values, callback) => {
+  const req = axios
+    .post("/api/manualAddEvent", { values })
+    .then(() => callback());
+  return {
+    type: MANUAL_ADD_EVENT,
+    payload: values
+  };
 };
 
 // export const addInterest = (event, user) => async dispatch => {
