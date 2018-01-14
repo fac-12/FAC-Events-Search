@@ -22,25 +22,18 @@ class AddEventForm extends Component {
     );
   }
 
-  checkMeetup = url => {
-    if (url.includes("www.meetup.com")) {
-      const id = url.split("/")[5];
+  checkMeetup = values => {
+    if (values.Url.includes("www.meetup.com")) {
+      const id = values.Url.split("/")[5];
       this.props.addEvent(id);
     } else {
-      //handle if not a meetup url
+      this.props.addEvent(values);
     }
   };
 
   onSubmit(values) {
-    this.props.addEvent(values, () => {
-      this.props.history.push("/events");
-    });
+    this.checkMeetup(values);
   }
-
-  clickHandler = e => {
-    e.preventDefault();
-    this.checkMeetup(this.state.url);
-  };
 
   render() {
     const { handleSubmit } = this.props;
@@ -91,9 +84,7 @@ class AddEventForm extends Component {
 
           <section className="interaction">
             <label>
-              <button type="submit" onClick={this.clickHandler}>
-                save
-              </button>
+              <button type="submit">save</button>
             </label>
             <Link to="/events">cancel</Link>
           </section>
