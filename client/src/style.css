@@ -487,3 +487,56 @@ a:-webkit-any-link {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 8rem;
 }
+
+/* add event Page Styling */
+
+.form_container {
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #1d6d80;
+  width: 70vw;
+  height: 50vh;
+}
+.form_container > h1 {
+  font-weight: 500;
+  color: white;
+  margin: 1rem 2rem;
+}
+
+.form_container > p {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 2rem;
+}
+
+.form_fields_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 2rem;
+}
+
+.form_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_field > input {
+  justify-content: center;
+  width: 12rem;
+}
+
+.form_field > label {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d8d8d8;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 8rem;
+}

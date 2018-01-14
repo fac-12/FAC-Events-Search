@@ -14,7 +14,7 @@ class AddEventForm extends Component {
     const { meta: { touched, error } } = field;
     // const className = `form-container ${touched && error ? "error" : ""}`;
     return (
-      <div className="">
+      <div className="form_field">
         <label>{field.label}</label>
         <input type="text" {...field.input} />
         <div>{touched ? error : ""}</div>
@@ -45,43 +45,62 @@ class AddEventForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field
-          label="EventName"
-          name="EventName"
-          component={this.renderField}
-        />
-        <Field
-          label="startDate"
-          name="startDate"
-          component={this.renderField}
-        />
-        <Field label="Host" name="Host" component={this.renderField} />
-        <Field label="Time" name="Time" component={this.renderField} />
-        <Field
-          label="VenueName"
-          name="VenueName"
-          component={this.renderField}
-        />
-        <Field
-          label="VenueAddress"
-          name="VenueAddress"
-          component={this.renderField}
-        />
-        <Field label="PostCode" name="PostCode" component={this.renderField} />
-        <Field label="Url" name="Url" component={this.renderField} />
-        <label>
-          <button type="submit" onClick={this.clickHandler}>
-            submit
-          </button>
-        </label>
-        <Link to="/events">cancel</Link>
-        <input
-          type="text"
-          value={this.state.url}
-          onChange={event => this.setState({ url: event.target.value })}
-        />
-      </form>
+      <div className="form_container">
+        <h1 className="form_title"> Add Event </h1>
+        <p>If you have a meetup url, you can leave the other fields blank.</p>
+        <form
+          className="form_fields_container"
+          onSubmit={handleSubmit(this.onSubmit.bind(this))}
+        >
+          <section class="form_left">
+            <Field
+              label="EventName"
+              name="EventName"
+              component={this.renderField}
+            />
+            <Field
+              label="startDate"
+              name="startDate"
+              component={this.renderField}
+            />
+            <Field label="Host" name="Host" component={this.renderField} />
+            <Field label="Time" name="Time" component={this.renderField} />
+          </section>
+          <section class="form_right">
+            <Field
+              label="VenueName"
+              name="VenueName"
+              component={this.renderField}
+            />
+
+            <Field
+              label="VenueAddress"
+              name="VenueAddress"
+              component={this.renderField}
+            />
+            <Field
+              label="PostCode"
+              name="PostCode"
+              component={this.renderField}
+            />
+            <Field
+              label="Url"
+              name="Url"
+              value={this.state.url}
+              onChange={event => this.setState({ url: event.target.value })}
+              component={this.renderField}
+            />
+          </section>
+          <section className="interaction">
+            <label>
+              <button type="submit" onClick={this.clickHandler}>
+                save
+              </button>
+            </label>
+            <Link to="/events">cancel</Link>
+          </section>
+        </form>
+      </div>
     );
   }
 }
