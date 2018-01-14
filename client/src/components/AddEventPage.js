@@ -22,8 +22,32 @@ class AddEventForm extends Component {
     );
   }
 
+  renderDate(field) {
+    const { meta: { touched, error } } = field;
+    // const className = `form-container ${touched && error ? "error" : ""}`;
+    return (
+      <div className="form_field">
+        <label>{field.label}</label>
+        <input type="date" {...field.input} />
+        <div>{touched ? error : ""}</div>
+      </div>
+    );
+  }
+
+  renderTime(field) {
+    const { meta: { touched, error } } = field;
+    // const className = `form-container ${touched && error ? "error" : ""}`;
+    return (
+      <div className="form_field">
+        <label>{field.label}</label>
+        <input type="time" {...field.input} />
+        <div>{touched ? error : ""}</div>
+      </div>
+    );
+  }
+
   checkMeetup = values => {
-    if (values.Url.includes("www.meetup.com")) {
+    if (values.event_url.includes("www.meetup.com")) {
       const id = values.Url.split("/")[5];
       this.props.addEvent(id);
     } else {
@@ -47,42 +71,40 @@ class AddEventForm extends Component {
         >
           <Field
             label="EventName"
-            name="EventName"
+            name="event_name"
             component={this.renderField}
           />
           <Field
             label="startDate"
-            type="date"
-            name="startDate"
-            component={this.renderField}
+            name="event_date"
+            component={this.renderDate}
           />
-          <Field label="Host" name="Host" component={this.renderField} />
           <Field
-            type="time"
-            label="Time"
-            name="Time"
+            label="Host"
+            name="host_org_name"
             component={this.renderField}
           />
+          <Field label="Time" name="event_time" component={this.renderTime} />
 
           <Field
             label="VenueName"
-            name="VenueName"
+            name="venue_name"
             component={this.renderField}
           />
 
           <Field
             label="VenueAddress"
-            name="VenueAddress"
+            name="venue_address"
             component={this.renderField}
           />
           <Field
             label="PostCode"
-            name="PostCode"
+            name="venue_postcode"
             component={this.renderField}
           />
           <Field
             label="Url"
-            name="Url"
+            name="event_url"
             value={this.state.url}
             onChange={event => this.setState({ url: event.target.value })}
             component={this.renderField}
