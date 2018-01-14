@@ -43,7 +43,9 @@ class EventsPage extends Component {
           </section>
         </nav>
         <section className="events_view">
-          <h1 className="events_view_title"> Upcoming Events </h1>
+          <h1 className="events_view_title">
+            Upcoming Events ({this.props.events.length})
+          </h1>
           <EventCard />
         </section>
       </div>

@@ -1,4 +1,4 @@
-import { FETCH_EVENTS, MANUAL_ADD_EVENT } from "./types";
+import { FETCH_EVENTS, ADD_EVENT } from "./types";
 import axios from "axios";
 
 export const fetchAllEvents = () => async dispatch => {
@@ -14,7 +14,7 @@ export const addEvent = id => async dispatch => {
   try {
     const event = await axios.post("/api/addMeetupEvent", { id });
     if (event.data.event) {
-      fetchAllEvents();
+      dispatch({ type: ADD_EVENT, payload: event.data.event });
     } else {
       // /Handle showing error message
     }
