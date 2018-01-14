@@ -52,11 +52,17 @@ class AddEventForm extends Component {
           />
           <Field
             label="startDate"
+            type="date"
             name="startDate"
             component={this.renderField}
           />
           <Field label="Host" name="Host" component={this.renderField} />
-          <Field label="Time" name="Time" component={this.renderField} />
+          <Field
+            type="time"
+            label="Time"
+            name="Time"
+            component={this.renderField}
+          />
 
           <Field
             label="VenueName"
