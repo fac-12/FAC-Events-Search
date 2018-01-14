@@ -1,14 +1,7 @@
 const passport = require("passport");
 const { githubClientID, githubClientSecret } = require("../config/keys");
 const GithubStrategy = require("passport-github2").Strategy;
-const queries = require("../database/queries");
-
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-passport.deserializeUser((id, done) => {
-  queries.checkUser(id).then(user => done(null, user));
-});
+const { checkUser, addUser } = require("../queries/userQueries");
 
 passport.use(
   new GithubStrategy(
@@ -18,12 +11,11 @@ passport.use(
       callbackURL: "/auth/github/callback"
     },
     (accessToken, refreshToken, profile, done) => {
-      queries.checkUser(profile.id).then(res => {
+      checkUser(profile.id).then(res => {
         if (res.length > 0) {
           done(null, res[0]);
         } else {
-          queries
-            .addUser(profile)
+          addUser(profile)
             .then(res => done(null, res[0]))
             .catch(e => console.log(e));
         }
@@ -31,3 +23,11 @@ passport.use(
     }
   )
 );
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  checkUser(id).then(user => done(null, user));
+});

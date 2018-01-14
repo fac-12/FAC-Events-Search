@@ -4,41 +4,48 @@ import * as actions from "../actions";
 
 class AboutPage extends Component {
   componentDidMount() {
+    // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
   }
 
   render() {
     return (
-      <div className="About">
-        <div>
-          <section>
-            <h1> Why we built this </h1>
+      <div className="about_container">
+        <section>
+          <article>
+            <h2> Why we built this </h2>
             <p>
               This app makes it easier to find, share and discuss events of
               interest to the London FAC community without having to wade
               through Meetup.com or monitor Gitter channels.
             </p>
-          </section>
-          <section>
-            <h1> Profile </h1>
+          </article>
+          <article>
+            <h2> Profile </h2>
             <p>
               You sign into Eventfinder with your github account but help make
               this a friendly space by filling out the additional fields in your
               profile, including a brief bio. Others will be able to view it
               when looking at who else is interested in an event.
             </p>
-          </section>
-          <section>
-            <h1> Events & Hosts </h1>
+          </article>
+          <article>
+            <h2> Contact Us </h2>
+            <p>
+              If you have any ideas about how to make this app more useful or
+              enjoyable for you then please let us know! Contact info in footer.
+            </p>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h2> Events & Hosts </h2>
             <p>
               You sign into Eventfinder with your github account but help make
               this a friendly space by filling out the additional fields in your
               profile, including a brief bio. Others will be able to view it
               when looking at who else is interested in an event.
             </p>
-          </section>
-          <section>
-            <h1> Events & Hosts </h1>
             <p>Events are drawn from three sources:</p>
             <ol>
               <li>
@@ -62,12 +69,8 @@ class AboutPage extends Component {
               show all events for the next 2 months. You must specify dates to
               search beyond that.
             </p>
-            <p>
-              If you have any ideas about how to make this app more useful or
-              enjoyable for you then please let us know! Contact info in footer.
-            </p>
-          </section>
-        </div>
+          </article>
+        </section>
       </div>
     );
   }

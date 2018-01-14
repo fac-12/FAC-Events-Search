@@ -10,7 +10,7 @@ class ProfilePage extends Component {
     this.state = { github_username, name, email, cohort, bio };
   }
   componentDidMount() {
-    console.log(this.props);
+    // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
   }
 

@@ -1,5 +1,8 @@
-import { FETCH_USER, CUR_LOCATION, FETCH_EVENTS } from "./types";
+import { FETCH_USER, CUR_LOCATION } from "./types";
 import axios from "axios";
+
+export { fetchAllEvents, addEvent } from "./eventActions";
+export { fetchHosts, addHost } from "./hostActions";
 
 export const fetchUser = () => async dispatch => {
   const user = await axios.get("/api/currentUser");
@@ -11,12 +14,9 @@ export const setLocation = location => ({
   payload: location
 });
 
-export const fetchAllEvents = () => async dispatch => {
-  const events = await axios.get("api/events");
-  dispatch({ type: FETCH_EVENTS, payload: events.data });
-};
-
-export const addInterest = (event, user) => {
-  console.log(event, user);
-  //const success = await axios.post("api/addInterest", {event, user})
-}
+// export default {
+//   fetchAllEvents,
+//   fetchHosts,
+//   addHost,
+//   addEvent
+// };

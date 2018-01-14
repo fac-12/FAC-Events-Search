@@ -84,27 +84,67 @@ a:-webkit-any-link {
   color: #0f3445;
 }
 
-.About {
-  background: #183447;
+/*About page Styling*/
+
+.about_container {
   color: white;
-  height: calc(100vh - 200px);
-}
-
-.host_container {
   display: flex;
-  justify-content: space-between;
-  background-color: #0f3445;
-  color: #fff;
+  width: 70vw;
+  margin: 0 auto;
 }
 
-.host-form {
+.about_container > section {
+  margin: 1rem;
+  font-weight: 300;
+}
+
+.about_container > section > article {
+  margin: 0.5rem;
+  font-weight: 300;
+}
+
+.about_container h2 {
+  margin: 2rem 1rem 0rem 0rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.about_container p {
+  margin: 1rem 1rem 1rem 0rem;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.about_container li {
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+/* Hosts Page Styling */
+.hosts_container {
+  color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  width: 70vw;
+  margin: 0 auto;
 }
 
-.hosts-title {
+.about_container > section > article {
+  margin: 0.5rem;
+  font-weight: 300;
+}
+
+.hosts_info {
+  margin: 1rem;
+  font-weight: 300;
+  flex: 1;
+}
+
+.hosts_title {
   margin-left: 10px;
+}
+
+.hosts_about {
 }
 
 .hosts-section > p {
@@ -128,17 +168,19 @@ a:-webkit-any-link {
   margin: 10px;
 }
 
-.event-options {
+.hosts_options {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 1rem;
 }
 
-.event-options > h2 {
+.hosts_options > h2 {
   font-size: 16px;
 }
 
-.event-options > label {
+.hosts_options > label {
   margin: 5px;
   font-size: 12px;
 }
@@ -188,6 +230,10 @@ a:-webkit-any-link {
 
 /* Styling for events page */
 
+.events_page_container {
+  display: flex;
+}
+
 .events-container {
   display: flex;
   justify-content: space-between;
@@ -196,44 +242,67 @@ a:-webkit-any-link {
   margin-right: 1.2rem;
 }
 
-.events-view {
+.events_view {
   margin-left: 5rem;
 }
 
 /* side-bar styling */
+.sidebar_container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem 2rem 0;
+  border-right: 1px solid white;
+}
 
-.search-bar-input {
+.sidebar_container > section {
+  margin: 1rem 0;
+}
+
+.sidebar_container h3 {
+  color: white;
+  width: 12rem;
+  background-color: #176d81;
+  padding: 0.7rem 1rem;
+}
+.sidebar_filter ul {
+  margin: 1rem 0;
+}
+
+.sidebar_filter ul li {
+  list-style: none;
+  padding: 0.3rem 0;
+}
+
+.sidebar_filter ul li a {
+  color: white;
+}
+.sidebar_search input {
+  margin: 1rem 0 1rem 1rem;
   padding: 0.5rem;
   border-radius: 0.1rem;
   box-shadow: none;
 }
 
-.search-bar-btn {
+.sidebar_search_btn {
   padding: 0.5rem;
+  margin: 0.5rem;
   border-radius: 0.2rem;
   box-shadow: none;
 }
 
-.side-bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: white;
-  padding: 0.6rem;
+.sidebar_addEvent_btn {
+  width: 7rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  margin-left: 2rem;
+  padding: 0.5rem;
+  background-color: #1e6d80 !important;
+  border: none;
+  color: white !important;
 }
 
-.events-page-container {
-  display: flex;
-  justify-content: center;
-  background-color: #113444;
-}
-
-.side-nav ul li {
-  list-style: none;
-}
-
-.events-view-title {
-  font-weight: 300;
+.events_view_title {
+  font-weight: 400;
   margin: 10px 0;
   color: white;
 }
@@ -412,6 +481,51 @@ a:-webkit-any-link {
 }
 
 .profile_field > label {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d8d8d8;
+  margin: 0rem 1.5rem 0rem 0rem;
+  width: 8rem;
+}
+
+/* add event Page Styling */
+
+.form_container {
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #1d6d80;
+  width: 70vw;
+  height: 50vh;
+}
+
+.form_container > h1 {
+  font-weight: 500;
+  color: white;
+  margin: 1rem 2rem;
+}
+
+.form_container > p {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 2rem;
+}
+
+.form_fields_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 2rem;
+}
+
+.form_field > input {
+  justify-content: center;
+  width: 12rem;
+  color: black;
+}
+
+.form_field > label {
   font-weight: 400;
   font-size: 1rem;
   color: #d8d8d8;

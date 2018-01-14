@@ -9,6 +9,7 @@ import Footer from "../components/TheFooter";
 import EventsPage from "../components/EventsPage";
 import HostsPage from "../components/HostsPage";
 import AboutPage from "../components/AboutPage";
+import AddEventPage from "../components/AddEventPage";
 
 class App extends Component {
   componentDidMount() {
@@ -44,6 +45,17 @@ class App extends Component {
             path="/events"
             render={props =>
               this.props.auth ? <EventsPage {...props} /> : <Redirect to="/" />
+            }
+          />
+          <Route
+            exact
+            path="/event/new"
+            render={props =>
+              this.props.auth ? (
+                <AddEventPage {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route
