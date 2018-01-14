@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import EventCard from "./eventCard";
 import * as actions from "../actions";
-import AddEventPage from "./AddEventPage";
 import "../style.css";
 
 class EventsPage extends Component {
@@ -15,7 +14,9 @@ class EventsPage extends Component {
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
-          <AddEventPage />
+          <Link to="/event/new" className="sidebar_addEvent_btn">
+            Add Event
+          </Link>
           <section className="sidebar_filter">
             <h3>Filter Events</h3>
             <ul>

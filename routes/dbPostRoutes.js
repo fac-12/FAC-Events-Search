@@ -1,16 +1,24 @@
 const axios = require("axios");
 const { checkAddEvent, checkAddHost } = require("../services/dbHelpers");
+const { addEvent } = require("../queries/eventQueries");
 const { addInterest, removeInterest } = require("../queries/otherQueries");
 
 module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
     try {
-      const allData = await axios.get(
-        `https://api.meetup.com/2/events?event_id=${req.body.id}`
-      );
-      const eventData = await checkAddEvent(allData.data.results[0]);
-      console.log("Sent data is: ", eventData);
-      res.send(eventData);
+      if (req.body.data.event_url.includes("www.meetup.com")) {
+        const allData = await axios.get(
+          `https://api.meetup.com/2/events?event_id=${req.body.id}`
+        );
+        const meetupEventData = await checkAddEvent(allData.data.results[0]);
+        console.log("Sent data is: ", meetupEventData);
+        res.send(meetupEventData);
+      } else {
+        const eventData = await checkAddEvent(req.body.data);
+        const addEventData = await addEvent(req.body.data);
+        console.log("Sent data is: ", eventData);
+        res.send(eventData);
+      }
     } catch (e) {
       console.log("Add event error ", e);
     }

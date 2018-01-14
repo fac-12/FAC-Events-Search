@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
+import { addEvent } from "../actions/eventActions";
 
 class AddEventForm extends Component {
   constructor() {
@@ -8,34 +10,124 @@ class AddEventForm extends Component {
     this.state = { url: "" };
   }
 
-  checkMeetup = url => {
-    if (url.includes("www.meetup.com")) {
-      const id = url.split("/")[5];
+  renderField(field) {
+    const { meta: { touched, error } } = field;
+    // const className = `form-container ${touched && error ? "error" : ""}`;
+    return (
+      <div className="form_field">
+        <label>{field.label}</label>
+        <input type="text" {...field.input} />
+        <div>{touched ? error : ""}</div>
+      </div>
+    );
+  }
+
+  renderDate(field) {
+    const { meta: { touched, error } } = field;
+    // const className = `form-container ${touched && error ? "error" : ""}`;
+    return (
+      <div className="form_field">
+        <label>{field.label}</label>
+        <input type="date" {...field.input} />
+        <div>{touched ? error : ""}</div>
+      </div>
+    );
+  }
+
+  renderTime(field) {
+    const { meta: { touched, error } } = field;
+    // const className = `form-container ${touched && error ? "error" : ""}`;
+    return (
+      <div className="form_field">
+        <label>{field.label}</label>
+        <input type="time" {...field.input} />
+        <div>{touched ? error : ""}</div>
+      </div>
+    );
+  }
+
+  checkMeetup = values => {
+    if (values.event_url.includes("www.meetup.com")) {
+      const id = values.Url.split("/")[5];
       this.props.addEvent(id);
     } else {
-      //handle if not a meetup url
+      this.props.addEvent(values);
     }
   };
 
-  clickHandler = e => {
-    e.preventDefault();
-    this.checkMeetup(this.state.url);
-  };
+  onSubmit(values) {
+    this.checkMeetup(values);
+  }
 
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form>
-        <label>
-          <input type="submit" onClick={this.clickHandler} />
-        </label>
-        <input
-          type="text"
-          value={this.state.url}
-          onChange={event => this.setState({ url: event.target.value })}
-        />
-      </form>
+      <div className="form_container">
+        <h1 className="form_title"> Add Event </h1>
+        <p>If you have a meetup url, you can leave the other fields blank.</p>
+        <form
+          className="form_fields_container"
+          onSubmit={handleSubmit(this.onSubmit.bind(this))}
+        >
+          <Field
+            label="EventName"
+            name="event_name"
+            component={this.renderField}
+          />
+          <Field
+            label="startDate"
+            name="event_date"
+            component={this.renderDate}
+          />
+          <Field
+            label="Host"
+            name="host_org_name"
+            component={this.renderField}
+          />
+          <Field label="Time" name="event_time" component={this.renderTime} />
+
+          <Field
+            label="VenueName"
+            name="venue_name"
+            component={this.renderField}
+          />
+
+          <Field
+            label="VenueAddress"
+            name="venue_address"
+            component={this.renderField}
+          />
+          <Field
+            label="PostCode"
+            name="venue_postcode"
+            component={this.renderField}
+          />
+          <Field
+            label="Url"
+            name="event_url"
+            value={this.state.url}
+            onChange={event => this.setState({ url: event.target.value })}
+            component={this.renderField}
+          />
+
+          <section className="interaction">
+            <label>
+              <button type="submit">save</button>
+            </label>
+            <Link to="/events">cancel</Link>
+          </section>
+        </form>
+      </div>
     );
   }
 }
 
-export default connect(null, actions)(AddEventForm);
+function validate(values) {
+  const errors = {};
+  return errors;
+}
+
+export default reduxForm({
+  validate,
+  form: "PostEventForm"
+})(connect(null, { addEvent })(AddEventForm));
