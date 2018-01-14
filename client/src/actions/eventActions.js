@@ -23,16 +23,6 @@ export const addEvent = id => async dispatch => {
   }
 };
 
-export const manualAddEvent = (values, callback) => {
-  const req = axios
-    .post("/api/manualAddEvent", { values })
-    .then(() => callback());
-  return {
-    type: MANUAL_ADD_EVENT,
-    payload: values
-  };
-};
-
 // export const addInterest = (event, user) => async dispatch => {
 //   console.log(event, user);
 //   // const success = await axios.post("api/addInterest", {event, user})
