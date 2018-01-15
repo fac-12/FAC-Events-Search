@@ -45,7 +45,7 @@ module.exports = app => {
 
   app.post("/api/addEventInterest", async (req, res) => {
     try {
-      await removeEventInterest(req.body.event, req.body.user);
+      await removeEventInterest(req.body.user, req.body.event);
       const returnMsg = await addEventInterest(req.body.event, req.body.user);
       res.send(returnMsg);
     } catch (e) {

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import HostsAddForm from "./HostsAddForm";
-import { addHost } from "../actions/hostActions";
 
 class HostsPage extends Component {
   constructor() {

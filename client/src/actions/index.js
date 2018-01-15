@@ -6,7 +6,9 @@ export {
   fetchHosts,
   addHost,
   addHostInterest,
-  removeHostInterest
+  removeHostInterest,
+  addEventInterest,
+  removeEventInterest
 } from "./hostActions";
 
 export const fetchUser = () => async dispatch => {
