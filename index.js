@@ -20,6 +20,7 @@ require("./routes/authRoutes")(app);
 // set db routes
 require("./routes/dbGetRoutes")(app);
 require("./routes/dbPostRoutes")(app);
+require("./routes/dbPutRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

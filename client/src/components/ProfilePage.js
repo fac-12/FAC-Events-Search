@@ -18,35 +18,38 @@ class ProfilePage extends Component {
     return (
       <div className={field.className}>
         <label>{field.label}</label>
-        <input
-          className="profile_input"
-          type={field.type || "text"}
-          readOnly={field.readOnly || false}
-          placeholder={field.placeholder || ""}
-          {...field.input}
-        />
-        <div className="profile_error">{touched ? error : ""}</div>
+        <div>
+          <input
+            className={touched && error ? "red profile_input" : "profile_input"}
+            type={field.type || "text"}
+            readOnly={field.readOnly || false}
+            placeholder={field.placeholder || ""}
+            {...field.input}
+          />
+          <div className="profile_error">{touched ? error : ""}</div>
+        </div>
       </div>
     );
   }
 
-  // onSubmit(e, values) {
-  //   e.preventDefault();
-  //   console.log(e);
-  // }
-
-  submit = values => {
-    // print the form values to the console
-    console.log(values);
-  };
+  onSubmit(values) {
+    // console.log("values are", values);
+    this.props.updateProfile(values, () => {
+      this.props.history.push("/events");
+    });
+  }
 
   render() {
-    // const { handleSubmit } = this.props;
+    // console.log("current state is", this.props.initialValues);
+    const { handleSubmit } = this.props;
     return (
       <div className="profile_container">
         <h1> Your Profile </h1>
         <div className="profile_info">
-          <form className="profile_form" onSubmit={this.submit}>
+          <form
+            className="profile_form"
+            onSubmit={handleSubmit(this.onSubmit.bind(this))}
+          >
             <Field
               className="profile_field"
               label="Github Handle"
@@ -74,14 +77,11 @@ class ProfilePage extends Component {
               placeholder="Please enter your cohort number"
               component={this.renderInput}
             />
-            <Field
-              className="profile_field"
-              label="Brief Bio"
-              name="bio"
-              component={this.renderInput}
-            />
-
-            <button type="submit">Submit</button>
+            <div className="profile_field">
+              <label>Brief Bio</label>
+              <Field name="bio" component="textarea" />
+            </div>
+            <button type="submit">Save</button>
           </form>
           <img src={this.props.initialValues.photo_url} alt="user" />
         </div>
@@ -108,6 +108,7 @@ function validate(values) {
 
 const mapStateToProps = ({ auth }) => ({ initialValues: auth });
 
-export default reduxForm({ validate, form: "ProfileForm" })(
-  connect(mapStateToProps, actions)(ProfilePage)
-);
+export default reduxForm({
+  validate,
+  form: "ProfileForm"
+})(connect(mapStateToProps, actions)(ProfilePage));
