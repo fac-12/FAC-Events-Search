@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../actions";
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
-    const { github_username, name, email, cohort, bio } = this.props.auth[0];
-    this.state = { github_username, name, email, cohort, bio };
+    this.props.dispatch(initialize("ProfileForm", this.props.initialValues));
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -16,7 +15,6 @@ class ProfilePage extends Component {
 
   renderInput(field) {
     const { meta: { touched, error } } = field;
-    console.log(field);
     return (
       <div className={field.className}>
         <label>{field.label}</label>
@@ -32,16 +30,27 @@ class ProfilePage extends Component {
     );
   }
 
+  // onSubmit(e, values) {
+  //   e.preventDefault();
+  //   console.log(e);
+  // }
+
+  submit = values => {
+    // print the form values to the console
+    console.log(values);
+  };
+
   render() {
+    // const { handleSubmit } = this.props;
     return (
       <div className="profile_container">
         <h1> Your Profile </h1>
         <div className="profile_info">
-          <form className="profile_form">
+          <form className="profile_form" onSubmit={this.submit}>
             <Field
               className="profile_field"
               label="Github Handle"
-              name="github"
+              name="github_username"
               readOnly
               component={this.renderInput}
             />
@@ -74,7 +83,7 @@ class ProfilePage extends Component {
 
             <button type="submit">Submit</button>
           </form>
-          <img src={this.props.auth[0].photo_url} alt="user" />
+          <img src={this.props.initialValues.photo_url} alt="user" />
         </div>
       </div>
     );
@@ -97,7 +106,7 @@ function validate(values) {
   return errors;
 }
 
-const mapStateToProps = ({ auth }) => ({ auth, initialValues: auth[0] });
+const mapStateToProps = ({ auth }) => ({ initialValues: auth });
 
 export default reduxForm({ validate, form: "ProfileForm" })(
   connect(mapStateToProps, actions)(ProfilePage)
