@@ -57,7 +57,6 @@ class HostsAddForm extends Component {
     if (!this.props.initialValues) {
       return;
     }
-    console.log("initial values", this.props.initialValues);
     return (
       <form className="hosts_options">
         <h2>I am interested in events organized by:</h2>
