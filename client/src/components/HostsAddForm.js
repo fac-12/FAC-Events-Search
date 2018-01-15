@@ -27,18 +27,22 @@ class HostsAddForm extends Component {
   }
 
   onCheck = e => {
-    this.setState({});
-    console.log("checked", e.target.value);
+    const key = e.currentTarget.name.split("_")[1];
+    const node = this.props.initialValues[key];
+    if (e.target.checked) {
+      this.props.addHostInterest(this.props.auth.id, node.id);
+    } else {
+      this.props.removeHostInterest(this.props.auth.id, node.id);
+    }
   };
 
   renderFields(hosts) {
-    console.log(hosts);
     return hosts.map((host, index) => (
       <li className="host_list_item" key={host.id}>
         <label>
           <Field
             label={host.name}
-            name={host.name}
+            name={`item_${index}`}
             type="checkbox"
             component="input"
             checked={Number(host.case)}
@@ -53,7 +57,7 @@ class HostsAddForm extends Component {
     if (!this.props.initialValues) {
       return;
     }
-
+    console.log("initial values", this.props.initialValues);
     return (
       <form className="hosts_options">
         <h2>I am interested in events organized by:</h2>
@@ -119,7 +123,7 @@ function validate(values) {
   return errors;
 }
 
-const mapStateToProps = ({ hosts }) => ({ initialValues: hosts });
+const mapStateToProps = ({ hosts, auth }) => ({ initialValues: hosts, auth });
 
 export default reduxForm({
   validate,
