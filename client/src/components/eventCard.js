@@ -15,6 +15,7 @@ class EventCard extends Component {
 
   render() {
     const { events } = this.props;
+    console.log(events);
     return (
       <div className="events-card-container">
         {events.map(item => (
@@ -32,9 +33,11 @@ class EventCard extends Component {
               </section>
             </section>
             <section className="info-bar">
-              <p className="info-bar-interest"> 10 faccers are interested </p>
+              <p className="info-bar-interest"> {} faccers are interested </p>
               <input type="checkbox" onClick={this.onClick} id={item.id} />
-              <button> More Info </button>
+              <a href={item.event_url} target="_blank">
+                More Info
+              </a>
             </section>
           </div>
         ))}
