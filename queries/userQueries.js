@@ -15,7 +15,22 @@ const addUser = profile =>
     ]
   );
 
+const updateUser = profile =>
+  db.query(
+    `UPDATE users SET name=$1, github_username=$2, email=$3, bio=$4, photo_url=$5, cohort=$6 WHERE id=$7 RETURNING *`,
+    [
+      profile.name,
+      profile.github_username,
+      profile.email,
+      profile.bio,
+      profile.photo_url,
+      profile.cohort,
+      profile.id
+    ]
+  );
+
 module.exports = {
   checkUser,
-  addUser
+  addUser,
+  updateUser
 };

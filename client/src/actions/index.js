@@ -19,6 +19,16 @@ export const setLocation = location => ({
   payload: location
 });
 
+export const updateProfile = (values, callback) => async dispatch => {
+  const { github_username, ...rest } = values;
+  const user = await axios.put("/api/updateProfile", {
+    github_username: github_username.split("@").slice(-1)[0],
+    ...rest
+  });
+  callback();
+  dispatch({ type: FETCH_USER, payload: user.data });
+};
+
 // export default {
 //   fetchAllEvents,
 //   fetchHosts,

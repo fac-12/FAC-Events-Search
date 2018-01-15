@@ -471,21 +471,32 @@ a:-webkit-any-link {
   margin: 0.5rem 0rem;
 }
 
-.profile_field > input,
-.profile_field > textarea {
-  width: 12rem;
+.profile_field input,
+.profile_field textarea {
+  width: 14rem;
+  padding: 0.3rem;
 }
 
 .profile_field > textarea {
-  height: 5rem;
+  height: 8rem;
 }
 
-.profile_field > label {
+.profile_container > label {
   font-weight: 400;
   font-size: 1rem;
   color: #d8d8d8;
   margin: 0rem 1.5rem 0rem 0rem;
-  width: 8rem;
+  width: 10rem;
+}
+
+.profile_error {
+  font-size: 0.8rem;
+  color: red;
+}
+
+.red {
+  outline: 2px solid red;
+  margin-bottom: 0.5rem;
 }
 
 /* add event Page Styling */
