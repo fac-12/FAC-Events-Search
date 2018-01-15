@@ -1,16 +1,23 @@
 const db = require("../database/db_connection");
 
-const addEventInterest = (event, user) =>
-  db.query(
-    `INSERT INTO interest(events_id,users_id) VALUES($1,$2) RETURNING events_id`,
-    [event, user]
-  );
+const addEventInterest = (event, user) => {
+  db
+    .query(
+      `INSERT INTO interest(events_id,users_id) VALUES($1,$2) RETURNING events_id`,
+      [event, user]
+    )
+    .then(res => res[0])
+    .catch(e => console.log("db error", e));
+};
 
 const removeEventInterest = (event, user) =>
-  db.query(
-    `DELETE FROM interest WHERE events_id=$1 AND users_id=$2) RETURNING events_id`,
-    [event, user]
-  );
+  db
+    .query(
+      `DELETE FROM interest WHERE events_id=$1 AND users_id=$2 RETURNING events_id`,
+      [event, user]
+    )
+    .then(res => res[0])
+    .catch(e => console.log("db error", e));
 
 const addHostInterest = (host, user) =>
   db

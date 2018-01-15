@@ -1,7 +1,12 @@
 import { FETCH_USER, CUR_LOCATION } from "./types";
 import axios from "axios";
 
-export { fetchAllEvents, addEvent } from "./eventActions";
+export {
+  fetchAllEvents,
+  addEvent,
+  addEventInterest,
+  removeEventInterest
+} from "./eventActions";
 export {
   fetchHosts,
   addHost,
