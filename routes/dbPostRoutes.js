@@ -1,7 +1,12 @@
 const axios = require("axios");
 const { checkAddEvent, checkAddHost } = require("../services/dbHelpers");
 const { addEvent } = require("../queries/eventQueries");
-const { addInterest, removeInterest } = require("../queries/otherQueries");
+const {
+  addEventInterest,
+  removeEventInterest,
+  addHostInterest,
+  removeHostInterest
+} = require("../queries/otherQueries");
 
 module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
@@ -38,18 +43,41 @@ module.exports = app => {
     }
   });
 
-  app.post("/api/addInterest", async (req, res) => {
+  app.post("/api/addEventInterest", async (req, res) => {
     try {
-      const returnMsg = await addInterest(req.body.event, req.body.user);
+      await removeEventInterest(req.body.event, req.body.user);
+      const returnMsg = await addEventInterest(req.body.event, req.body.user);
       res.send(returnMsg);
     } catch (e) {
       console.log("Add interest error", e);
     }
   });
 
-  app.post("/api/removeInterest", async (req, res) => {
+  app.post("/api/removeEventInterest", async (req, res) => {
     try {
-      const returnMsg = await removeInterest(req.body.event, req.body.user);
+      const returnMsg = await removeEventInterest(
+        req.body.event,
+        req.body.user
+      );
+      res.send(returnMsg);
+    } catch (e) {
+      console.log("Remove interest error", e);
+    }
+  });
+
+  app.post("/api/addHostInterest", async (req, res) => {
+    try {
+      await removeHostInterest(req.body.host, req.body.user);
+      const returnMsg = await addHostInterest(req.body.host, req.body.user);
+      res.send(returnMsg);
+    } catch (e) {
+      console.log("Add interest error", e);
+    }
+  });
+
+  app.post("/api/removeHostInterest", async (req, res) => {
+    try {
+      const returnMsg = await removeHostInterest(req.body.host, req.body.user);
       res.send(returnMsg);
     } catch (e) {
       console.log("Remove interest error", e);

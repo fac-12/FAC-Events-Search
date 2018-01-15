@@ -532,3 +532,7 @@ a:-webkit-any-link {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 8rem;
 }
+
+.host_list_item {
+  color: white;
+}

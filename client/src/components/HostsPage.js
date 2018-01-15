@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import HostsAddForm from "./HostsAddForm";
+import { addHost } from "../actions/hostActions";
 
 class HostsPage extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class HostsPage extends Component {
 
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
+    this.props.fetchHosts(this.props.auth.id);
     this.props.setLocation(this.props.location.pathname);
   }
 
@@ -64,5 +66,6 @@ class HostsPage extends Component {
     );
   }
 }
+const mapStateToProps = ({ hosts, auth }) => ({ hosts, auth });
 
-export default connect(null, actions)(HostsPage);
+export default connect(mapStateToProps, actions)(HostsPage);

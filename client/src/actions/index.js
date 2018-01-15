@@ -2,7 +2,12 @@ import { FETCH_USER, CUR_LOCATION } from "./types";
 import axios from "axios";
 
 export { fetchAllEvents, addEvent } from "./eventActions";
-export { fetchHosts, addHost } from "./hostActions";
+export {
+  fetchHosts,
+  addHost,
+  addHostInterest,
+  removeHostInterest
+} from "./hostActions";
 
 export const fetchUser = () => async dispatch => {
   const user = await axios.get("/api/currentUser");

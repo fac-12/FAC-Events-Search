@@ -1,45 +1,57 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../actions";
 
 class HostsAddForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.dispatch(initialize("HostsForm", this.props.initialValues));
+  }
+
+  onCheck = e => {
+    const key = e.currentTarget.name.split("_")[1];
+    const node = this.props.initialValues[key];
+    if (e.target.checked) {
+      this.props.addHostInterest(this.props.auth.id, node.id);
+    } else {
+      this.props.removeHostInterest(this.props.auth.id, node.id);
+    }
+  };
+
+  renderFields(hosts) {
+    return hosts.map((host, index) => (
+      <li className="host_list_item" key={host.id}>
+        <label>
+          <Field
+            label={host.name}
+            name={`item_${index}`}
+            type="checkbox"
+            component="input"
+            checked={Number(host.case)}
+            onChange={this.onCheck}
+          />
+          {host.name}
+        </label>
+      </li>
+    ));
+  }
   render() {
+    if (!this.props.initialValues) {
+      return;
+    }
     return (
-      <section className="hosts_options">
+      <form className="hosts_options">
         <h2>I am interested in events organized by:</h2>
-        <label>
-          <input type="checkbox" /> Node Girls
-        </label>
-        <label>
-          <input type="checkbox" /> Queer Code London
-        </label>
-        <label>
-          <input type="checkbox" /> Founders & Coders
-        </label>
-        <label>
-          <input type="checkbox" /> The JS Roundabout
-        </label>
-        <label>
-          <input type="checkbox" /> UX Playground
-        </label>
-        <label>
-          <input type="checkbox" /> London Halfstack
-        </label>
-        <label>
-          <input type="checkbox" /> Ladies of Code
-        </label>
-        <label>
-          <input type="checkbox" /> Codebar
-        </label>
-        <label>
-          <input type="checkbox" /> Journocoders
-        </label>
-        <label>
-          <input type="checkbox" /> London Node Users Group
-        </label>
-      </section>
+        <ul>{this.renderFields(this.props.initialValues)}</ul>
+      </form>
     );
   }
 }
 
-export default connect(null, actions)(HostsAddForm);
+const mapStateToProps = ({ hosts, auth }) => ({ initialValues: hosts, auth });
+
+export default reduxForm({
+  form: "HostsForm"
+})(connect(mapStateToProps, actions)(HostsAddForm));
