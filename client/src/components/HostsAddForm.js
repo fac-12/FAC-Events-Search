@@ -50,14 +50,8 @@ class HostsAddForm extends Component {
   }
 }
 
-function validate(values) {
-  const errors = {};
-  return errors;
-}
-
 const mapStateToProps = ({ hosts, auth }) => ({ initialValues: hosts, auth });
 
 export default reduxForm({
-  validate,
   form: "HostsForm"
 })(connect(mapStateToProps, actions)(HostsAddForm));
