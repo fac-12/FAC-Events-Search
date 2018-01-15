@@ -14,7 +14,7 @@ module.exports = app => {
 
   app.get("/api/hosts", async (req, res) => {
     try {
-      const hostsData = await getHosts("29644807");
+      const hostsData = await getHosts(req.query.user);
       res.send(hostsData);
     } catch (e) {
       console.log("Fetch hosts error", e);
