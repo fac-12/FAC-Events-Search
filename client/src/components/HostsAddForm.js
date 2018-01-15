@@ -23,7 +23,7 @@ class HostsAddForm extends Component {
   renderFields(hosts) {
     return hosts.map((host, index) => (
       <li className="host_list_item" key={host.id}>
-        <label>
+        <label className="host_list_item_label">
           <Field
             label={host.name}
             name={`item_${index}`}
@@ -43,8 +43,14 @@ class HostsAddForm extends Component {
     }
     return (
       <form className="hosts_options">
-        <h2>I am interested in events organized by:</h2>
-        <ul>{this.renderFields(this.props.initialValues)}</ul>
+        <section className="host_interest_container">
+          <h2 className="host_options_message">
+            I am interested in events organized by:
+          </h2>
+          <ul className="host_list">
+            {this.renderFields(this.props.initialValues)}
+          </ul>
+        </section>
       </form>
     );
   }
