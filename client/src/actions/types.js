@@ -5,3 +5,4 @@ export const FETCH_HOSTS = "FETCH_HOSTS";
 export const ADD_HOST = "ADD_HOST";
 export const ADD_EVENT = "ADD_EVENT";
 export const TOGGLE_HOST_INTEREST = "TOGGLE_HOST_INTEREST";
+export const TOGGLE_EVENT_INTEREST = "TOGGLE_EVENT_INTEREST";
