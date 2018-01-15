@@ -4,6 +4,15 @@ import { connect } from "react-redux";
 import "../style.css";
 
 class EventCard extends Component {
+  onClick = e => {
+    const { id: eventId } = e.target;
+    if (e.target.checked) {
+      this.props.addEventInterest(this.props.auth.id, eventId);
+    } else {
+      this.props.removeEventInterest(this.props.auth.id, eventId);
+    }
+  };
+
   render() {
     const { events } = this.props;
     return (
@@ -24,7 +33,7 @@ class EventCard extends Component {
             </section>
             <section className="info-bar">
               <p className="info-bar-interest"> 10 faccers are interested </p>
-              <button> Add Me</button>
+              <input type="checkbox" onClick={this.onClick} id={item.id} />
               <button> More Info </button>
             </section>
           </div>
@@ -34,5 +43,5 @@ class EventCard extends Component {
   }
 }
 
-const mapStateToProps = ({ events }) => ({ events });
+const mapStateToProps = ({ events, auth }) => ({ events, auth });
 export default connect(mapStateToProps, actions)(EventCard);
