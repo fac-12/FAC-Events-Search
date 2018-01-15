@@ -22,6 +22,30 @@ Our heroku database url is postgres://ljgmdukbulvykn:ee0db791d0f97be746902f36257
 The basic scaffolding is all up now, but there is still clearly lots and lots of work to get done this week!
 
 
+ ## Getting Started 
+
+ clone the repo ```Git clone https://github.com/fac-12/FAC-Events-Search```
+ 
+ go into FAC-Events-Search by typing ``` cd FAC-Events-Search ```
+ 
+ go into the client folder ``` cd client ``` 
+ 
+ ```npm install``` in client folder then ``` cd .. ```
+ ``` npm install ``` in root folder 
+ 
+ ## connecting to db 
+ while in root directory 
+ 
+ set up a dev.js file in config ``` touch config/dev.js ``` 
+ 
+ in dev.js insert the following code ```
+ module.exports = {
+    githubClientID: "7c5862763ead8eed95b1",
+    githubClientSecret: "contact us for client secret",
+    DATABASE_URL: "postgres://ljgmdukbulvykn:ee0db791d0f97be746902f36257f9256fdbd6c9e90c7c741ecbb70cfe32523c9@ec2-54-217-243-                    160.eu-west-1.compute.amazonaws.com:5432/d8d8busu9hibb8", 
+    COOKIE_KEY: "this can be any sequence of characters you like"
+};
+ 
 
 ## Tech Stack 
 
