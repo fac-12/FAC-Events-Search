@@ -16,7 +16,11 @@ export {
 
 export const fetchUser = callback => async dispatch => {
   const user = await axios.get("/api/currentUser");
-  callback(user.data[0].id);
+  if (user.data) {
+    callback(user.data[0].id);
+  } else {
+    callback("123");
+  }
   dispatch({ type: FETCH_USER, payload: user.data });
 };
 
