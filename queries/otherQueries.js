@@ -24,6 +24,13 @@ const addHostInterest = (host, user) =>
       `INSERT INTO suggested(orgs_id,users_id) VALUES($1,$2) RETURNING orgs_id`,
       [host, user]
     )
+    .then(res =>
+      db.query(
+        `SELECT name, id as orgs_id FROM included_orgs WHERE id=${
+          res[0].orgs_id
+        }`
+      )
+    )
     .then(res => res[0])
     .catch(e => console.log("db error", e));
 
@@ -32,6 +39,13 @@ const removeHostInterest = (host, user) =>
     .query(
       `DELETE FROM suggested WHERE orgs_id=$1 AND users_id=$2 RETURNING orgs_id`,
       [host, user]
+    )
+    .then(res =>
+      db.query(
+        `SELECT name, id as orgs_id FROM included_orgs WHERE id=${
+          res[0].orgs_id
+        }`
+      )
     )
     .then(res => res[0])
     .catch(e => console.log("db error", e));
