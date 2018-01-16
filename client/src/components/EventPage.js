@@ -3,7 +3,9 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import GoogleMap from "./google_map";
 import ReactHtmlParser from "react-html-parser";
+import _ from "lodash";
 import "../style.css";
+import InterestedUser from "./InterestedUser";
 
 class EventPage extends Component {
   componentDidMount() {
@@ -12,7 +14,6 @@ class EventPage extends Component {
   render() {
     const { id } = this.props.match.params;
     const { events } = this.props;
-    console.log(events[id]);
     return (
       <div className="event-page-container">
         <div className="event-page-title">
@@ -34,6 +35,7 @@ class EventPage extends Component {
         <h2> Details </h2>
         <div> {ReactHtmlParser(events[id].event_desc)} </div>
         <h2> Faccers who are interested </h2>
+        <InterestedUser />
       </div>
     );
   }

@@ -19,7 +19,6 @@ module.exports = app => {
 
   app.get("/api/getEventInterest", async (req, res) => {
     try {
-      console.log(req.query);
       const eventInterestData = await getEventInterest(req.query.eventId);
       res.send(eventInterestData);
     } catch (e) {
