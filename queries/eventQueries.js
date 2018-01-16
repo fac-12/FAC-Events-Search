@@ -26,7 +26,7 @@ const addEvent = data =>
       ]
     )
     .then(res => res[0])
-    .catch(e => console.log("db error", e));
+    .catch(e => console.log("add event db error", e));
 
 const getEvents = (user, startDate, endDate) => {
   console.log(user, startDate, endDate);

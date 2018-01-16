@@ -32,8 +32,3 @@ export const removeEventInterest = (user, event) => async dispatch => {
   const res = await axios.post("api/removeEventInterest", { user, event });
   dispatch({ type: TOGGLE_EVENT_INTEREST, payload: res.data });
 };
-
-// export const addInterest = (event, user) => async dispatch => {
-//   console.log(event, user);
-//   // const success = await axios.post("api/addInterest", {event, user})
-// };

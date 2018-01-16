@@ -273,8 +273,17 @@ a:-webkit-any-link {
   padding: 0.3rem 0;
 }
 
-.sidebar_filter ul li a {
+.sidebar_filter ul li button {
   color: white;
+  border: none;
+  background-color: #0f3445;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+.sidebar_filter ul li span {
+  font-weight: 400;
+  margin-right: 8px;
 }
 .sidebar_search input {
   margin: 1rem 0 1rem 1rem;
