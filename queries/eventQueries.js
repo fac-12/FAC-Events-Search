@@ -28,7 +28,15 @@ const addEvent = data =>
     .then(res => res[0])
     .catch(e => console.log("db error", e));
 
-const getEvents = () => db.query("SELECT * FROM events");
+const getEvents = user =>
+  db.query(
+    `SELECT *, 
+    (SELECT CASE WHEN EXISTS 
+      (SELECT * FROM interest WHERE events_id=events.id AND users_id =$1) 
+      THEN CAST (TRUE AS BOOLEAN) ELSE CAST (FALSE AS BOOLEAN) END as interested)
+    FROM events`,
+    [user]
+  );
 
 module.exports = {
   checkEvent,

@@ -25,6 +25,7 @@ export const addEvent = data => async dispatch => {
 
 export const addEventInterest = (user, event) => async dispatch => {
   const res = await axios.post("api/addEventInterest", { user, event });
+  console.log(res);
   dispatch({ type: TOGGLE_EVENT_INTEREST, payload: res });
 };
 

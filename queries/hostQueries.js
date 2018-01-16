@@ -19,7 +19,7 @@ const getHosts = user =>
   db.query(
     `SELECT *, 
     (SELECT CASE WHEN EXISTS 
-      (SELECT * FROM suggested WHERE suggested.orgs_id=included_orgs.id AND users_id =$1) 
+      (SELECT * FROM suggested WHERE orgs_id=included_orgs.id AND users_id =$1) 
     THEN CAST (TRUE AS BOOLEAN) ELSE CAST (FALSE AS BOOLEAN) END as suggested) 
     FROM included_orgs`,
     [user]

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import * as actions from "../actions";
 import { connect } from "react-redux";
@@ -15,10 +16,10 @@ class EventCard extends Component {
 
   render() {
     const { events } = this.props;
-    console.log(events);
+    console.log("events:", events);
     return (
       <div className="events-card-container">
-        {events.map(item => (
+        {_.map(events, item => (
           <div key={item.id} className="event-card">
             <section className="events-container">
               <section className="event-info">
@@ -34,7 +35,12 @@ class EventCard extends Component {
             </section>
             <section className="info-bar">
               <p className="info-bar-interest"> {} faccers are interested </p>
-              <input type="checkbox" onClick={this.onClick} id={item.id} />
+              <input
+                type="checkbox"
+                checked={item.interested}
+                onClick={this.onClick}
+                id={item.id}
+              />
               <a href={item.event_url} target="_blank">
                 More Info
               </a>
