@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import EventCard from "./eventCard";
 import * as actions from "../actions";
 import FilterOptions from "./FilterOptions";
-import filterEvents from "../helpers/filterEvents";
+// import filterEvents from "../helpers/filterEvents";
 
 import "../style.css";
 
@@ -13,19 +13,17 @@ class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
-    this.state = {
-      filteredEvents: filterEvents(this.props.filter.filter, this.props.events)
-    };
+    // this.props.setFilter(this.props.filter.filter, this.props.events);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
   }
   onFilter(e) {
-    this.props.setFilter(e.target.id);
-    this.setState({
-      filteredEvents: filterEvents(e.target.id, this.props.events)
-    });
+    this.props.setFilter(e.target.id, this.props.events);
+  }
+  getEvents() {
+    return this.props.events;
   }
   render() {
     return (
@@ -50,10 +48,7 @@ class EventsPage extends Component {
           <h1 className="events_view_title">
             Upcoming Events ({_.size(this.props.events)})
           </h1>
-          <EventCard
-            user={this.props.auth.id}
-            events={this.state.filteredEvents}
-          />
+          <EventCard user={this.props.auth.id} events={this.getEvents} />
         </section>
       </div>
     );

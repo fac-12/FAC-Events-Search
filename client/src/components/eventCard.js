@@ -16,7 +16,6 @@ class EventCard extends Component {
 
   render() {
     const { events } = this.props;
-    console.log("render with", events.length);
     return (
       <div className="events-card-container">
         {_.map(events, item => (

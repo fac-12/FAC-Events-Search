@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { FETCH_USER, CUR_LOCATION, SELECT_FILTER } from "./types";
 import axios from "axios";
 
@@ -31,13 +32,39 @@ export const setLocation = location => ({
 
 export const setFilter = (
   filter = "all",
+  allEvents = {},
   startDate = null,
   endDate = null,
   searchTerm = null
-) => ({
-  type: SELECT_FILTER,
-  payload: { filter, startDate, endDate, searchTerm }
-});
+) => {
+  let filteredIds = [];
+  switch (filter) {
+  case "interested":
+    filteredIds = _.filter(allEvents, event => event.interested).map(
+      event => event.id
+    );
+    break;
+  case "suggested":
+    filteredIds = _.filter(allEvents, event => event.suggested).map(
+      event => event.id
+    );
+    break;
+  case "popular":
+    filteredIds = _.reverse(
+      _.sortBy(_.filter(allEvents, event => event.num_interested > 0), [
+        "num_interested"
+      ])
+    ).map(event => event.id);
+    break;
+  default:
+    filteredIds = _.map(allEvents, event => event.id);
+  }
+  console.log("filtered events: ", filteredIds);
+  return {
+    type: SELECT_FILTER,
+    payload: { filter, filteredIds }
+  };
+};
 
 export const updateProfile = (values, callback) => async dispatch => {
   const { github_username, ...rest } = values;
