@@ -67,11 +67,8 @@ module.exports = app => {
 
   app.post("/api/addHostInterest", async (req, res) => {
     try {
-      console.log("a");
       await removeHostInterest(req.body.host, req.body.user);
-      console.log("c");
       const returnMsg = await addHostInterest(req.body.host, req.body.user);
-      console.log("e");
       res.send(returnMsg);
     } catch (e) {
       console.log("Add interest error", e);
