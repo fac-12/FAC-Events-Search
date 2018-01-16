@@ -33,10 +33,10 @@ const getEvents = (user, startDate, endDate) => {
   return db.query(
     `SELECT id, event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, COUNT(interest.events_id) AS num_interested,
     (SELECT CASE WHEN EXISTS 
-      (SELECT * FROM suggested,included_orgs WHERE suggested.users_id=${user} AND included_orgs.name=events.host_org_name AND included_orgs.id=suggested.orgs_id) 
+      (SELECT * FROM suggested,included_orgs WHERE suggested.users_id='${user}' AND included_orgs.name=events.host_org_name AND included_orgs.id=suggested.orgs_id) 
       THEN TRUE ELSE FALSE END as suggested),
     (SELECT CASE WHEN EXISTS 
-      (SELECT * from interest WHERE events_id = events.id AND users_id=${user}) 
+      (SELECT * from interest WHERE events_id = events.id AND users_id='${user}') 
       THEN TRUE ELSE FALSE END AS interested)  
     FROM events                                                                                FULL JOIN interest 
     ON interest.events_id=events.id 

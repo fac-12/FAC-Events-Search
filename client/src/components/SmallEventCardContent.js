@@ -2,7 +2,6 @@ import React from "react";
 
 export default props => {
   const { title, host, date, day, time, num_interested } = props.data;
-  console.log(props.data);
   const renderTitle = hover => {
     if (!hover) {
       return (
