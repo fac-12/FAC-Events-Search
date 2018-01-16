@@ -12,16 +12,20 @@ import "../style.css";
 class EventsPage extends Component {
   constructor(props) {
     super(props);
-    this.state = filterEvents(this.props.filter, this.props.events);
+    this.onFilter = this.onFilter.bind(this);
+    this.state = {
+      filteredEvents: filterEvents(this.props.filter.filter, this.props.events)
+    };
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
-    this.onFilter = this.onFilter.bind(this);
   }
   onFilter(e) {
     this.props.setFilter(e.target.id);
-    console.log(filterEvents(e.target.id, this.props.events));
+    this.setState({
+      filteredEvents: filterEvents(e.target.id, this.props.events)
+    });
   }
   render() {
     return (
@@ -46,12 +50,19 @@ class EventsPage extends Component {
           <h1 className="events_view_title">
             Upcoming Events ({_.size(this.props.events)})
           </h1>
-          <EventCard />
+          <EventCard
+            user={this.props.auth.id}
+            events={this.state.filteredEvents}
+          />
         </section>
       </div>
     );
   }
 }
-const mapStateToProps = ({ events, filter }) => ({ events, filter });
+const mapStateToProps = ({ auth, events, filter }) => ({
+  auth,
+  events,
+  filter
+});
 
 export default connect(mapStateToProps, actions)(EventsPage);
