@@ -23,6 +23,18 @@ export default function(state = {}, action) {
         interested: !state[id].interested
       }
     };
+  case TOGGLE_HOST_INTEREST:
+    const org = action.payload.data.name;
+    const affected = _.filter(state, event => event.host_org_name === org);
+    const amended = _.mapKeys(
+      affected.map(event => ({
+        ...event,
+        suggested: !event.suggested
+      })),
+      "id"
+    );
+    return { ...state, ...amended };
+
   default:
     return state;
   }
