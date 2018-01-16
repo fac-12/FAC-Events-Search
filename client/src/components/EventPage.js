@@ -29,7 +29,7 @@ class EventPage extends Component {
           </section>
         </div>
         <h2> Details </h2>
-        <p> {events[id].event} </p>
+        <p> {events[id].event_desc} </p>
         <h2> Faccers who are interested </h2>
       </div>
     );
