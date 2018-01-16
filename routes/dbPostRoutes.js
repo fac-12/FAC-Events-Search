@@ -8,13 +8,25 @@ const {
   removeHostInterest
 } = require("../queries/otherQueries");
 
+// app.post("/api/addMeetupEvent", async (req, res) => {
+//   try {
+//     const allData = await axios.get(
+//       `https://api.meetup.com/2/events?event_id=${req.body.id}`
+//     );
+//     const returnMsg = await addEvent(allData.data.results[0]);
+//     res.send(returnMsg);
+//   } catch (e) {
+//     console.log("Add event error", e);
+//   }
+// });
+
 module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
     try {
       if (req.body.data.event_url.includes("www.meetup.com")) {
-        console.log(req.body);
+        const id = req.body.data.event_url.split("/")[5];
         const allData = await axios.get(
-          `https://api.meetup.com/2/events?event_id=${req.body.id}`
+          `https://api.meetup.com/2/events?event_id=${id}`
         );
         const meetupEventData = await checkAddEvent(allData.data.results[0]);
         res.send(meetupEventData);
