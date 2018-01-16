@@ -30,11 +30,18 @@ const addEvent = data =>
 
 const getEvents = user =>
   db.query(
-    `SELECT *, 
+    `SELECT *, COUNT(interest.events_id) AS num_interested,
     (SELECT CASE WHEN EXISTS 
-      (SELECT * FROM interest WHERE events_id=events.id AND users_id =$1) 
-      THEN CAST (TRUE AS BOOLEAN) ELSE CAST (FALSE AS BOOLEAN) END as interested)
-    FROM events`,
+      (SELECT * FROM suggested,included_orgs WHERE suggested.users_id=$1 AND included_orgs.name=events.host_org_name AND included_orgs.id=sug
+    gested.orgs_id) 
+      THEN TRUE ELSE FALSE END as suggested),
+    (SELECT CASE WHEN EXISTS 
+      (SELECT * from interest WHERE events_id = events.id AND users_id=$1) 
+      THEN TRUE ELSE FALSE END AS interested)  
+    FROM events                                                                                                                                                             
+    FULL JOIN interest 
+    ON interest.events_id=events.id 
+    GROUP BY events.id`,
     [user]
   );
 
