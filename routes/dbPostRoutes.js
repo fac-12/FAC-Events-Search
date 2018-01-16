@@ -43,28 +43,10 @@ module.exports = app => {
     }
   });
 
-  // app.post("/api/addEventInterest", async (req, res) => {
-  //   try {
-  //     console.log("1");
-  //     await removeEventInterest(req.body.event, req.body.user);
-  //     console.log("3");
-  //     const returnMsg = await addEventInterest(req.body.event, req.body.user);
-  //     console.log("5", returnMsg);
-  //     res.send(returnMsg);
-  //   } catch (e) {
-  //     console.log("Add event error", e);
-  //   }
-  // });
-
   app.post("/api/addEventInterest", async (req, res) => {
     try {
-      console.log("1a");
       await removeEventInterest(req.body.event, req.body.user);
-      console.log("3c");
       const returnMsg = await addEventInterest(req.body.event, req.body.user);
-      console.log("5e", returnMsg);
-      // const returnMsg = await addEventInterest(req.body.event, req.body.user);
-      // console.log("5e", returnMsg);
       res.send(returnMsg);
     } catch (e) {
       console.log("Add event error", e);
