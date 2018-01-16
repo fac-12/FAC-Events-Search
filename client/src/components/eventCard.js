@@ -8,14 +8,15 @@ class EventCard extends Component {
   onClick = e => {
     const { id: eventId } = e.target;
     if (e.target.checked) {
-      this.props.addEventInterest(this.props.auth.id, eventId);
+      this.props.addEventInterest(this.props.user, eventId);
     } else {
-      this.props.removeEventInterest(this.props.auth.id, eventId);
+      this.props.removeEventInterest(this.props.user, eventId);
     }
   };
 
   render() {
     const { events } = this.props;
+    console.log("render with", events.length);
     return (
       <div className="events-card-container">
         {_.map(events, item => (
@@ -51,5 +52,4 @@ class EventCard extends Component {
   }
 }
 
-const mapStateToProps = ({ events, auth }) => ({ events, auth });
-export default connect(mapStateToProps, actions)(EventCard);
+export default connect(null, actions)(EventCard);

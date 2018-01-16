@@ -2,6 +2,7 @@ import { FETCH_EVENTS, ADD_EVENT, TOGGLE_EVENT_INTEREST } from "./types";
 import axios from "axios";
 
 export const fetchAllEvents = user => async dispatch => {
+  console.log("fetch all events");
   try {
     const events = await axios.get(`api/events?user=${user}`);
     dispatch({ type: FETCH_EVENTS, payload: events.data });
