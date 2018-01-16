@@ -1,4 +1,9 @@
-import { FETCH_EVENTS, ADD_EVENT, TOGGLE_EVENT_INTEREST } from "./types";
+import {
+  FETCH_EVENTS,
+  ADD_EVENT,
+  FETCH_EVENT,
+  TOGGLE_EVENT_INTEREST
+} from "./types";
 import axios from "axios";
 
 export const fetchAllEvents = user => async dispatch => {

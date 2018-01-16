@@ -12,7 +12,7 @@ const checkEvent = data =>
 const addEvent = data =>
   db
     .query(
-      `INSERT INTO events(event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9) RETURNING *`,
+      `INSERT INTO events(event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc, venue_lat, venue_lon) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11) RETURNING *`,
       [
         data.event_name,
         data.event_date,
@@ -22,7 +22,9 @@ const addEvent = data =>
         data.venue_address,
         data.venue_postcode,
         data.event_url,
-        data.event_desc
+        data.event_desc,
+        data.event_lat,
+        data.event_lon
       ]
     )
     .then(res => res[0])
@@ -30,9 +32,9 @@ const addEvent = data =>
 
 const getEvents = user =>
   db.query(
-    `SELECT *, 
-    (SELECT CASE WHEN EXISTS 
-      (SELECT * FROM interest WHERE events_id=events.id AND users_id =$1) 
+    `SELECT *,
+    (SELECT CASE WHEN EXISTS
+      (SELECT * FROM interest WHERE events_id=events.id AND users_id =$1)
       THEN CAST (TRUE AS BOOLEAN) ELSE CAST (FALSE AS BOOLEAN) END as interested)
     FROM events`,
     [user]

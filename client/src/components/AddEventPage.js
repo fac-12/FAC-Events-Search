@@ -48,7 +48,7 @@ class AddEventForm extends Component {
 
   checkMeetup = values => {
     if (values.event_url.includes("www.meetup.com")) {
-      const id = values.Url.split("/")[5];
+      const id = values.event_url.split("/")[5];
       this.props.addEvent(id);
     } else {
       this.props.addEvent(values);
