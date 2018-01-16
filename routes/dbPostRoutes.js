@@ -45,11 +45,11 @@ module.exports = app => {
 
   app.post("/api/addEventInterest", async (req, res) => {
     try {
-      await removeEventInterest(req.body.user, req.body.event);
+      await removeEventInterest(req.body.event, req.body.user);
       const returnMsg = await addEventInterest(req.body.event, req.body.user);
       res.send(returnMsg);
     } catch (e) {
-      console.log("Add interest error", e);
+      console.log("Add event error", e);
     }
   });
 

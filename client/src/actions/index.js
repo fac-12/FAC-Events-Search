@@ -14,8 +14,13 @@ export {
   removeHostInterest
 } from "./hostActions";
 
-export const fetchUser = () => async dispatch => {
+export const fetchUser = callback => async dispatch => {
   const user = await axios.get("/api/currentUser");
+  if (user.data) {
+    callback(user.data[0].id);
+  } else {
+    callback("123");
+  }
   dispatch({ type: FETCH_USER, payload: user.data });
 };
 

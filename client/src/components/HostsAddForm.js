@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
@@ -11,25 +12,24 @@ class HostsAddForm extends Component {
   }
 
   onCheck = e => {
-    const key = e.currentTarget.name.split("_")[1];
-    const node = this.props.initialValues[key];
+    const id = e.currentTarget.name.split("_")[1];
     if (e.target.checked) {
-      this.props.addHostInterest(this.props.auth.id, node.id);
+      this.props.addHostInterest(this.props.auth.id, id);
     } else {
-      this.props.removeHostInterest(this.props.auth.id, node.id);
+      this.props.removeHostInterest(this.props.auth.id, id);
     }
   };
 
   renderFields(hosts) {
-    return hosts.map((host, index) => (
+    return _.map(hosts, (host, index) => (
       <li className="host_list_item" key={host.id}>
         <label className="host_list_item_label">
           <Field
             label={host.name}
-            name={`item_${index}`}
+            name={`item_${host.id}`}
             type="checkbox"
             component="input"
-            checked={Number(host.case)}
+            checked={host.suggested}
             onChange={this.onCheck}
           />
           {host.name}

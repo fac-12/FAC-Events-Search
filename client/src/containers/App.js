@@ -13,8 +13,7 @@ import AddEventPage from "../components/AddEventPage";
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
-    this.props.fetchAllEvents();
+    this.props.fetchUser(user => this.props.fetchAllEvents(user));
   }
 
   render() {

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SmallEventCard from "../components/smallEventCard";
@@ -21,7 +22,7 @@ class EventsPreview extends Component {
         <div className="eventsPreview_content">
           <h1>Upcoming Events</h1>
           <ul>
-            {this.props.events
+            {_.values(this.props.events)
               .slice(0, 10)
               .map(item => this.renderSmallCard(item))}
           </ul>

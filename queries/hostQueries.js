@@ -15,10 +15,15 @@ const addHost = data =>
     .then(res => res[0].name)
     .catch(e => console.log("db error", e));
 
-const getHosts = user => db.query(
-  `SELECT included_orgs.id,included_orgs.url,included_orgs.name, (SELECT CASE WHEN EXISTS( SELECT orgs_id FROM suggested WHERE orgs_id=included_orgs.id AND users_id =$1) THEN CAST (1 AS BIT) ELSE CAST (0 AS BIT) END ) FROM included_orgs FULL JOIN suggested ON suggested.orgs_id = included_orgs.id `,
-  [user]
-);
+const getHosts = user =>
+  db.query(
+    `SELECT *, 
+    (SELECT CASE WHEN EXISTS 
+      (SELECT * FROM suggested WHERE orgs_id=included_orgs.id AND users_id =$1) 
+    THEN CAST (TRUE AS BOOLEAN) ELSE CAST (FALSE AS BOOLEAN) END as suggested) 
+    FROM included_orgs`,
+    [user]
+  );
 
 module.exports = {
   checkHost,
