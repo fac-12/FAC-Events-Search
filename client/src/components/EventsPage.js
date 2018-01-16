@@ -12,12 +12,12 @@ import "../style.css";
 class EventsPage extends Component {
   constructor(props) {
     super(props);
+    this.onFilter = this.onFilter.bind(this);
     this.state = filterEvents(this.props.filter, this.props.events);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
-    this.onFilter = this.onFilter.bind(this);
   }
   onFilter(e) {
     this.props.setFilter(e.target.id);
