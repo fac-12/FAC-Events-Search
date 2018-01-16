@@ -1,4 +1,4 @@
-import { FETCH_USER, CUR_LOCATION } from "./types";
+import { FETCH_USER, CUR_LOCATION, SELECT_FILTER } from "./types";
 import axios from "axios";
 
 export {
@@ -29,6 +29,16 @@ export const setLocation = location => ({
   payload: location
 });
 
+export const setFilter = (
+  filter = "all",
+  startDate = null,
+  endDate = null,
+  searchTerm = null
+) => ({
+  type: SELECT_FILTER,
+  payload: { filter, startDate, endDate, searchTerm }
+});
+
 export const updateProfile = (values, callback) => async dispatch => {
   const { github_username, ...rest } = values;
   const user = await axios.put("/api/updateProfile", {
@@ -38,10 +48,3 @@ export const updateProfile = (values, callback) => async dispatch => {
   callback();
   dispatch({ type: FETCH_USER, payload: user.data });
 };
-
-// export default {
-//   fetchAllEvents,
-//   fetchHosts,
-//   addHost,
-//   addEvent
-// };

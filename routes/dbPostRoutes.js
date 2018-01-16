@@ -8,21 +8,33 @@ const {
   removeHostInterest
 } = require("../queries/otherQueries");
 
+// app.post("/api/addMeetupEvent", async (req, res) => {
+//   try {
+//     const allData = await axios.get(
+//       `https://api.meetup.com/2/events?event_id=${req.body.id}`
+//     );
+//     const returnMsg = await addEvent(allData.data.results[0]);
+//     res.send(returnMsg);
+//   } catch (e) {
+//     console.log("Add event error", e);
+//   }
+// });
+
 module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
     try {
-      const allData = await axios.get(
-        `https://api.meetup.com/2/events?event_id=${req.body.data}`
-      );
-      const meetupEventData = await checkAddEvent(allData.data.results[0]);
-      console.log("Sent data is: ", meetupEventData);
-      res.send(meetupEventData);
-      // } else {
-      //   const eventData = await checkAddEvent(req.body.data);
-      //   const addEventData = await addEvent(req.body.data);
-      //   console.log("Sent data is: ", eventData);
-      //   res.send(eventData);
-      // }
+      if (req.body.data.event_url.includes("www.meetup.com")) {
+        const id = req.body.data.event_url.split("/")[5];
+        const allData = await axios.get(
+          `https://api.meetup.com/2/events?event_id=${id}`
+        );
+        const meetupEventData = await checkAddEvent(allData.data.results[0]);
+        res.send(meetupEventData);
+      } else {
+        const eventData = await checkAddEvent(req.body.data);
+        const addEventData = await addEvent(req.body.data);
+        res.send(eventData);
+      }
     } catch (e) {
       console.log("Add event error ", e);
     }

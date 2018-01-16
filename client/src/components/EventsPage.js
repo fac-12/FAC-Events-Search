@@ -4,12 +4,24 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import EventCard from "./eventCard";
 import * as actions from "../actions";
+import FilterOptions from "./FilterOptions";
+import filterEvents from "../helpers/filterEvents";
+
 import "../style.css";
 
 class EventsPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = filterEvents(this.props.filter, this.props.events);
+  }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
+    this.onFilter = this.onFilter.bind(this);
+  }
+  onFilter(e) {
+    this.props.setFilter(e.target.id);
+    console.log(filterEvents(e.target.id, this.props.events));
   }
   render() {
     return (
@@ -20,20 +32,7 @@ class EventsPage extends Component {
           </Link>
           <section className="sidebar_filter">
             <h3>Filter Events</h3>
-            <ul>
-              <li>
-                <Link to="/events">My Events</Link>
-              </li>
-              <li>
-                <Link to="/events">Popular</Link>
-              </li>
-              <li>
-                <Link to="/events">Suggested</Link>
-              </li>
-              <li>
-                <Link to="/events">All Events</Link>
-              </li>
-            </ul>
+            <FilterOptions {...this.props.filter} onClick={this.onFilter} />
           </section>
           <section className="sidebar_search">
             <h3>Search for Events</h3>
