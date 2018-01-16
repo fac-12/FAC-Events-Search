@@ -28,7 +28,7 @@ const addEvent = data =>
     .then(res => res[0])
     .catch(e => console.log("db error", e));
 
-const getEvents = (user, startDate) =>
+const getEvents = (user, startDate, endDate) =>
   db.query(
     `SELECT id, event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, COUNT(interest.events_id) AS num_interested,
     (SELECT CASE WHEN EXISTS 
@@ -39,6 +39,7 @@ const getEvents = (user, startDate) =>
       THEN TRUE ELSE FALSE END AS interested)  
     FROM events                                                                                FULL JOIN interest 
     ON interest.events_id=events.id 
+    WHERE event_date >= '${startDate}' AND event_date <= '${endDate}'
     GROUP BY events.id
     ORDER BY event_date, event_time`
   );

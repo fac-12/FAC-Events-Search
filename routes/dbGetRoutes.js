@@ -6,7 +6,11 @@ module.exports = app => {
   app.get("/api/events", async (req, res) => {
     const now = new Date(Date.now()).toJSON();
     try {
-      const eventsData = await getEvents(req.query.user, now);
+      const eventsData = await getEvents(
+        req.query.user,
+        req.query.startDate || now,
+        req.query.endDate || "2099-01-01T00:00:00Z"
+      );
       res.send(eventsData);
     } catch (e) {
       console.log("Fetch events error", e);
