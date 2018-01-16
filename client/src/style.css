@@ -582,3 +582,43 @@ a:-webkit-any-link {
 .host_list_item_label > input {
   margin-right: 0.8rem;
 }
+
+/* styles for map */
+
+.event-map-container {
+  display: flex;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  width: 60vw;
+  height: 40vh;
+}
+
+.event-map-info {
+  margin: 2rem;
+}
+
+.event-map-info > p {
+  margin: 0.4rem 0;
+}
+
+.mapStyle {
+  height: 40vh;
+  width: 40vw;
+}
+
+.event-page-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 1rem;
+  color: white;
+}
+
+.event-map-container {
+  margin: 1rem 0;
+}
+
+.event-page-title {
+  margin: 1rem 0;
+}

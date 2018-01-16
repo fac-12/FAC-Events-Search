@@ -11,7 +11,9 @@ BEGIN;
 		venue_address VARCHAR(150),
 		venue_postcode VARCHAR(150),
 		event_url VARCHAR(150),
-		event_desc TEXT
+		event_desc TEXT,
+		venue_lat VARCHAR(100),
+		venue_lon VARCHAR(100)
 	);
 	CREATE TABLE users
 	(
