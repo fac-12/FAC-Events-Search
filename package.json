@@ -11,8 +11,7 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "heroku-postbuild":
-      "npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "node tests/*.test.js | tap-spec"
   },
@@ -36,6 +35,10 @@
     "passport-github2": "^0.1.11",
     "path": "^0.12.7",
     "pg-promise": "^7.3.3",
+    "react-google-maps": "^9.4.5",
+    "react-html-parser": "^2.0.2",
+    "redux-form": "^7.2.0",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^2.4.0",
     "url": "^0.11.0"
   },

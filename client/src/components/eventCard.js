@@ -2,6 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "../style.css";
 
 class EventCard extends Component {
@@ -34,16 +35,16 @@ class EventCard extends Component {
               </section>
             </section>
             <section className="info-bar">
-              <p className="info-bar-interest"> {} faccers are interested </p>
+              <p className="info-bar-interest">
+                {item.num_interested} faccers are interested
+              </p>
               <input
                 type="checkbox"
                 checked={item.interested}
                 onChange={this.onClick}
                 id={item.id}
               />
-              <a href={item.event_url} target="_blank">
-                More Info
-              </a>
+              <Link to={`events/${item.id}`}>More Info</Link>
             </section>
           </div>
         ))}

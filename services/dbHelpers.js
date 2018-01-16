@@ -15,7 +15,9 @@ const checkAddEvent = data =>
         venue_address: data.venue.address_1,
         venue_postcode: data.venue.city,
         event_url: data.event_url,
-        event_desc: data.description
+        event_desc: data.description,
+        event_lat: data.venue.lat,
+        event_lon: data.venue.lon
       };
       try {
         const eventExists = await checkEvent(eventData);
