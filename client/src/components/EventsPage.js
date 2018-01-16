@@ -53,6 +53,6 @@ class EventsPage extends Component {
     );
   }
 }
-const mapStateToProps = ({ events }) => ({ events });
+const mapStateToProps = ({ events, filter }) => ({ events, filter });
 
 export default connect(mapStateToProps, actions)(EventsPage);
