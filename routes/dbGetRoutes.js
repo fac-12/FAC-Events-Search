@@ -4,8 +4,9 @@ const { getHosts } = require("../queries/hostQueries");
 
 module.exports = app => {
   app.get("/api/events", async (req, res) => {
+    const now = new Date(Date.now()).toJSON();
     try {
-      const eventsData = await getEvents(req.query.user);
+      const eventsData = await getEvents(req.query.user, now);
       res.send(eventsData);
     } catch (e) {
       console.log("Fetch events error", e);
