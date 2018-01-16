@@ -16,7 +16,6 @@ class EventCard extends Component {
 
   render() {
     const { events } = this.props;
-    console.log("events:", events);
     return (
       <div className="events-card-container">
         {_.map(events, item => (
@@ -38,7 +37,7 @@ class EventCard extends Component {
               <input
                 type="checkbox"
                 checked={item.interested}
-                onClick={this.onClick}
+                onChange={this.onClick}
                 id={item.id}
               />
               <a href={item.event_url} target="_blank">

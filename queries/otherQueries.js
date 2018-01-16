@@ -10,10 +10,16 @@ const addEventInterest = (event, user) =>
     .catch(e => console.log("db error", e));
 
 const removeEventInterest = (event, user) =>
-  db.query(
-    `DELETE FROM interest WHERE events_id=$1 AND users_id=$2 RETURNING events_id`,
-    [event, user]
-  );
+  db
+    .query(
+      `DELETE FROM interest WHERE events_id=$1 AND users_id=$2 RETURNING events_id`,
+      [event, user]
+    )
+    .then(res => {
+      console.log("response", res[0]);
+      return res[0];
+    })
+    .catch(e => console.log("db error", e));
 
 const addHostInterest = (host, user) =>
   db

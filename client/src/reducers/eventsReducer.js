@@ -15,7 +15,14 @@ export default function(state = {}, action) {
   case ADD_EVENT:
     return { ...state, [action.payload.id]: action.payload };
   case TOGGLE_EVENT_INTEREST:
-    return state;
+    const id = action.payload.events_id;
+    return {
+      ...state,
+      [id]: {
+        ...state[id],
+        interested: !state[id].interested
+      }
+    };
   default:
     return state;
   }

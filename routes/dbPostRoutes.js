@@ -59,6 +59,7 @@ module.exports = app => {
         req.body.event,
         req.body.user
       );
+      console.log("remove", returnMsg);
       res.send(returnMsg);
     } catch (e) {
       console.log("Remove interest error", e);
