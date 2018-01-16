@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import * as actions from "../actions";
 import { connect } from "react-redux";
-import _ from "lodash";
 import GoogleMap from "./google_map";
 import ReactHtmlParser from "react-html-parser";
 import "../style.css";
 
 class EventPage extends Component {
+  componentDidMount() {
+    this.props.getEventInterest(this.props.match.params.id);
+  }
   render() {
     const { id } = this.props.match.params;
     const { events } = this.props;

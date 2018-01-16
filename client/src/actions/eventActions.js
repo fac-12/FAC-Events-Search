@@ -1,4 +1,9 @@
-import { FETCH_EVENTS, ADD_EVENT, TOGGLE_EVENT_INTEREST } from "./types";
+import {
+  FETCH_EVENTS,
+  ADD_EVENT,
+  TOGGLE_EVENT_INTEREST,
+  GET_EVENT_INTEREST
+} from "./types";
 import axios from "axios";
 
 export const fetchAllEvents = user => async dispatch => {
@@ -18,6 +23,17 @@ export const addEvent = data => async dispatch => {
     } else {
       // /Handle showing error message
     }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getEventInterest = eventId => async dispatch => {
+  try {
+    const Interest = await axios.get(
+      `/api/getEventInterest?eventId=${eventId}`
+    );
+    dispatch({ type: GET_EVENT_INTEREST, payload: Interest.data });
   } catch (e) {
     console.log(e);
   }

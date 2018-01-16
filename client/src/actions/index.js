@@ -5,7 +5,8 @@ export {
   fetchAllEvents,
   addEvent,
   addEventInterest,
-  removeEventInterest
+  removeEventInterest,
+  getEventInterest
 } from "./eventActions";
 export {
   fetchHosts,

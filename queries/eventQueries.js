@@ -48,8 +48,15 @@ const getEvents = (user, startDate, endDate) => {
   );
 };
 
+const getEventInterest = eventId =>
+  db.query(
+    `SELECT * FROM users, interest WHERE users.id = interest.users_id AND interest.events_id = $1`,
+    [eventId]
+  );
+
 module.exports = {
   checkEvent,
   addEvent,
-  getEvents
+  getEvents,
+  getEventInterest
 };
