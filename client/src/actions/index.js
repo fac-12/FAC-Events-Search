@@ -19,7 +19,7 @@ export const fetchUser = callback => async dispatch => {
   if (user.data) {
     callback(user.data[0].id);
   } else {
-    callback("123");
+    callback("'123'");
   }
   dispatch({ type: FETCH_USER, payload: user.data });
 };

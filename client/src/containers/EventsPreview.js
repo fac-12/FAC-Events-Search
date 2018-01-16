@@ -11,7 +11,8 @@ class EventsPreview extends Component {
       host: item.host_org_name,
       date: "Jan 30",
       day: "Sat",
-      time: "5 PM"
+      time: "5 PM",
+      num_interested: item.num_interested
     };
     return <SmallEventCard key={item.id} data={eventData} />;
   }

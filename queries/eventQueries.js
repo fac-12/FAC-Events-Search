@@ -28,8 +28,9 @@ const addEvent = data =>
     .then(res => res[0])
     .catch(e => console.log("db error", e));
 
-const getEvents = (user, startDate, endDate) =>
-  db.query(
+const getEvents = (user, startDate, endDate) => {
+  console.log(user, startDate, endDate);
+  return db.query(
     `SELECT id, event_name, event_date, event_time, host_org_name, venue_name, venue_address, venue_postcode, event_url, COUNT(interest.events_id) AS num_interested,
     (SELECT CASE WHEN EXISTS 
       (SELECT * FROM suggested,included_orgs WHERE suggested.users_id=${user} AND included_orgs.name=events.host_org_name AND included_orgs.id=suggested.orgs_id) 
@@ -43,6 +44,7 @@ const getEvents = (user, startDate, endDate) =>
     GROUP BY events.id
     ORDER BY event_date, event_time`
   );
+};
 
 module.exports = {
   checkEvent,
