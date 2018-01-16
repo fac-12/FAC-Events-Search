@@ -3,6 +3,7 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 import GoogleMap from "./google_map";
+import ReactHtmlParser from "react-html-parser";
 import "../style.css";
 
 class EventPage extends Component {
@@ -29,7 +30,7 @@ class EventPage extends Component {
           </section>
         </div>
         <h2> Details </h2>
-        <p> {events[id].event_desc} </p>
+        <div> {ReactHtmlParser(events[id].event_desc)} </div>
         <h2> Faccers who are interested </h2>
       </div>
     );
