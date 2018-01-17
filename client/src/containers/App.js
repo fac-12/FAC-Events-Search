@@ -10,6 +10,7 @@ import EventsPage from "../components/EventsPage";
 import HostsPage from "../components/HostsPage";
 import AboutPage from "../components/AboutPage";
 import AddEventPage from "../components/AddEventPage";
+import EventPage from "../components/EventPage";
 
 class App extends Component {
   componentDidMount() {
@@ -55,6 +56,13 @@ class App extends Component {
               ) : (
                 <Redirect to="/" />
               )
+            }
+          />
+          <Route
+            exact
+            path="/events/:id"
+            render={props =>
+              this.props.auth ? <EventPage {...props} /> : <Redirect to="/" />
             }
           />
           <Route

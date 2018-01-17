@@ -2,6 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "../style.css";
 
 class EventCard extends Component {
@@ -42,9 +43,7 @@ class EventCard extends Component {
                 onChange={this.onClick}
                 id={item.id}
               />
-              <a href={item.event_url} target="_blank">
-                More Info
-              </a>
+              <Link to={`events/${item.id}`}>More Info</Link>
             </section>
           </div>
         ))}
