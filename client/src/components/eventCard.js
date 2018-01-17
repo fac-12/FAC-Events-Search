@@ -33,7 +33,9 @@ class EventCard extends Component {
               </section>
             </section>
             <section className="info-bar">
-              <p className="info-bar-interest"> {} faccers are interested </p>
+              <p className="info-bar-interest">
+                {item.num_interested} faccers are interested
+              </p>
               <input
                 type="checkbox"
                 checked={item.interested}

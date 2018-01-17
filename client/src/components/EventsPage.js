@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import EventCard from "./eventCard";
 import * as actions from "../actions";
 import FilterOptions from "./FilterOptions";
-// import filterEvents from "../helpers/filterEvents";
+import { filterEvents } from "../selectors/filterEvents";
 
 import "../style.css";
 
@@ -13,19 +13,17 @@ class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
-    // this.props.setFilter(this.props.filter.filter, this.props.events);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
   }
   onFilter(e) {
-    this.props.setFilter(e.target.id, this.props.events);
+    this.props.setFilter(e.target.id);
   }
-  getEvents() {
-    return this.props.events;
-  }
+
   render() {
+    console.log("filtered by", this.props.filter.filter);
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
@@ -48,16 +46,16 @@ class EventsPage extends Component {
           <h1 className="events_view_title">
             Upcoming Events ({_.size(this.props.events)})
           </h1>
-          <EventCard user={this.props.auth.id} events={this.getEvents} />
+          <EventCard user={this.props.auth.id} events={this.props.events} />
         </section>
       </div>
     );
   }
 }
-const mapStateToProps = ({ auth, events, filter }) => ({
-  auth,
-  events,
-  filter
+const mapStateToProps = state => ({
+  auth: state.auth,
+  filter: state.filter,
+  events: filterEvents(state)
 });
 
 export default connect(mapStateToProps, actions)(EventsPage);
