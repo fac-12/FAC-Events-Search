@@ -626,7 +626,8 @@ a:-webkit-any-link {
 
 /* styles for info */
 .details-info > p {
-  line-height: 120%;
+  margin: 1rem 0;
+  line-height: 140%;
 }
 
 .details-info > p > a {
@@ -637,8 +638,8 @@ a:-webkit-any-link {
 
 .user-card {
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   background-color: #fefefe;
   color: black;
   width: 12rem;
