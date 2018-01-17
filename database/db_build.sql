@@ -4,8 +4,7 @@ BEGIN;
 	(
 		id serial PRIMARY KEY,
 		event_name VARCHAR(150) NOT NULL,
-		event_date DATE NOT NULL,
-		event_time TIME NOT NULL,
+		event_datetime BIGINT NOT NULL,
 		host_org_name VARCHAR(150) NOT NULL,
 		venue_name VARCHAR(100),
 		venue_address VARCHAR(150),

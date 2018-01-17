@@ -2,13 +2,15 @@ import _ from "lodash";
 import {
   FETCH_EVENTS,
   ADD_EVENT,
-  TOGGLE_EVENT_INTEREST
+  TOGGLE_EVENT_INTEREST,
+  TOGGLE_HOST_INTEREST
 } from "../actions/types";
 
 export default function(state = {}, action) {
   switch (action.type) {
   case FETCH_EVENTS:
     if (action.payload) {
+      console.log("all events fetched");
       return _.mapKeys(action.payload, "id");
     }
     return state;
