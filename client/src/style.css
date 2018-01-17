@@ -285,12 +285,6 @@ a:-webkit-any-link {
   font-weight: 400;
   margin-right: 8px;
 }
-.sidebar_search > input {
-  margin: 1rem 0 1rem 1rem;
-  padding: 0.5rem;
-  border-radius: 0.1rem;
-  box-shadow: none;
-}
 
 .sidebar_search_btn {
   padding: 0.5rem;
@@ -317,9 +311,25 @@ a:-webkit-any-link {
 }
 
 .datepicker {
-  width: 14rem;
+  width: 13rem;
   font-family: "Lato", sans-serif;
   padding-left: 1rem;
+}
+
+.search_text_input {
+  margin: 1rem 0 1rem 1rem;
+  padding: 0.7rem 0.7rem 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  width: 12rem;
+}
+
+.clear_btn {
+  border: none;
+  position: relative;
+  left: -1.7rem;
+  font-size: 1rem;
+  color: #0f3445;
 }
 
 /* STYLING FOR LANDING PAGE */

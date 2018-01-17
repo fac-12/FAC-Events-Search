@@ -6,12 +6,15 @@ export default props => {
   };
 
   return (
-    <input
-      type="text"
-      value={props.searchTerm}
-      onChange={onChange}
-      placeholder="search..."
-      className="search_text_input"
-    />
+    <div>
+      <input
+        type="text"
+        value={props.searchTerm}
+        onChange={onChange}
+        placeholder="Enter Search Term..."
+        className="search_text_input"
+      />
+      <button className="clear_btn">x</button>
+    </div>
   );
 };

@@ -36,6 +36,11 @@ class DatePicker extends Component {
           onFocusChange={focusedInput => {
             this.setState({ focusedInput });
           }}
+          showClearDates={true}
+          readOnly={true}
+          displayFormat="MMM DD"
+          startDatePlaceholderText="Start"
+          endDatePlaceholderText="End"
         />
       </div>
     );
