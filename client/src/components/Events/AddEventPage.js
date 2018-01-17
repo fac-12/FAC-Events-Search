@@ -101,10 +101,8 @@ class AddEventForm extends Component {
             component={this.renderField}
           />
 
-          <section className="interaction">
-            <label>
-              <button type="submit">save</button>
-            </label>
+          <section className="form_interaction">
+            <button type="submit">save</button>
             <Link to="/events">cancel</Link>
           </section>
         </form>
