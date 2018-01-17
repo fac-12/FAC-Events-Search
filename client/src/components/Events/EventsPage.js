@@ -5,15 +5,13 @@ import EventCard from "./EventListing";
 import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
 import { filterEvents } from "../../selectors/filterEvents";
-import DatePicker from "./DatePicker";
-import SearchByTerm from "./SearchByTerm";
+import SearchOptions from "./SearchOptions";
 
 class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
-    this.onDateSearch = this.onDateSearch.bind(this);
-    this.onTermSearch = this.onTermSearch.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -28,22 +26,14 @@ class EventsPage extends Component {
     );
   }
 
-  onDateSearch(data) {
-    this.props.setFilter(
-      this.props.filter.filter,
-      data.startDate,
-      data.endDate,
-      this.props.filter.searchTerm
-    );
-  }
-
-  onTermSearch(term) {
-    this.props.setFilter(
-      this.props.filter.filter,
-      this.props.filter.startDate,
-      this.props.filter.endDate,
-      term
-    );
+  onSearch(data) {
+    console.log("data received", data);
+    // this.props.setFilter(
+    //   this.props.filter.filter,
+    //   data.startDate || this.props.filter.startDate,
+    //   data.endDate || this.props.filter.endDate,
+    //   data.searchTerm || this.props.filter.searchTerm
+    // );
   }
 
   render() {
@@ -57,14 +47,7 @@ class EventsPage extends Component {
             <h3>Filter Events</h3>
             <FilterOptions {...this.props.filter} onClick={this.onFilter} />
           </section>
-          <section className="sidebar_search">
-            <h3>Search By Date</h3>
-            <DatePicker onDateSearch={this.onDateSearch} />
-          </section>
-          <section className="sidebar_search">
-            <h3>Search Events</h3>
-            <SearchByTerm onTermSearch={this.onTermSearch} />
-          </section>
+          <SearchOptions onSearch={this.onSearch} />
         </nav>
         <section className="events_view">
           <h1 className="events_view_title">
