@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
-import * as actions from "../actions";
+import * as actions from "../../actions";
 
 class HostsAddForm extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from "react";
-import Banner from "./TheBanner";
-import EventsPreview from "../containers/EventsPreview";
+import Banner from "./Banner";
+import EventsPreview from "./EventsPreview";
 
 export default () => (
   <div>
