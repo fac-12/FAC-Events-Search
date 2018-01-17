@@ -2,12 +2,10 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import EventCard from "./eventCard";
-import * as actions from "../actions";
+import EventCard from "./EventListing";
+import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
-import { filterEvents } from "../selectors/filterEvents";
-
-import "../style.css";
+import { filterEvents } from "../../selectors/filterEvents";
 
 class EventsPage extends Component {
   constructor(props) {

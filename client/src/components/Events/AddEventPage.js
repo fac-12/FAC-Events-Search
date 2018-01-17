@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { addEvent } from "../actions/eventActions";
+import { addEvent } from "../../actions/eventActions";
 
 class AddEventForm extends Component {
   constructor() {

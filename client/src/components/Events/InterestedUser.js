@@ -1,9 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import * as actions from "../actions";
+import * as actions from "../../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "../style.css";
 
 class InterestedUser extends Component {
   render() {
@@ -16,7 +14,11 @@ class InterestedUser extends Component {
             <section>
               <h2> {item.name} </h2>
               <p> {item.github_username} </p>
-              <img src={item.photo_url} className="user-card-img" />
+              <img
+                src={item.photo_url}
+                alt={item.name}
+                className="user-card-img"
+              />
             </section>
           </div>
         ))}
