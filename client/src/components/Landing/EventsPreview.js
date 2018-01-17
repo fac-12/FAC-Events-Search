@@ -1,17 +1,19 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SmallEventCard from "../components/smallEventCard";
+import SmallEventCard from "./SmallEventCard";
+import { parseDateTime } from "../../helpers/conversions";
 
 class EventsPreview extends Component {
   renderSmallCard(item) {
+    const datetime = parseDateTime(parseInt(item.event_datetime, 10));
     const eventData = {
       id: item.id,
       title: item.event_name,
       host: item.host_org_name,
-      date: "Jan 30",
-      day: "Sat",
-      time: "5 PM",
+      date: datetime.date,
+      day: datetime.day,
+      time: datetime.time,
       num_interested: item.num_interested
     };
     return <SmallEventCard key={item.id} data={eventData} />;

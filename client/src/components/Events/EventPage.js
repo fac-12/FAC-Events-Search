@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import * as actions from "../actions";
 import { connect } from "react-redux";
-import GoogleMap from "./google_map";
 import ReactHtmlParser from "react-html-parser";
-import "../style.css";
+import * as actions from "../../actions";
+import GoogleMap from "./GoogleMap";
 import InterestedUser from "./InterestedUser";
 
 class EventPage extends Component {

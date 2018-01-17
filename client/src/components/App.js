@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import LandingPage from "../components/TheLandingPage";
-import ProfilePage from "../components/ProfilePage";
-import Header from "./Header";
-import Footer from "../components/TheFooter";
-import EventsPage from "../components/EventsPage";
-import HostsPage from "../components/HostsPage";
-import AboutPage from "../components/AboutPage";
-import AddEventPage from "../components/AddEventPage";
-import EventPage from "../components/EventPage";
+import LandingPage from "./Landing/LandingPage";
+import ProfilePage from "./ProfilePage";
+import Header from "./Header/Header";
+import Footer from "./Footer";
+import EventsPage from "./Events/EventsPage";
+import HostsPage from "./Hosts/HostsPage";
+import AboutPage from "./AboutPage";
+import AddEventPage from "./Events/AddEventPage";
+import EventPage from "./Events/EventPage";
 
 class App extends Component {
   componentDidMount() {
