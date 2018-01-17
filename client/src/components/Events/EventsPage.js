@@ -37,9 +37,13 @@ class EventsPage extends Component {
     );
   }
 
-  onTermSearch(e) {
-    e.preventDefault();
-    console.log(e);
+  onTermSearch(term) {
+    this.props.setFilter(
+      this.props.filter.filter,
+      this.props.filter.startDate,
+      this.props.filter.endDate,
+      term
+    );
   }
 
   render() {
@@ -59,7 +63,7 @@ class EventsPage extends Component {
           </section>
           <section className="sidebar_search">
             <h3>Search Events</h3>
-            <SearchByTerm />
+            <SearchByTerm onTermSearch={this.onTermSearch} />
           </section>
         </nav>
         <section className="events_view">

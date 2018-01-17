@@ -1,19 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default props => {
-  const options = [
-    { name: "My Events", filter: "interested" },
-    { name: "Popular", filter: "popular" },
-    { name: "Suggested", filter: "suggested" },
-    { name: "All Events", filter: "all" }
-  ];
-  const renderButton = option => (
-    <li key={option.filter}>
-      <button id={option.filter} onClick={props.onClick}>
-        {props.filter === option.filter ? <span>></span> : null}
-        {option.name}
-      </button>
-    </li>
-  );
-  return <ul>{options.map(option => renderButton(option))}</ul>;
-};
+class SearchByTerm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { searchTerm: "" };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ searchTerm: e.currentTarget.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.onTermSearch(this.state.searchTerm);
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.onSubmit} className="search_text_form">
+        <input
+          type="text"
+          value={this.state.searchTerm}
+          onChange={this.onChange}
+          placeholder="search..."
+        />
+        <button type="submit" className="search_button">
+          Search
+        </button>
+      </form>
+    );
+  }
+}
+
+export default SearchByTerm;
