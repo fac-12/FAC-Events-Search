@@ -1,14 +1,29 @@
 // Function to filter events according to criteria
 import _ from "lodash";
 import { createSelector } from "reselect";
+import { pInt } from "../helpers/conversions";
 
-const getFilter = state => state.filter.filter;
+const getFilter = state => state.filter;
 const getEvents = state => state.events;
 
-export const filterEvents = createSelector(
+export const searchByDate = createSelector(
   [getFilter, getEvents],
+  (eventFilter, events) =>
+    _.mapKeys(
+      _.filter(
+        events,
+        event =>
+          pInt(event.event_datetime) >= pInt(eventFilter.startDate) &&
+          pInt(event.event_datetime) <= pInt(eventFilter.endDate) + 86400000
+      ),
+      "id"
+    )
+);
+
+export const filterEvents = createSelector(
+  [getFilter, searchByDate],
   (eventFilter, events) => {
-    switch (eventFilter) {
+    switch (eventFilter.filter) {
     case "interested":
       return _.mapKeys(_.filter(events, event => event.interested), "id");
     case "suggested":

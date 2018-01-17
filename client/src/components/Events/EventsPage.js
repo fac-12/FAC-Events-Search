@@ -6,11 +6,13 @@ import EventCard from "./EventListing";
 import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
 import { filterEvents } from "../../selectors/filterEvents";
+import DatePicker from "./DatePicker";
 
 class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
+    this.onDateSearch = this.onDateSearch.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -20,8 +22,16 @@ class EventsPage extends Component {
     this.props.setFilter(e.target.id);
   }
 
+  onDateSearch(data) {
+    this.props.setFilter(
+      this.props.filter.filter,
+      data.startDate,
+      data.endDate
+    );
+    console.log("date picker data", data);
+  }
+
   render() {
-    console.log("filtered by", this.props.filter.filter);
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
@@ -38,6 +48,7 @@ class EventsPage extends Component {
             <button type="submit" className="sidebar_search_btn">
               Search
             </button>
+            <DatePicker onDateSearch={this.onDateSearch} />
           </section>
         </nav>
         <section className="events_view">

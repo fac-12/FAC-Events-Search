@@ -250,7 +250,7 @@ a:-webkit-any-link {
 .sidebar_container {
   display: flex;
   flex-direction: column;
-  padding: 2rem 4rem 2rem 0;
+  padding: 2rem 3rem 2rem 0;
   border-right: 1px solid white;
 }
 
@@ -260,7 +260,7 @@ a:-webkit-any-link {
 
 .sidebar_container h3 {
   color: white;
-  width: 12rem;
+  width: 15rem;
   background-color: #176d81;
   padding: 0.7rem 1rem;
 }
@@ -285,7 +285,7 @@ a:-webkit-any-link {
   font-weight: 400;
   margin-right: 8px;
 }
-.sidebar_search input {
+.sidebar_search > input {
   margin: 1rem 0 1rem 1rem;
   padding: 0.5rem;
   border-radius: 0.1rem;
@@ -314,6 +314,12 @@ a:-webkit-any-link {
   font-weight: 400;
   margin: 10px 0;
   color: white;
+}
+
+.datepicker {
+  width: 14rem;
+  font-family: "Lato", sans-serif;
+  padding-left: 1rem;
 }
 
 /* STYLING FOR LANDING PAGE */

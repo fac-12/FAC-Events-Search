@@ -4,6 +4,7 @@ import * as actions from "../../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { parseDateTime } from "../../helpers/conversions";
+import { renderInterested } from "../../helpers/conversions";
 
 class EventCard extends Component {
   onClick = e => {
@@ -36,9 +37,9 @@ class EventCard extends Component {
                 </section>
               </section>
               <section className="info-bar">
-                <p className="info-bar-interest">
-                  {item.num_interested} faccers are interested
-                </p>
+                <div className="info-bar-interest">
+                  {renderInterested(item.num_interested)}
+                </div>
                 <input
                   type="checkbox"
                   checked={item.interested}
