@@ -1,5 +1,6 @@
 import { FETCH_USER, CUR_LOCATION, SELECT_FILTER } from "./types";
 import axios from "axios";
+import { DEFAULT_START_DATE, DEFAULT_END_DATE } from "../helpers/constants";
 
 export {
   fetchAllEvents,
@@ -32,9 +33,9 @@ export const setLocation = location => ({
 
 export const setFilter = (
   filter = "all",
-  startDate = null,
-  endDate = null,
-  searchTerm = null
+  startDate = DEFAULT_START_DATE,
+  endDate = DEFAULT_END_DATE,
+  searchTerm = ""
 ) => ({
   type: SELECT_FILTER,
   payload: { filter, startDate, endDate, searchTerm }

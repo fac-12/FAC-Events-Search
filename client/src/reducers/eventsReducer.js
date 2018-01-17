@@ -22,6 +22,9 @@ export default function(state = {}, action) {
       ...state,
       [id]: {
         ...state[id],
+        num_interested: state[id].interested
+          ? parseInt(state[id].num_interested, 10) - 1
+          : parseInt(state[id].num_interested, 10) + 1,
         interested: !state[id].interested
       }
     };
