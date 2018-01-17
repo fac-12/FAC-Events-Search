@@ -23,7 +23,8 @@
     "reselect": "^3.0.1",
     "react-google-maps": "^9.4.5",
     "react-html-parser": "^2.0.2",
-    "styled-components": "^2.4.0"
+    "styled-components": "^2.4.0",
+    "react-dates": "^16.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

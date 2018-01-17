@@ -1,7 +1,9 @@
 import React from "react";
+import { renderInterested } from "../../helpers/conversions";
 
 export default props => {
   const { title, host, date, day, time, num_interested } = props.data;
+
   const renderTitle = hover => {
     if (!hover) {
       return (
@@ -28,9 +30,9 @@ export default props => {
           <p>{time}</p>
         </div>
       </div>
-      <p className="smallEventCard_footer">
-        {num_interested} people interested
-      </p>
+      <div className="smallEventCard_footer">
+        {renderInterested(num_interested)}
+      </div>
     </div>
   );
 };

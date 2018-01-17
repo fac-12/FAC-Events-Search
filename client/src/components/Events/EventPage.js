@@ -31,8 +31,12 @@ class EventPage extends Component {
           </section>
         </div>
         <h2> Details </h2>
-        <div> {ReactHtmlParser(events[id].event_desc)} </div>
-        <h2> Faccers who are interested </h2>
+        <div className="details-info">
+          {ReactHtmlParser(events[id].event_desc)}
+        </div>
+        <h2 className="user-card-container-title">
+          Faccers who are interested
+        </h2>
         <InterestedUser />
       </div>
     );

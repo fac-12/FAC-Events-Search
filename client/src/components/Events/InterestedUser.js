@@ -13,10 +13,10 @@ class InterestedUser extends Component {
           <div key={item.id} className="user-card">
             <section>
               <h2> {item.name} </h2>
-              <p> {item.github_username} </p>
+              <p> {`@${item.github_username}`} </p>
               <img
+                alt={`interested-user-${item.name}`}
                 src={item.photo_url}
-                alt={item.name}
                 className="user-card-img"
               />
             </section>

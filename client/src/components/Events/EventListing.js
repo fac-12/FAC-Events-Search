@@ -1,9 +1,9 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import * as actions from "../../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { parseDateTime } from "../../helpers/conversions";
+import { renderInterested } from "../../helpers/conversions";
 
 class EventCard extends Component {
   onClick = e => {
@@ -19,7 +19,7 @@ class EventCard extends Component {
     const { events } = this.props;
     return (
       <div className="events-card-container">
-        {_.map(events, item => {
+        {events.map(item => {
           const datetime = parseDateTime(parseInt(item.event_datetime, 10));
           return (
             <div key={item.id} className="event-card">
@@ -36,9 +36,9 @@ class EventCard extends Component {
                 </section>
               </section>
               <section className="info-bar">
-                <p className="info-bar-interest">
-                  {item.num_interested} faccers are interested
-                </p>
+                <div className="info-bar-interest">
+                  {renderInterested(item.num_interested)}
+                </div>
                 <input
                   type="checkbox"
                   checked={item.interested}

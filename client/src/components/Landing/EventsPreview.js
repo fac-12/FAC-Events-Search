@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SmallEventCard from "./SmallEventCard";
 import { parseDateTime } from "../../helpers/conversions";
+import { filterEvents } from "../../selectors/filterEvents";
 
 class EventsPreview extends Component {
   renderSmallCard(item) {
@@ -35,6 +36,8 @@ class EventsPreview extends Component {
   }
 }
 
-const mapStateToProps = ({ events }) => ({ events });
+const mapStateToProps = state => ({
+  events: filterEvents(state)
+});
 
 export default connect(mapStateToProps)(EventsPreview);
