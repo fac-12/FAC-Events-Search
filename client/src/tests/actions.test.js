@@ -2,13 +2,13 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import moxios from "moxios";
 import expect from "expect";
-import * as actions from "../actions/eventActions";
+import * as actions from "../actions";
 import * as types from "../actions/types";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("fetchAllEvents actions", () => {
+describe("fetchAllEvents action", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -78,7 +78,7 @@ describe("fetchAllEvents actions", () => {
   });
 });
 
-describe("should return with an object of users interested in event", () => {
+describe("getEventInterest action", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -87,7 +87,7 @@ describe("should return with an object of users interested in event", () => {
     moxios.uninstall();
   });
 
-  it("returns obj with events", () => {
+  it("returns obj with users interested in event", () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -153,6 +153,78 @@ describe("should return with an object of users interested in event", () => {
       const store = mockStore({ events: {} });
 
       return store.dispatch(actions.getEventInterest("1")).then(() => {
+        // return of async actions
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+  });
+});
+
+describe("fetchHosts action", () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
+  it("returns obj with hosts", () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: [
+          {
+            id: 1,
+            name: "London JavaScript Community",
+            url: "https://www.meetup.com/London-JavaScript-Community/",
+            suggested: false
+          },
+          {
+            id: 2,
+            name: "London Ethereum Meetup",
+            url: "https://www.meetup.com/London-Ethereum-Meetup/",
+            suggested: false
+          },
+          {
+            id: 3,
+            name: "GraphQL London",
+            url: "https://www.meetup.com/GraphQL-London/",
+            suggested: false
+          }
+        ]
+      });
+
+      const expectedActions = [
+        {
+          type: actions.fetchHosts,
+          payload: [
+            {
+              id: 1,
+              name: "London JavaScript Community",
+              url: "https://www.meetup.com/London-JavaScript-Community/",
+              suggested: false
+            },
+            {
+              id: 2,
+              name: "London Ethereum Meetup",
+              url: "https://www.meetup.com/London-Ethereum-Meetup/",
+              suggested: false
+            },
+            {
+              id: 3,
+              name: "GraphQL London",
+              url: "https://www.meetup.com/GraphQL-London/",
+              suggested: false
+            }
+          ]
+        }
+      ];
+
+      const store = mockStore({ events: {} });
+
+      return store.dispatch(actions.fetchHosts("29644807")).then(() => {
         // return of async actions
         expect(store.getActions()).toEqual(expectedActions);
       });
