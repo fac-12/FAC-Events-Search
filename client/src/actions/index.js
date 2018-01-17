@@ -17,7 +17,7 @@ export {
 
 export const fetchUser = callback => async dispatch => {
   const user = await axios.get("/api/currentUser");
-  if (user.data) {
+  if (user.data && user.data.length > 0) {
     callback(user.data[0].id);
   } else {
     callback("123");

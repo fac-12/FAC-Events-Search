@@ -2,7 +2,8 @@ import _ from "lodash";
 import {
   FETCH_EVENTS,
   ADD_EVENT,
-  TOGGLE_EVENT_INTEREST
+  TOGGLE_EVENT_INTEREST,
+  TOGGLE_HOST_INTEREST
 } from "../actions/types";
 
 export default function(state = {}, action) {

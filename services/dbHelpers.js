@@ -3,13 +3,10 @@ const { checkHost, addHost } = require("../queries/hostQueries");
 
 const checkAddEvent = data =>
   new Promise(async (resolve, reject) => {
-    const datetime = new Date(data.time);
-    const options = { year: "numeric", month: "long", day: "numeric" };
     if (data.venue) {
       const eventData = {
         event_name: data.name,
-        event_date: datetime.toLocaleDateString("en-GB", options),
-        event_time: datetime.toLocaleTimeString("en-GB"),
+        event_datetime: data.time,
         host_org_name: data.group.name,
         venue_name: data.venue.name,
         venue_address: data.venue.address_1,

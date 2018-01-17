@@ -2,14 +2,16 @@ const axios = require("axios");
 const { getEvents, getEventInterest } = require("../queries/eventQueries");
 const { getHosts } = require("../queries/hostQueries");
 
+const NO_END_DATE = new Date(2099, 1, 1).getTime();
+
 module.exports = app => {
   app.get("/api/events", async (req, res) => {
-    const now = new Date(Date.now()).toJSON();
+    const now = new Date(Date.now()).getTime();
     try {
       const eventsData = await getEvents(
         req.query.user,
         req.query.startDate || now,
-        req.query.endDate || "2099-01-01T00:00:00Z"
+        req.query.endDate || NO_END_DATE
       );
       res.send(eventsData);
     } catch (e) {
