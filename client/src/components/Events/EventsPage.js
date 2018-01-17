@@ -1,4 +1,3 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,28 +6,40 @@ import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
 import { filterEvents } from "../../selectors/filterEvents";
 import DatePicker from "./DatePicker";
+import SearchByTerm from "./SearchByTerm";
 
 class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
     this.onDateSearch = this.onDateSearch.bind(this);
+    this.onTermSearch = this.onTermSearch.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
   }
   onFilter(e) {
-    this.props.setFilter(e.target.id);
+    this.props.setFilter(
+      e.target.id,
+      this.props.filter.startDate,
+      this.props.filter.endDate,
+      this.props.filter.searchTerm
+    );
   }
 
   onDateSearch(data) {
     this.props.setFilter(
       this.props.filter.filter,
       data.startDate,
-      data.endDate
+      data.endDate,
+      this.props.filter.searchTerm
     );
-    console.log("date picker data", data);
+  }
+
+  onTermSearch(e) {
+    e.preventDefault();
+    console.log(e);
   }
 
   render() {
@@ -43,17 +54,17 @@ class EventsPage extends Component {
             <FilterOptions {...this.props.filter} onClick={this.onFilter} />
           </section>
           <section className="sidebar_search">
-            <h3>Search for Events</h3>
-            <input type="text" placeholder="Search" />
-            <button type="submit" className="sidebar_search_btn">
-              Search
-            </button>
+            <h3>Search By Date</h3>
             <DatePicker onDateSearch={this.onDateSearch} />
+          </section>
+          <section className="sidebar_search">
+            <h3>Search Events</h3>
+            <SearchByTerm />
           </section>
         </nav>
         <section className="events_view">
           <h1 className="events_view_title">
-            Upcoming Events ({_.size(this.props.events)})
+            Upcoming Events ({this.props.events.length})
           </h1>
           <EventCard user={this.props.auth.id} events={this.props.events} />
         </section>

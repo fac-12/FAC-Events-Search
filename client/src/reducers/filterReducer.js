@@ -9,7 +9,6 @@ const defaultState = {
 };
 
 export default function(state = defaultState, action) {
-  console.log("filter state is", state);
   switch (action.type) {
   case SELECT_FILTER:
     return action.payload;

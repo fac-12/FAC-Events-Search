@@ -255,17 +255,17 @@ a:-webkit-any-link {
 }
 
 .sidebar_container > section {
-  margin: 1rem 0;
+  margin: 0;
 }
-
 .sidebar_container h3 {
   color: white;
   width: 15rem;
   background-color: #176d81;
   padding: 0.7rem 1rem;
+  margin: 1.2rem 0 0.8rem 0;
 }
 .sidebar_filter ul {
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .sidebar_filter ul li {

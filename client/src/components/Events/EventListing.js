@@ -1,4 +1,3 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import * as actions from "../../actions";
 import { connect } from "react-redux";
@@ -20,7 +19,7 @@ class EventCard extends Component {
     const { events } = this.props;
     return (
       <div className="events-card-container">
-        {_.map(events, item => {
+        {events.map(item => {
           const datetime = parseDateTime(parseInt(item.event_datetime, 10));
           return (
             <div key={item.id} className="event-card">
