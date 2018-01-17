@@ -16,27 +16,29 @@ class AddEventForm extends Component {
     return (
       <div className="form_field">
         <label>{field.label}</label>
-        <input type="text" {...field.input} />
-        <div>{touched ? error : ""}</div>
+        <div>
+          <input type="text" {...field.input} />
+          <div className="form_error">{touched ? error : ""}</div>
+        </div>
       </div>
     );
   }
 
   renderDate(field) {
     const { meta: { touched, error } } = field;
-    // const className = `form-container ${touched && error ? "error" : ""}`;
+    const className = `${touched && error ? "error" : "form_field"}`;
     return (
-      <div className="form_field">
+      <div className={className}>
         <label>{field.label}</label>
         <input type="date" {...field.input} />
-        <div>{touched ? error : ""}</div>
+        <div className="form_error">{touched ? error : ""}</div>
       </div>
     );
   }
 
   renderTime(field) {
     const { meta: { touched, error } } = field;
-    // const className = `form-container ${touched && error ? "error" : ""}`;
+    const className = `${touched && error ? "error" : ""}`;
     return (
       <div className="form_field">
         <label>{field.label}</label>
@@ -96,6 +98,7 @@ class AddEventForm extends Component {
           <Field
             label="Url"
             name="event_url"
+            placeholder="Please enter a event url"
             value={this.state.url}
             onChange={event => this.setState({ url: event.target.value })}
             component={this.renderField}
@@ -113,6 +116,9 @@ class AddEventForm extends Component {
 
 function validate(values) {
   const errors = {};
+  if (!values.event_url) {
+    errors.event_url = "Please enter a event url";
+  }
   return errors;
 }
 

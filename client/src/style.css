@@ -557,7 +557,6 @@ a:-webkit-any-link {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 8rem;
 }
-
 .form_interaction {
   display: flex;
   align-content: center;
@@ -578,6 +577,11 @@ a:-webkit-any-link {
   margin-left: 1rem;
 }
 
+.form_error {
+  display: block;
+  font-size: 0.8rem;
+  color: red;
+}
 /* Host List styling */
 .hosts_options {
   display: flex;
