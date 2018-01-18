@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { addEvent } from "../../actions/eventActions";
+import { addEvent, resetMessage } from "../../actions/eventActions";
 
 class AddEventForm extends Component {
   constructor() {
@@ -16,27 +16,29 @@ class AddEventForm extends Component {
     return (
       <div className="form_field">
         <label>{field.label}</label>
-        <input type="text" {...field.input} />
-        <div>{touched ? error : ""}</div>
+        <div>
+          <input type="text" {...field.input} />
+          <div className="form_error">{touched ? error : ""}</div>
+        </div>
       </div>
     );
   }
 
   renderDate(field) {
     const { meta: { touched, error } } = field;
-    // const className = `form-container ${touched && error ? "error" : ""}`;
+    const className = `${touched && error ? "error" : "form_field"}`;
     return (
-      <div className="form_field">
+      <div className={className}>
         <label>{field.label}</label>
         <input type="date" {...field.input} />
-        <div>{touched ? error : ""}</div>
+        <div className="form_error">{touched ? error : ""}</div>
       </div>
     );
   }
 
   renderTime(field) {
     const { meta: { touched, error } } = field;
-    // const className = `form-container ${touched && error ? "error" : ""}`;
+    const className = `${touched && error ? "error" : ""}`;
     return (
       <div className="form_field">
         <label>{field.label}</label>
@@ -46,12 +48,34 @@ class AddEventForm extends Component {
     );
   }
 
+  componentDidUpdate() {
+    console.log(this.props.addEventMessage);
+  }
+
   onSubmit(values) {
     this.props.addEvent(values);
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, showMessage } = this.props;
+    if (showMessage !== null) {
+      return (
+        <div className="form_message_container">
+          <div className="form_message">
+            {showMessage}
+            <Link
+              to="/events"
+              onClick={() => {
+                this.props.resetMessage();
+              }}
+            >
+              Back to Events
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="form_container">
         <h1 className="form_title"> Add Event </h1>
@@ -96,15 +120,14 @@ class AddEventForm extends Component {
           <Field
             label="Url"
             name="event_url"
+            placeholder="Please enter a event url"
             value={this.state.url}
             onChange={event => this.setState({ url: event.target.value })}
             component={this.renderField}
           />
 
-          <section className="interaction">
-            <label>
-              <button type="submit">save</button>
-            </label>
+          <section className="form_interaction">
+            <button type="submit">save</button>
             <Link to="/events">cancel</Link>
           </section>
         </form>
@@ -115,10 +138,15 @@ class AddEventForm extends Component {
 
 function validate(values) {
   const errors = {};
+  if (!values.event_url) {
+    errors.event_url = "Please enter a event url";
+  }
   return errors;
 }
+
+const mapStateToProps = ({ showMessage }) => ({ showMessage });
 
 export default reduxForm({
   validate,
   form: "PostEventForm"
-})(connect(null, { addEvent })(AddEventForm));
+})(connect(mapStateToProps, { addEvent, resetMessage })(AddEventForm));

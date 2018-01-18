@@ -603,8 +603,8 @@ a:visited {
   display: flex;
   flex-direction: column;
   background-color: #1d6d80;
-  width: 70vw;
-  height: 50vh;
+  width: 50rem;
+  height: 25rem;
 }
 
 .form_container > h1 {
@@ -623,8 +623,13 @@ a:visited {
 .form_fields_container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
   margin: 2rem 2rem;
+}
+
+.form_field {
+  display: flex;
+  margin: 1rem 0;
 }
 
 .form_field > input {
@@ -640,7 +645,51 @@ a:visited {
   margin: 0rem 1.5rem 0rem 0rem;
   width: 8rem;
 }
+.form_interaction {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 
+.form_interaction > button,
+.form_interaction > a {
+  border: none;
+  border-radius: 5px;
+  background-color: #113444;
+  padding: 0.5rem;
+  color: white;
+  width: 5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+.form_error {
+  display: block;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.form_message_container {
+  margin: 25rem 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.form_message {
+  display: flex;
+  color: white;
+}
+
+.form_message > a {
+  background-color: #1d6d80;
+  color: white;
+  border-radius: 5px;
+  margin-left: 2rem;
+  padding: 0.5rem;
+}
 /* Host List styling */
 .hosts_options {
   display: flex;

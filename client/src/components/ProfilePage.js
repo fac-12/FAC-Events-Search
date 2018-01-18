@@ -69,6 +69,7 @@ class ProfilePage extends Component {
               className="profile_field"
               label="Name"
               name="name"
+              placeholder="Please enter your Name"
               component={this.renderInput}
             />
             <Field
