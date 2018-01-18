@@ -148,7 +148,9 @@ function validate(values) {
   return errors;
 }
 
-const mapStateToProps = ({ showMessage }) => ({ showMessage });
+const mapStateToProps = ({ showMessage }) => ({
+  showMessage: showMessage.addEvent
+});
 
 export default reduxForm({
   validate,
