@@ -5,15 +5,14 @@ import EventCard from "./EventListing";
 import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
 import { filterEvents } from "../../selectors/filterEvents";
-import DatePicker from "./DatePicker";
-import SearchByTerm from "./SearchByTerm";
+import SearchOptions from "./SearchOptions";
 
 class EventsPage extends Component {
   constructor(props) {
     super(props);
     this.onFilter = this.onFilter.bind(this);
-    this.onDateSearch = this.onDateSearch.bind(this);
-    this.onTermSearch = this.onTermSearch.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.renderTitle = this.renderTitle.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -28,48 +27,84 @@ class EventsPage extends Component {
     );
   }
 
-  onDateSearch(data) {
+  onSearch(data) {
     this.props.setFilter(
       this.props.filter.filter,
-      data.startDate,
-      data.endDate,
-      this.props.filter.searchTerm
+      data.startDate || this.props.filter.startDate,
+      data.endDate || this.props.filter.endDate,
+      data.searchTerm || this.props.filter.searchTerm
     );
   }
 
-  onTermSearch(term) {
-    this.props.setFilter(
-      this.props.filter.filter,
-      this.props.filter.startDate,
-      this.props.filter.endDate,
-      term
-    );
+  renderTitle() {
+    if (this.props.events.length === 0) {
+      if (this.props.filter.filter === ("all" || "popular")) {
+        return (
+          <h1 className="events_view_msg">
+            There are no upcoming events in the database.{" "}
+            <Link to="/event/new">Add some!</Link>
+          </h1>
+        );
+      } else if (this.props.filter.filter === "suggested") {
+        return (
+          <h1 className="events_view_msg">
+            You need to <Link to="/hosts">subscribe</Link> to some host
+            organizations, so we can suggest events for you!
+          </h1>
+        );
+      } else if (this.props.filter.filter === "interested") {
+        return (
+          <h1 className="events_view_msg">
+            You haven't indicated interest in attending any events yet!
+          </h1>
+        );
+      }
+    }
+    if (this.props.filter.filter === "all") {
+      return (
+        <h1 className="events_view_title">
+          All Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "suggested") {
+      return (
+        <h1 className="events_view_title">
+          Suggested Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "interested") {
+      return (
+        <h1 className="events_view_title">
+          Events I'm Interested In ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "popular") {
+      return (
+        <h1 className="events_view_title">
+          Popular Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
   }
 
   render() {
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
-          <Link to="/event/new" className="sidebar_addEvent_btn">
+          <Link to="/event/new" className="sidebar_btn sidebar_addEvent_btn">
             Add Event
           </Link>
           <section className="sidebar_filter">
             <h3>Filter Events</h3>
             <FilterOptions {...this.props.filter} onClick={this.onFilter} />
           </section>
-          <section className="sidebar_search">
-            <h3>Search By Date</h3>
-            <DatePicker onDateSearch={this.onDateSearch} />
-          </section>
-          <section className="sidebar_search">
-            <h3>Search Events</h3>
-            <SearchByTerm onTermSearch={this.onTermSearch} />
-          </section>
+          <SearchOptions onSearch={this.onSearch} />
         </nav>
         <section className="events_view">
-          <h1 className="events_view_title">
-            Upcoming Events ({this.props.events.length})
-          </h1>
+          {this.renderTitle()}
           <EventCard user={this.props.auth.id} events={this.props.events} />
         </section>
       </div>
