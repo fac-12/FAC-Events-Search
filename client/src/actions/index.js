@@ -49,10 +49,15 @@ export const setFilter = (
 
 export const updateProfile = (values, callback) => async dispatch => {
   const { github_username, ...rest } = values;
+  console.log("feed to axios: ", {
+    github_username: github_username.split("@").slice(-1)[0],
+    ...rest
+  });
   const user = await axios.put("/api/updateProfile", {
     github_username: github_username.split("@").slice(-1)[0],
     ...rest
   });
+  console.log("returned from axios: ", user.data);
   dispatch({ type: FETCH_USER, payload: user.data });
   callback();
 };
