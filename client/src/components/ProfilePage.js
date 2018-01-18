@@ -81,7 +81,6 @@ class ProfilePage extends Component {
               className="profile_field"
               label="FAC Cohort"
               name="cohort"
-              type="number"
               placeholder="Please enter your cohort number"
               component={this.renderInput}
             />
