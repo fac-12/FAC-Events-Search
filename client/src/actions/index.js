@@ -53,8 +53,8 @@ export const updateProfile = (values, callback) => async dispatch => {
     github_username: github_username.split("@").slice(-1)[0],
     ...rest
   });
-  callback();
   dispatch({ type: FETCH_USER, payload: user.data });
+  callback();
 };
 
 export const resetMessage = key => ({
