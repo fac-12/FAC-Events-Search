@@ -461,6 +461,14 @@ a:visited {
   margin: 0;
 }
 
+.eventsPreview_content > ul > li a {
+  color: inherit;
+}
+
+.eventsPreview_content > ul > li a:visited {
+  color: inherit;
+}
+
 /* STYLING FOR SMALL EVENT CARD CONTAINER COMPONENT */
 
 .smallEventCard_container {
