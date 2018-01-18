@@ -36,7 +36,6 @@ class ProfilePage extends Component {
   }
 
   onSubmit(values) {
-    // console.log("values are", values);
     this.props.updateProfile(values, () => {
       this.props.history.push("/events");
     });
@@ -50,7 +49,6 @@ class ProfilePage extends Component {
   }
 
   render() {
-    // console.log("current state is", this.props.initialValues);
     const { handleSubmit } = this.props;
     return (
       <div className="profile_container">

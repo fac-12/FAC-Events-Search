@@ -757,6 +757,7 @@ a:visited {
 .hosts_scroll {
   overflow: scroll;
   height: calc(100vh - 250px);
+  margin-top: 0.5rem;
 }
 
 /* Host List styling */

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../../actions";
+import { sortHosts } from "../../selectors/sortHosts";
 
 class HostsAddForm extends Component {
   constructor(props) {
@@ -58,7 +59,10 @@ class HostsAddForm extends Component {
   }
 }
 
-const mapStateToProps = ({ hosts, auth }) => ({ initialValues: hosts, auth });
+const mapStateToProps = state => ({
+  initialValues: sortHosts(state),
+  auth: state.auth
+});
 
 export default reduxForm({
   form: "HostsForm"

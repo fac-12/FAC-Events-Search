@@ -36,7 +36,6 @@ class HostsPage extends Component {
   };
 
   render() {
-    console.log(this.props.showMessage);
     return (
       <div className="about_container">
         <section className="hosts_info">

@@ -18,7 +18,6 @@ export default function(state = {}, action) {
       }
     };
   case ADD_HOST:
-    console.log(action.payload);
     return {
       ...state,
       [action.payload.id]: action.payload

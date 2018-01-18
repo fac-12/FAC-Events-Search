@@ -5,7 +5,6 @@ import {
   HOST_MSG,
   RESET_MSG
 } from "./types";
-import { resetMessage } from "./index";
 import axios from "axios";
 
 export const fetchHosts = user => async dispatch => {

@@ -48,10 +48,6 @@ class AddEventForm extends Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log(this.props.addEventMessage);
-  }
-
   onSubmit(values) {
     this.props.addEvent(values);
   }
