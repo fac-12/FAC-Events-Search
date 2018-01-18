@@ -12,6 +12,7 @@ class EventsPage extends Component {
     super(props);
     this.onFilter = this.onFilter.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.renderTitle = this.renderTitle.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -27,20 +28,73 @@ class EventsPage extends Component {
   }
 
   onSearch(data) {
-    console.log("data received", data);
-    // this.props.setFilter(
-    //   this.props.filter.filter,
-    //   data.startDate || this.props.filter.startDate,
-    //   data.endDate || this.props.filter.endDate,
-    //   data.searchTerm || this.props.filter.searchTerm
-    // );
+    this.props.setFilter(
+      this.props.filter.filter,
+      data.startDate || this.props.filter.startDate,
+      data.endDate || this.props.filter.endDate,
+      data.searchTerm || this.props.filter.searchTerm
+    );
+  }
+
+  renderTitle() {
+    if (this.props.events.length === 0) {
+      if (this.props.filter.filter === ("all" || "popular")) {
+        return (
+          <h1 className="events_view_msg">
+            There are no upcoming events in the database.{" "}
+            <Link to="/event/new">Add some!</Link>
+          </h1>
+        );
+      } else if (this.props.filter.filter === "suggested") {
+        return (
+          <h1 className="events_view_msg">
+            You need to <Link to="/hosts">subscribe</Link> to some host
+            organizations, so we can suggest events for you!
+          </h1>
+        );
+      } else if (this.props.filter.filter === "interested") {
+        return (
+          <h1 className="events_view_msg">
+            You haven't indicated interest in attending any events yet!
+          </h1>
+        );
+      }
+    }
+    if (this.props.filter.filter === "all") {
+      return (
+        <h1 className="events_view_title">
+          All Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "suggested") {
+      return (
+        <h1 className="events_view_title">
+          Suggested Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "interested") {
+      return (
+        <h1 className="events_view_title">
+          Events I'm Interested In ({this.props.events.length})
+        </h1>
+      );
+    }
+    if (this.props.filter.filter === "popular") {
+      return (
+        <h1 className="events_view_title">
+          Popular Upcoming Events ({this.props.events.length})
+        </h1>
+      );
+    }
   }
 
   render() {
     return (
       <div className="events_page_container">
         <nav className="sidebar_container">
-          <Link to="/event/new" className="sidebar_addEvent_btn">
+          <Link to="/event/new" className="sidebar_btn sidebar_addEvent_btn">
             Add Event
           </Link>
           <section className="sidebar_filter">
@@ -50,9 +104,7 @@ class EventsPage extends Component {
           <SearchOptions onSearch={this.onSearch} />
         </nav>
         <section className="events_view">
-          <h1 className="events_view_title">
-            Upcoming Events ({this.props.events.length})
-          </h1>
+          {this.renderTitle()}
           <EventCard user={this.props.auth.id} events={this.props.events} />
         </section>
       </div>

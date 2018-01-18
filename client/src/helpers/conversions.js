@@ -15,9 +15,9 @@ export const parseDateTime = datetime => {
 };
 
 export const renderInterested = num_interested => {
-  if (num_interested === "0") {
+  if (num_interested === ("0" || 0)) {
     return <p>No people interested yet</p>;
-  } else if (num_interested === "1") {
+  } else if (num_interested === ("1" || 1)) {
     return <p>1 person interested</p>;
   }
   return <p>{num_interested} people interested</p>;
