@@ -36,9 +36,7 @@ class ProfilePage extends Component {
   }
 
   onSubmit(values) {
-    console.log("submitted");
     this.props.updateProfile(values, () => {
-      console.log("should push to events");
       this.props.history.push("/events");
     });
   }
