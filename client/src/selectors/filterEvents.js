@@ -13,9 +13,11 @@ const searchByTerm = createSelector(
       return _.filter(
         events,
         event =>
-          event.event_desc
-            .toLowerCase()
-            .includes(eventFilter.searchTerm.toLowerCase()) ||
+          (event.event_desc
+            ? event.event_desc
+              .toLowerCase()
+              .includes(eventFilter.searchTerm.toLowerCase())
+            : false) ||
           event.event_name
             .toLowerCase()
             .includes(eventFilter.searchTerm.toLowerCase())
