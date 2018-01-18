@@ -15,7 +15,8 @@ class EventsPreview extends Component {
       date: datetime.date,
       day: datetime.day,
       time: datetime.time,
-      num_interested: item.num_interested
+      num_interested: item.num_interested,
+      url: item.event_url
     };
     return <SmallEventCard key={item.id} data={eventData} />;
   }

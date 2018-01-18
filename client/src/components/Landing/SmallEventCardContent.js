@@ -2,7 +2,7 @@ import React from "react";
 import { renderInterested } from "../../helpers/conversions";
 
 export default props => {
-  const { title, host, date, day, time, num_interested } = props.data;
+  const { title, host, date, day, time, num_interested, url } = props.data;
 
   const renderTitle = hover => {
     if (!hover) {
@@ -19,7 +19,7 @@ export default props => {
   };
 
   return (
-    <div className="smallEventCard_container">
+    <a className="smallEventCard_container" href={url} target="_blank">
       <div className="smallEventCard_top">
         <div className="smallEventCard_top_left">
           {renderTitle(props.hover)}
@@ -33,6 +33,6 @@ export default props => {
       <div className="smallEventCard_footer">
         {renderInterested(num_interested)}
       </div>
-    </div>
+    </a>
   );
 };
