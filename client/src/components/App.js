@@ -27,7 +27,11 @@ class App extends Component {
             path="/"
             render={props =>
               this.props.auth ? (
-                <Redirect to="/events" />
+                this.props.auth.cohort && this.props.auth.name ? (
+                  <Redirect to="/events" />
+                ) : (
+                  <Redirect to="/profile" />
+                )
               ) : (
                 <LandingPage {...props} />
               )
@@ -44,7 +48,15 @@ class App extends Component {
             exact
             path="/events"
             render={props =>
-              this.props.auth ? <EventsPage {...props} /> : <Redirect to="/" />
+              this.props.auth ? (
+                this.props.auth.cohort && this.props.auth.name ? (
+                  <EventsPage {...props} />
+                ) : (
+                  <Redirect to="/profile" />
+                )
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route
@@ -52,7 +64,11 @@ class App extends Component {
             path="/event/new"
             render={props =>
               this.props.auth ? (
-                <AddEventPage {...props} />
+                this.props.auth.cohort && this.props.auth.name ? (
+                  <AddEventPage {...props} />
+                ) : (
+                  <Redirect to="/profile" />
+                )
               ) : (
                 <Redirect to="/" />
               )
@@ -62,14 +78,30 @@ class App extends Component {
             exact
             path="/events/:id"
             render={props =>
-              this.props.auth ? <EventPage {...props} /> : <Redirect to="/" />
+              this.props.auth ? (
+                this.props.auth.cohort && this.props.auth.name ? (
+                  <EventPage {...props} />
+                ) : (
+                  <Redirect to="/profile" />
+                )
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route
             exact
             path="/hosts"
             render={props =>
-              this.props.auth ? <HostsPage {...props} /> : <Redirect to="/" />
+              this.props.auth ? (
+                this.props.auth.cohort && this.props.auth.name ? (
+                  <HostsPage {...props} />
+                ) : (
+                  <Redirect to="/profile" />
+                )
+              ) : (
+                <Redirect to="/" />
+              )
             }
           />
           <Route

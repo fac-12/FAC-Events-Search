@@ -583,6 +583,11 @@ a:visited {
   margin-bottom: 0.5rem;
 }
 
+.profile_msg {
+  font-size: 1.5rem;
+  color: #e1ae2e;
+}
+
 /* add event Page Styling */
 
 .form_container {
