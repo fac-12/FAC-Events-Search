@@ -275,7 +275,7 @@ a:visited {
 .events_view > section {
   margin-left: 5rem;
   overflow: scroll;
-  height: 58rem;
+  height: calc(100vh - 180px);
 }
 
 /* side-bar styling */
