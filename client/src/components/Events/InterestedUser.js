@@ -11,7 +11,7 @@ class InterestedUser extends Component {
         {_.map(eventusers, item => (
           <div key={item.id} className="user-card">
             <section>
-              <h2> {item.name} </h2>
+              <h2 className="user-card-title"> {item.name} </h2>
               <p> {`@${item.github_username}`} </p>
               <img
                 alt={`interested-user-${item.name}`}
