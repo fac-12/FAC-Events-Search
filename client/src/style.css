@@ -362,6 +362,10 @@ a:visited {
   outline: none;
 }
 
+.search_box form {
+  display: inline;
+}
+
 .clear_btn {
   border: none;
   position: relative;

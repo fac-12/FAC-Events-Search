@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import DatePicker from "./DatePicker";
 import SearchByTerm from "./SearchByTerm";
+import { DEFAULT_START_DATE, DEFAULT_END_DATE } from "../../helpers/constants";
 
 export default class SearchOption extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchTerm: "", startDate: null, endDate: null };
+    this.state = {
+      searchTerm: "",
+      startDate: DEFAULT_START_DATE,
+      endDate: DEFAULT_END_DATE
+    };
     this.onDateSearch = this.onDateSearch.bind(this);
     this.onTermSearch = this.onTermSearch.bind(this);
     this.submitSearch = this.submitSearch.bind(this);
@@ -23,8 +28,12 @@ export default class SearchOption extends Component {
     this.props.onSearch(this.state);
   }
   resetSearch(e) {
-    this.setState({ searchTerm: "", startDate: null, endDate: null });
-    this.props.onSearch({ searchTerm: "", startDate: null, endDate: null });
+    this.setState({ searchTerm: "" });
+    this.props.onSearch({
+      searchTerm: "",
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
+    });
   }
   render() {
     return (
@@ -35,6 +44,7 @@ export default class SearchOption extends Component {
           onTermSearch={this.onTermSearch}
           clearBtn={this.state.searchTerm.length > 0}
           resetSearch={this.resetSearch}
+          submitSearch={this.submitSearch}
         />
         <DatePicker onDateSearch={this.onDateSearch} />
         <button className="sidebar_btn" onClick={this.submitSearch}>

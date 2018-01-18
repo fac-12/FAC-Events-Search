@@ -70,7 +70,7 @@ class AddEventForm extends Component {
             <Link
               to="/event/new"
               onClick={() => {
-                this.props.resetMessage();
+                this.props.resetMessage("addEvent");
               }}
             >
               Add another event

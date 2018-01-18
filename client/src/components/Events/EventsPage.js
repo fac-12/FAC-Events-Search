@@ -34,7 +34,7 @@ class EventsPage extends Component {
       this.props.filter.filter,
       data.startDate || this.props.filter.startDate,
       data.endDate || this.props.filter.endDate,
-      data.searchTerm || this.props.filter.searchTerm
+      data.searchTerm
     );
   }
 

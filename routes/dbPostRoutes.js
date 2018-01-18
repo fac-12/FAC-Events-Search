@@ -16,17 +16,33 @@ module.exports = app => {
         const id = urlArr[urlArr.length - 1]
           ? urlArr[urlArr.length - 1]
           : urlArr[urlArr.length - 2];
+        console.log(
+          "meetup url is ",
+          `https://api.meetup.com/2/events?event_id=${id}`
+        );
         const allData = await axios.get(
           `https://api.meetup.com/2/events?event_id=${id}`
         );
-        const meetupEventData = await checkAddEvent(allData.data.results[0]);
-        res.send(meetupEventData);
+        if (allData.data.results.length > 0) {
+          const meetupEventData = await checkAddEvent(allData.data.results[0]);
+          console.log("formatted data", meetupEventData);
+          res.send(meetupEventData);
+        } else {
+          res.send({
+            msg:
+              "Sorry, this event cannot be added automatically from Meetup. Please enter the details manually."
+          });
+        }
       } else {
+        // need to handle inappropriate blank fields...
         const eventData = await checkAddEvent(req.body.data);
         const addEventData = await addEvent(req.body.data);
         res.send(eventData);
       }
     } catch (e) {
+      res.send({
+        msg: "There may have been a flaw in your URL. Please check again."
+      });
       console.log("Add event error ", e);
     }
   });

@@ -37,7 +37,7 @@ const checkAddEvent = data =>
     } else {
       resolve({
         msg:
-          "Sorry, this event must be added manually due to a flaw with Meetup."
+          "Sorry, this event cannot be added automatically from Meetup. Please enter the details manually."
       });
     }
   });
