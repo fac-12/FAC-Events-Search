@@ -7,6 +7,7 @@ class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.props.dispatch(initialize("ProfileForm", this.props.initialValues));
+    this.renderProfileTitle = this.renderProfileTitle.bind(this);
   }
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
@@ -39,12 +40,19 @@ class ProfilePage extends Component {
     });
   }
 
+  renderProfileTitle() {
+    if (this.props.initialValues.cohort && this.props.initialValues.name) {
+      return <h1> Your Profile </h1>;
+    }
+    return <h1 className="profile_msg"> Please Complete Your Profile </h1>;
+  }
+
   render() {
     // console.log("current state is", this.props.initialValues);
     const { handleSubmit } = this.props;
     return (
       <div className="profile_container">
-        <h1> Your Profile </h1>
+        {this.renderProfileTitle()}
         <div className="profile_info">
           <form
             className="profile_form"

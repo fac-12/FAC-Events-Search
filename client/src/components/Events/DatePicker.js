@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "react-dates/initialize";
 import "./datepicker.css";
 import { DateRangePicker } from "react-dates";
-import { DEFAULT_START_DATE, DEFAULT_END_DATE } from "../../helpers/constants";
 
 class DatePicker extends Component {
   constructor(props) {
@@ -14,11 +13,10 @@ class DatePicker extends Component {
     };
   }
 
-  passData = () => {
-    const { startDate, endDate } = this.state;
+  passData = (startDate, endDate) => {
     this.props.onDateSearch({
-      startDate: startDate ? startDate._d.getTime() : DEFAULT_START_DATE,
-      endDate: endDate ? endDate._d.getTime() : DEFAULT_END_DATE
+      startDate: startDate ? startDate._d.getTime() : null,
+      endDate: endDate ? endDate._d.getTime() : null
     });
   };
 
@@ -32,19 +30,18 @@ class DatePicker extends Component {
           endDateId="end_date_id"
           onDatesChange={({ startDate, endDate }) => {
             this.setState({ startDate, endDate });
+            this.passData(startDate, endDate);
           }}
           focusedInput={this.state.focusedInput}
           onFocusChange={focusedInput => {
             this.setState({ focusedInput });
           }}
+          showClearDates={true}
+          readOnly={true}
+          displayFormat="MMM DD"
+          startDatePlaceholderText="Start"
+          endDatePlaceholderText="End"
         />
-        <button
-          onClick={this.passData}
-          type="submit"
-          className="datepicker_submit"
-        >
-          Search
-        </button>
       </div>
     );
   }
