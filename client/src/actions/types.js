@@ -10,3 +10,4 @@ export const SELECT_FILTER = "SELECT_FILTER";
 export const GET_EVENT_INTEREST = "GET_EVENT_INTEREST";
 export const ADD_EVENT_ERR = "ADD_EVENT_ERR";
 export const RESET_MSG = "RESET_MSG";
+export const HOST_MSG = "HOST_MSG";

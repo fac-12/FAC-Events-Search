@@ -24,7 +24,10 @@ module.exports = app => {
   app.post("/api/addMeetupEvent", async (req, res) => {
     try {
       if (req.body.data.event_url.includes("www.meetup.com")) {
-        const id = req.body.data.event_url.split("/")[5];
+        const urlArr = req.body.data.event_url.split("/");
+        const id = urlArr[urlArr.length - 1]
+          ? urlArr[urlArr.length - 1]
+          : urlArr[urlArr.length - 2];
         const allData = await axios.get(
           `https://api.meetup.com/2/events?event_id=${id}`
         );

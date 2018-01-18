@@ -1,4 +1,10 @@
-import { FETCH_USER, CUR_LOCATION, SELECT_FILTER, RESET_MSG } from "./types";
+import {
+  FETCH_USER,
+  CUR_LOCATION,
+  SELECT_FILTER,
+  RESET_MSG,
+  HOST_MSG
+} from "./types";
 import axios from "axios";
 import { DEFAULT_START_DATE, DEFAULT_END_DATE } from "../helpers/constants";
 
@@ -51,7 +57,12 @@ export const updateProfile = (values, callback) => async dispatch => {
   dispatch({ type: FETCH_USER, payload: user.data });
 };
 
-export const resetMessage = () => ({
+export const resetMessage = key => ({
   type: RESET_MSG,
-  payload: null
+  payload: key
+});
+
+export const addHostMessage = text => ({
+  type: HOST_MSG,
+  payload: text
 });

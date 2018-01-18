@@ -51,10 +51,13 @@ const checkAddHost = data =>
     try {
       const hostExists = await checkHost(hostData.url);
       if (hostExists) {
-        resolve("That organization is already included.");
+        resolve({ msg: "That organization is already included." });
       } else {
         const hostAdded = await addHost(hostData);
-        resolve(`Thank you! The organization ${hostAdded} has been added.`);
+        resolve({
+          org: hostAdded,
+          msg: `Thank you! The organization ${hostAdded.name} has been added.`
+        });
       }
     } catch (e) {
       console.log("add Host error:", e);

@@ -6,9 +6,10 @@ export const fetchHosts = user => async dispatch => {
   dispatch({ type: FETCH_HOSTS, payload: hosts.data });
 };
 
-export const addHost = url => async dispatch => {
+export const addHost = (url, callback) => async dispatch => {
   const res = await axios.post("api/addHost", { url });
-  dispatch({ type: ADD_HOST, payload: res });
+  callback(res.data.msg);
+  dispatch({ type: ADD_HOST, payload: res.data.org });
 };
 
 export const addHostInterest = (user, host) => async dispatch => {
