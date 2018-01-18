@@ -13,14 +13,14 @@ class HostsPage extends Component {
     // sets the location on redux state to enable navbar highlighting
     this.props.fetchHosts(this.props.auth.id);
     this.props.setLocation(this.props.location.pathname);
+    this.props.resetMessage("addEvent");
   }
 
   clickHandler = e => {
     e.preventDefault();
+    this.setState({ url: "" });
     if (this.state.url.includes("www.meetup.com")) {
-      this.props.addHost(this.state.url, msg => {
-        this.props.addHostMessage(msg);
-      });
+      this.props.addHost(this.state.url);
     } else {
       this.props.addHostMessage(
         "Sorry, this feature only works with urls from meetup.com"
@@ -36,6 +36,7 @@ class HostsPage extends Component {
   };
 
   render() {
+    console.log(this.props.showMessage);
     return (
       <div className="about_container">
         <section className="hosts_info">

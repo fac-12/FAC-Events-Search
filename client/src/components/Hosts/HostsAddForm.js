@@ -47,9 +47,11 @@ class HostsAddForm extends Component {
           <h2 className="host_options_message">
             I am interested in events organized by:
           </h2>
-          <ul className="host_list">
-            {this.renderFields(this.props.initialValues)}
-          </ul>
+          <div className="hosts_scroll">
+            <ul className="host_list">
+              {this.renderFields(this.props.initialValues)}
+            </ul>
+          </div>
         </section>
       </form>
     );
