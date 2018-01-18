@@ -105,7 +105,9 @@ class EventsPage extends Component {
         </nav>
         <section className="events_view">
           {this.renderTitle()}
-          <EventCard user={this.props.auth.id} events={this.props.events} />
+          <section className="events_view">
+            <EventCard user={this.props.auth.id} events={this.props.events} />
+          </section>
         </section>
       </div>
     );

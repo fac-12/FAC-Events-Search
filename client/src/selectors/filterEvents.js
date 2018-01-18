@@ -51,9 +51,11 @@ export const filterEvents = createSelector(
         "event_datetime"
       );
     case "popular":
-      return _.sortBy(
-        _.filter(events, event => event.num_interested > 0),
-        "num_interested"
+      return _.reverse(
+        _.sortBy(
+          _.filter(events, event => event.num_interested > 0),
+          "num_interested"
+        )
       );
     default:
       return _.sortBy(events, "event_datetime");

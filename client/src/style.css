@@ -268,8 +268,14 @@ a:visited {
   margin-right: 1.2rem;
 }
 
-.events_view {
+.events-view {
   margin-left: 5rem;
+}
+
+.events_view > section {
+  margin-left: 5rem;
+  overflow: scroll;
+  height: calc(100vh - 180px);
 }
 
 /* side-bar styling */
@@ -338,7 +344,7 @@ a:visited {
   font-weight: 400;
   margin: 1rem 2rem 1rem 0;
   color: white;
-  margin: 1rem 0.5rem;
+  margin: 1rem 5rem;
   font-size: 1.5rem;
 }
 
@@ -733,10 +739,13 @@ a:visited {
 
 .event-map-info {
   margin: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-map-info > p {
-  margin: 0.4rem 0;
+  font-weight: 300;
+  font-size: 2rem;
 }
 
 .mapStyle {
@@ -761,14 +770,42 @@ a:visited {
   margin: 1rem 0;
 }
 
+.event-venue-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-venue-info-container > p:first-child {
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.event-page-info-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-page-info-title {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
 /* styles for info */
+
 .details-info > p {
   margin: 1rem 0;
   line-height: 140%;
+  width: 27rem;
 }
 
 .details-info > p > a {
-  color: gray;
+  color: inherit;
+}
+.details-info > p > a:visted {
+  color: inherit;
 }
 
 /* styles for user-card */
@@ -779,18 +816,21 @@ a:visited {
   justify-content: flex-end;
   background-color: #fefefe;
   color: black;
-  width: 12rem;
+  width: 10rem;
   border-radius: 5px;
   padding: 1rem;
+  height: 12rem;
+  margin: 1rem 0;
 }
 
-.user-card-container-title {
-  margin: 1rem 0;
-}
 .user-card-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin: 1rem 0;
+}
+
+.user-card-title {
+  font-size: 1rem;
 }
 
 .user-card-img {
