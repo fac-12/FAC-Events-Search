@@ -274,7 +274,6 @@ a:visited {
 
 .events_view > section {
   margin-left: 5rem;
-  overflow-y: hidden;
   overflow: scroll;
   height: 58rem;
 }
