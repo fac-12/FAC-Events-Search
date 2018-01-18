@@ -268,8 +268,15 @@ a:visited {
   margin-right: 1.2rem;
 }
 
-.events_view {
+.events-view {
   margin-left: 5rem;
+}
+
+.events_view > section {
+  margin-left: 5rem;
+  overflow-y: hidden;
+  overflow: scroll;
+  height: 58rem;
 }
 
 /* side-bar styling */
@@ -338,7 +345,7 @@ a:visited {
   font-weight: 400;
   margin: 1rem 2rem 1rem 0;
   color: white;
-  margin: 1rem 0.5rem;
+  margin: 1rem 5rem;
   font-size: 1.5rem;
 }
 
