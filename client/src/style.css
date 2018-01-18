@@ -554,7 +554,7 @@ a:visited {
   height: 8rem;
 }
 
-.profile_container > label {
+.profile_container label {
   font-weight: 400;
   font-size: 1rem;
   color: #d8d8d8;

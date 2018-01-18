@@ -8,7 +8,6 @@ export default function(state = null, action) {
       return { github_username: `@${github_username}`, ...rest };
     }
     return false;
-
   default:
     return state;
   }
