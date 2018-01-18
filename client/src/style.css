@@ -676,8 +676,9 @@ a:visited {
 }
 
 .form_message > a {
+  background-color: #1d6d80;
   color: white;
-  border: 1px solid;
+  border-radius: 5px;
   margin-left: 2rem;
   padding: 0.5rem;
 }

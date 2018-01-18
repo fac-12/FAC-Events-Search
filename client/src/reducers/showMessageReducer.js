@@ -1,4 +1,4 @@
-import { ADD_EVENT_ERR, ADD_EVENT } from "../actions/types";
+import { ADD_EVENT_ERR, ADD_EVENT, RESET_MSG } from "../actions/types";
 import _ from "lodash";
 
 export default function(state = null, action) {
@@ -9,6 +9,8 @@ export default function(state = null, action) {
     return `Thank you! Your event, ${
       action.payload.event_name
     } has been added.`;
+  case RESET_MSG:
+    return action.payload;
   default:
     return state;
   }

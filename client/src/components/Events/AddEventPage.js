@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { addEvent } from "../../actions/eventActions";
+import { addEvent, resetMessage } from "../../actions/eventActions";
 
 class AddEventForm extends Component {
   constructor() {
@@ -57,14 +57,20 @@ class AddEventForm extends Component {
   }
 
   render() {
-    const { handleSubmit, addEventMessage } = this.props;
-    if (addEventMessage !== null) {
-      console.log(this.props.addEventMessage);
+    const { handleSubmit, showMessage } = this.props;
+    if (showMessage !== null) {
       return (
         <div className="form_message_container">
           <div className="form_message">
-            {addEventMessage}
-            <Link to="/events">Back to Events</Link>
+            {showMessage}
+            <Link
+              to="/events"
+              onClick={() => {
+                this.props.resetMessage();
+              }}
+            >
+              Back to Events
+            </Link>
           </div>
         </div>
       );
@@ -138,9 +144,9 @@ function validate(values) {
   return errors;
 }
 
-const mapStateToProps = ({ addEventMessage }) => ({ addEventMessage });
+const mapStateToProps = ({ showMessage }) => ({ showMessage });
 
 export default reduxForm({
   validate,
   form: "PostEventForm"
-})(connect(mapStateToProps, { addEvent })(AddEventForm));
+})(connect(mapStateToProps, { addEvent, resetMessage })(AddEventForm));

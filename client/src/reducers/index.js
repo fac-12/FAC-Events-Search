@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   form: formReducer,
   filter: filterReducer,
   eventusers: eventUserReducer,
-  addEventMessage: showMessageReducer
+  showMessage: showMessageReducer
 });
 
 export default rootReducer;
