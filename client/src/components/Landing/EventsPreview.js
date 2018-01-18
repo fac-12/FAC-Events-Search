@@ -28,7 +28,7 @@ class EventsPreview extends Component {
           <h1>Upcoming Events</h1>
           <ul>
             {_.values(this.props.events)
-              .slice(0, 10)
+              .slice(0, 14)
               .map(item => this.renderSmallCard(item))}
           </ul>
         </div>
