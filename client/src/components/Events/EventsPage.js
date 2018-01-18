@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import EventCard from "./EventListing";
+import EventsListing from "./EventListing";
 import * as actions from "../../actions";
 import FilterOptions from "./FilterOptions";
 import { filterEvents } from "../../selectors/filterEvents";
@@ -107,9 +107,7 @@ class EventsPage extends Component {
         </nav>
         <section className="events_view">
           {this.renderTitle()}
-          <section className="events_view">
-            <EventCard user={this.props.auth.id} events={this.props.events} />
-          </section>
+          <EventsListing user={this.props.auth.id} events={this.props.events} />
         </section>
       </div>
     );
