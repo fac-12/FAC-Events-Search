@@ -48,12 +48,28 @@ class AddEventForm extends Component {
     );
   }
 
+  componentDidUpdate() {
+    console.log(this.props.addEventMessage);
+  }
+
   onSubmit(values) {
     this.props.addEvent(values);
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, addEventMessage } = this.props;
+    if (addEventMessage !== null) {
+      console.log(this.props.addEventMessage);
+      return (
+        <div className="form_message_container">
+          <div className="form_message">
+            {addEventMessage}
+            <Link to="/events">Back to Events</Link>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="form_container">
         <h1 className="form_title"> Add Event </h1>
@@ -122,7 +138,9 @@ function validate(values) {
   return errors;
 }
 
+const mapStateToProps = ({ addEventMessage }) => ({ addEventMessage });
+
 export default reduxForm({
   validate,
   form: "PostEventForm"
-})(connect(null, { addEvent })(AddEventForm));
+})(connect(mapStateToProps, { addEvent })(AddEventForm));

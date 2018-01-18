@@ -588,6 +588,25 @@ a:-webkit-any-link {
   font-size: 0.8rem;
   color: red;
 }
+
+.form_message_container {
+  margin: 25rem 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.form_message {
+  display: flex;
+  color: white;
+}
+
+.form_message > a {
+  color: white;
+  border: 1px solid;
+  margin-left: 2rem;
+  padding: 0.5rem;
+}
 /* Host List styling */
 .hosts_options {
   display: flex;

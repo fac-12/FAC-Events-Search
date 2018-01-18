@@ -2,7 +2,8 @@ import {
   FETCH_EVENTS,
   ADD_EVENT,
   TOGGLE_EVENT_INTEREST,
-  GET_EVENT_INTEREST
+  GET_EVENT_INTEREST,
+  ADD_EVENT_ERR
 } from "./types";
 import axios from "axios";
 
@@ -19,10 +20,12 @@ export const fetchAllEvents = user => async dispatch => {
 export const addEvent = data => async dispatch => {
   try {
     const event = await axios.post("/api/addMeetupEvent", { data });
+    console.log(event.data);
     if (event.data.event) {
       dispatch({ type: ADD_EVENT, payload: event.data.event });
     } else {
-      // /Handle showing error message
+      console.log(event.data.msg);
+      dispatch({ type: ADD_EVENT_ERR, payload: event.data.msg });
     }
   } catch (e) {
     console.log(e);

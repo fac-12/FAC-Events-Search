@@ -6,6 +6,7 @@ import hostsReducer from "./hostsReducer";
 import { reducer as formReducer } from "redux-form";
 import filterReducer from "./filterReducer";
 import eventUserReducer from "./eventUserReducer";
+import showMessageReducer from "./showMessageReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   hosts: hostsReducer,
   form: formReducer,
   filter: filterReducer,
-  eventusers: eventUserReducer
+  eventusers: eventUserReducer,
+  addEventMessage: showMessageReducer
 });
 
 export default rootReducer;
