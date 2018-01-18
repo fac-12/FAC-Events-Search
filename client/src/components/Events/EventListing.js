@@ -45,20 +45,25 @@ class EventCard extends Component {
   render() {
     const { events } = this.props;
     return (
-      <div className="events-card-container">
+      <div className="event_cards_container">
         {events.map(item => {
           const datetime = parseDateTime(parseInt(item.event_datetime, 10));
           return (
-            <div key={item.id} className="event-card">
-              <section className="events-container">
-                <section className="event-info">
+            <div key={item.id} className="event_card">
+              <section className="eventCard_content">
+                <section className="event_info">
                   <h2> {item.event_name} </h2>
-                  <p> {item.host_org_name} </p>
-                  <p> {item.venue_name} </p>
+                  <h3>
+                    <span>hosted by </span>
+                    {item.host_org_name}
+                    <span> at </span>
+                    {item.venue_name}
+                  </h3>
                 </section>
-                <section className="event-date">
-                  <p> {datetime.date} </p>
-                  <p> {datetime.day} </p>
+                <section className="event_date">
+                  <h3>
+                    {datetime.day} {datetime.date}
+                  </h3>
                   <p> {datetime.time} </p>
                 </section>
               </section>
