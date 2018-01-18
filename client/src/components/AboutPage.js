@@ -6,6 +6,8 @@ class AboutPage extends Component {
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
+    this.props.resetMessage("hosts");
+    this.props.resetMessage("addEvent");
   }
 
   render() {

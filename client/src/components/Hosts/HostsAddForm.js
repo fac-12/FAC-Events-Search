@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, initialize } from "redux-form";
 import * as actions from "../../actions";
+import { sortHosts } from "../../selectors/sortHosts";
 
 class HostsAddForm extends Component {
   constructor(props) {
@@ -47,16 +48,21 @@ class HostsAddForm extends Component {
           <h2 className="host_options_message">
             I am interested in events organized by:
           </h2>
-          <ul className="host_list">
-            {this.renderFields(this.props.initialValues)}
-          </ul>
+          <div className="hosts_scroll">
+            <ul className="host_list">
+              {this.renderFields(this.props.initialValues)}
+            </ul>
+          </div>
         </section>
       </form>
     );
   }
 }
 
-const mapStateToProps = ({ hosts, auth }) => ({ initialValues: hosts, auth });
+const mapStateToProps = state => ({
+  initialValues: sortHosts(state),
+  auth: state.auth
+});
 
 export default reduxForm({
   form: "HostsForm"

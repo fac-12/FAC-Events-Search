@@ -9,29 +9,28 @@ const checkEvent = data =>
     .then(res => res.length > 0)
     .catch(e => console.log("db error", e));
 
-const addEvent = data => db
-  .query(
-    `INSERT INTO events(event_name, event_datetime, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc, venue_lat, venue_lon) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10) RETURNING *`,
-    [
-      data.event_name,
-      data.event_datetime,
-      data.host_org_name,
-      data.venue_name,
-      data.venue_address,
-      data.venue_postcode,
-      data.event_url,
-      data.event_desc,
-      data.event_lat,
-      data.event_lon
-    ]
-  )
-  .then(res => res[0])
-  .catch(e => console.log("add event db error", e));
+const addEvent = data =>
+  db
+    .query(
+      `INSERT INTO events(event_name, event_datetime, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc, venue_lat, venue_lon) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10) RETURNING *`,
+      [
+        data.event_name,
+        data.event_datetime,
+        data.host_org_name,
+        data.venue_name,
+        data.venue_address,
+        data.venue_postcode,
+        data.event_url,
+        data.event_desc,
+        data.event_lat,
+        data.event_lon
+      ]
+    )
+    .then(res => res[0])
+    .catch(e => console.log("add event db error", e));
 
-const getEvents = (user, startDate, endDate) => {
-  console.log(user, startDate, endDate);
-  return db.query(
-    `SELECT id, event_name, event_datetime, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc, venue_lat, venue_lon, COUNT(interest.events_id) AS num_interested,
+const getEvents = (user, startDate, endDate) => db.query(
+  `SELECT id, event_name, event_datetime, host_org_name, venue_name, venue_address, venue_postcode, event_url, event_desc, venue_lat, venue_lon, COUNT(interest.events_id) AS num_interested,
     (SELECT CASE WHEN EXISTS
       (SELECT * FROM suggested,included_orgs WHERE suggested.users_id='${user}' AND included_orgs.name=events.host_org_name AND included_orgs.id=suggested.orgs_id)
       THEN TRUE ELSE FALSE END as suggested),
@@ -43,8 +42,7 @@ const getEvents = (user, startDate, endDate) => {
     WHERE event_datetime >= '${startDate}' AND event_datetime <= '${endDate}'
     GROUP BY events.id
     ORDER BY event_datetime`
-  );
-};
+);
 
 const getEventInterest = eventId =>
   db.query(

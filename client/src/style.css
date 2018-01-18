@@ -138,67 +138,6 @@ a:visited {
   font-weight: 300;
 }
 
-.hosts_info {
-  margin: 1rem;
-  font-weight: 300;
-  flex: 1;
-}
-
-.hosts_title {
-  margin-left: 10px;
-}
-
-.hosts_about {
-}
-
-.hosts-section > p {
-  display: flex;
-  justify-content: center;
-  max-width: 400px;
-  margin-left: 25px;
-  margin-top: 10px;
-}
-
-.add-host {
-  margin-left: 15px;
-}
-
-.add-host > h2 {
-  font-size: 18px;
-}
-
-.add-host > p {
-  max-width: 400px;
-  margin: 10px;
-}
-
-.hosts_options {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 1rem;
-}
-
-.hosts_options > h2 {
-  font-size: 16px;
-}
-
-.hosts_options > label {
-  margin: 5px;
-  font-size: 12px;
-}
-
-.submit-btn {
-  background: transparent;
-  width: 60px;
-  height: 30px;
-  color: #fff;
-  border-radius: 5px;
-  margin-top: 10px;
-  display: block;
-}
-
 /* Styling for events card */
 
 .event-card {
@@ -696,35 +635,6 @@ a:visited {
   margin-left: 2rem;
   padding: 0.5rem;
 }
-/* Host List styling */
-.hosts_options {
-  display: flex;
-  justify-content: column;
-}
-
-.host_interest_container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.host_list {
-  margin-top: 1rem;
-  list-style: none;
-  margin-right: 2rem;
-}
-
-.host_list_item {
-  color: white;
-}
-.host_list_item_label {
-  display: flex;
-  align-items: center;
-}
-
-.host_list_item_label > input {
-  margin-right: 0.8rem;
-}
 
 /* styles for event-page */
 
@@ -838,4 +748,87 @@ a:visited {
   width: 6rem;
   height: 6rem;
   margin: 0.5rem;
+}
+
+/* Host Page Styling */
+
+.hosts_info {
+  margin: 1rem;
+  font-weight: 300;
+  flex: 1;
+}
+
+.hosts_add {
+  margin-left: 15px;
+}
+
+.hosts_add > h2 {
+  font-size: 1rem;
+}
+
+.hosts_options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.hosts_options > h2 {
+  font-size: 16px;
+}
+
+.hosts_options > label {
+  margin: 5px;
+  font-size: 12px;
+}
+
+.hosts_add input {
+  width: 90%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.hosts_add_btn {
+  margin-left: 0;
+}
+
+.hosts_scroll {
+  overflow: scroll;
+  height: calc(100vh - 250px);
+  margin-top: 0.5rem;
+}
+
+/* Host List styling */
+.hosts_options {
+  display: flex;
+  justify-content: column;
+}
+
+.host_interest_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.host_interest_container ul {
+  padding-left: 1rem;
+}
+
+.host_list {
+  margin-top: 1rem;
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.host_list_item {
+  color: white;
+}
+.host_list_item_label {
+  display: flex;
+  align-items: center;
+}
+
+.host_list_item_label > input {
+  margin-right: 0.8rem;
 }

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { FETCH_HOSTS, TOGGLE_HOST_INTEREST } from "../actions/types";
+import { FETCH_HOSTS, TOGGLE_HOST_INTEREST, ADD_HOST } from "../actions/types";
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -16,6 +16,11 @@ export default function(state = {}, action) {
         ...state[id],
         suggested: !state[id].suggested
       }
+    };
+  case ADD_HOST:
+    return {
+      ...state,
+      [action.payload.id]: action.payload
     };
   default:
     return state;
