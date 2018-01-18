@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 class InterestedUser extends Component {
   render() {
     const { eventusers } = this.props;
-    console.log(this.props.eventusers);
     return (
       <div className="user-card-container">
         {_.map(eventusers, item => (

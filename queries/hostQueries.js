@@ -8,11 +8,11 @@ const checkHost = url =>
 
 const addHost = data =>
   db
-    .query(
-      `INSERT INTO included_orgs(name, url) VALUES($1,$2) RETURNING name`,
-      [data.name, data.url]
-    )
-    .then(res => res[0].name)
+    .query(`INSERT INTO included_orgs(name, url) VALUES($1,$2) RETURNING *`, [
+      data.name,
+      data.url
+    ])
+    .then(res => res[0])
     .catch(e => console.log("db error", e));
 
 const getHosts = user =>

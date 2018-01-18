@@ -13,17 +13,26 @@ class HostsPage extends Component {
     // sets the location on redux state to enable navbar highlighting
     this.props.fetchHosts(this.props.auth.id);
     this.props.setLocation(this.props.location.pathname);
+    this.props.resetMessage("addEvent");
   }
-
-  checkMeetup = url => {
-    if (url.includes("www.meetup.com")) {
-      this.props.addHost(url);
-    }
-  };
 
   clickHandler = e => {
     e.preventDefault();
-    this.checkMeetup(this.state.url);
+    this.setState({ url: "" });
+    if (this.state.url.includes("www.meetup.com")) {
+      this.props.addHost(this.state.url);
+    } else {
+      this.props.addHostMessage(
+        "Sorry, this feature only works with urls from meetup.com"
+      );
+    }
+  };
+
+  renderMessage = text => {
+    if (text && text.length > 0) {
+      return <p>{text}</p>;
+    }
+    return null;
   };
 
   render() {
@@ -39,8 +48,8 @@ class HostsPage extends Component {
               your “suggested” events list.
             </p>
           </article>
-          <article className="add-host">
-            <h2 className="add-host-title">Add New Host</h2>
+          <article className="hosts_add">
+            <h2>Add New Host</h2>
             <p>
               Input the organization’s meetup url below to add a new host for
               automatic event inclusion.
@@ -49,14 +58,18 @@ class HostsPage extends Component {
               <input
                 type="text"
                 value={this.state.url}
-                onChange={event => this.setState({ url: event.target.value })}
+                onChange={event => {
+                  this.props.resetMessage("hosts");
+                  this.setState({ url: event.target.value });
+                }}
               />
-              <input
-                className="submit-btn"
-                type="submit"
-                value="submit"
+              <button
+                className="sidebar_btn hosts_add_btn"
                 onClick={this.clickHandler}
-              />
+              >
+                Submit
+              </button>
+              {this.renderMessage(this.props.showMessage.hosts)}
             </form>
           </article>
         </section>
@@ -65,6 +78,10 @@ class HostsPage extends Component {
     );
   }
 }
-const mapStateToProps = ({ hosts, auth }) => ({ hosts, auth });
+const mapStateToProps = ({ hosts, auth, showMessage }) => ({
+  hosts,
+  auth,
+  showMessage
+});
 
 export default connect(mapStateToProps, actions)(HostsPage);

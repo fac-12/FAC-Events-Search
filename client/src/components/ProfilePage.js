@@ -12,6 +12,8 @@ class ProfilePage extends Component {
   componentDidMount() {
     // sets the location on redux state to enable navbar highlighting
     this.props.setLocation(this.props.location.pathname);
+    this.props.resetMessage("hosts");
+    this.props.resetMessage("addEvent");
   }
 
   renderInput(field) {
@@ -34,7 +36,6 @@ class ProfilePage extends Component {
   }
 
   onSubmit(values) {
-    // console.log("values are", values);
     this.props.updateProfile(values, () => {
       this.props.history.push("/events");
     });
@@ -48,7 +49,6 @@ class ProfilePage extends Component {
   }
 
   render() {
-    // console.log("current state is", this.props.initialValues);
     const { handleSubmit } = this.props;
     return (
       <div className="profile_container">
