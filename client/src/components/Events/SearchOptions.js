@@ -12,6 +12,7 @@ export default class SearchOption extends Component {
     this.resetSearch = this.resetSearch.bind(this);
   }
   onDateSearch(data) {
+    this.props.onSearch({ startDate: data.startDate, endDate: data.endDate });
     this.setState({ startDate: data.startDate, endDate: data.endDate });
   }
   onTermSearch(term) {
@@ -23,6 +24,7 @@ export default class SearchOption extends Component {
   }
   resetSearch(e) {
     this.setState({ searchTerm: "", startDate: null, endDate: null });
+    this.props.onSearch({ searchTerm: "", startDate: null, endDate: null });
   }
   render() {
     return (

@@ -29,6 +29,7 @@ class DatePicker extends Component {
           endDate={this.state.endDate}
           endDateId="end_date_id"
           onDatesChange={({ startDate, endDate }) => {
+            console.log("dates changed");
             this.setState({ startDate, endDate });
             this.passData(startDate, endDate);
           }}
