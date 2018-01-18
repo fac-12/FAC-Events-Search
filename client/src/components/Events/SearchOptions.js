@@ -22,7 +22,6 @@ export default class SearchOption extends Component {
     this.props.onSearch(this.state);
   }
   resetSearch(e) {
-    e.preventDefault();
     this.setState({ searchTerm: "", startDate: null, endDate: null });
   }
   render() {
@@ -32,13 +31,12 @@ export default class SearchOption extends Component {
         <SearchByTerm
           searchTerm={this.state.searchTerm}
           onTermSearch={this.onTermSearch}
+          clearBtn={this.state.searchTerm.length > 0}
+          resetSearch={this.resetSearch}
         />
         <DatePicker onDateSearch={this.onDateSearch} />
-        <button className="sidebar_search_btn" onClick={this.submitSearch}>
+        <button className="sidebar_btn" onClick={this.submitSearch}>
           Search
-        </button>
-        <button className="sidebar_reset_btn" onClick={this.resetSearch}>
-          Reset
         </button>
       </section>
     );
