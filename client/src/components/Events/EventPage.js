@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactHtmlParser from "react-html-parser";
 import * as actions from "../../actions";
 import GoogleMap from "./GoogleMap";
+import { Link } from "react-router-dom";
 import InterestedUser from "./InterestedUser";
 import { parseDateTime } from "../../helpers/conversions";
 
@@ -16,6 +17,7 @@ class EventPage extends Component {
     const datetime = parseDateTime(parseInt(events[id].event_datetime, 10));
     return (
       <div className="event-page-container">
+        <Link to="/events"> Back to Events </Link>
         <div className="event-page-title">
           <h1>{events[id].event_name}</h1>
           <p> Hosted By {events[id].host_org_name}</p>
