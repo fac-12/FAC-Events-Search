@@ -18,7 +18,7 @@ class EventPage extends Component {
     return (
       <div className="event-page-container">
         <div className="event-page-title">
-          <h1> {events[id].event_name} </h1>
+          <h1>{events[id].event_name}</h1>
           <p> Hosted By {events[id].host_org_name}</p>
         </div>
 
