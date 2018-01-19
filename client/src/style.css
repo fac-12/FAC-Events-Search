@@ -803,6 +803,14 @@ a:visited {
   margin: 0.5rem;
 }
 
+.user-card-interested {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: flex-end;
+  color: #e1ae2e;
+  font-weight: 700;
+  color: #fffff;
+}
 /* Host Page Styling */
 
 .hosts_info {

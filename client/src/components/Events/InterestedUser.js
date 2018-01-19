@@ -18,6 +18,7 @@ class InterestedUser extends Component {
                 src={item.photo_url}
                 className="user-card-img"
               />
+              <div className="user-card-interested"> interested </div>
             </section>
           </div>
         ))}

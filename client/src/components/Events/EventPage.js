@@ -13,7 +13,7 @@ class EventPage extends Component {
   render() {
     const { id } = this.props.match.params;
     const { events } = this.props;
-
+    console.log(this.props.eventusers);
     const datetime = parseDateTime(parseInt(events[id].event_datetime, 10));
     return (
       <div className="event-page-container">
@@ -39,14 +39,13 @@ class EventPage extends Component {
         </div>
         <section className="event-page-info-title">
           <h2> Details </h2>
-          <h2>Faccers who are interested</h2>
         </section>
         <section className="event-page-info-container">
           <div className="details-info">
             {ReactHtmlParser(events[id].event_desc)}
           </div>
           <div className="event-page-interested-container">
-            <InterestedUser />
+            {this.props.eventusers ? <InterestedUser /> : <div />}
           </div>
         </section>
       </div>
@@ -54,5 +53,5 @@ class EventPage extends Component {
   }
 }
 
-const mapStateToProps = ({ events }) => ({ events });
+const mapStateToProps = ({ events, eventusers }) => ({ events, eventusers });
 export default connect(mapStateToProps, actions)(EventPage);
