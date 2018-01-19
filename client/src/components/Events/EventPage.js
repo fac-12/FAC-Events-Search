@@ -13,7 +13,6 @@ class EventPage extends Component {
   render() {
     const { id } = this.props.match.params;
     const { events } = this.props;
-    console.log(this.props.eventusers);
     const datetime = parseDateTime(parseInt(events[id].event_datetime, 10));
     return (
       <div className="event-page-container">
