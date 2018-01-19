@@ -70,7 +70,7 @@ class AddEventForm extends Component {
             <Link
               to="/event/new"
               onClick={() => {
-                this.props.resetMessage();
+                this.props.resetMessage("addEvent");
               }}
             >
               Add another event
@@ -89,40 +89,35 @@ class AddEventForm extends Component {
           onSubmit={handleSubmit(this.onSubmit.bind(this))}
         >
           <Field
-            label="EventName"
+            label="Event Name"
             name="event_name"
             component={this.renderField}
-          />
-          <Field
-            label="startDate"
-            name="event_date"
-            component={this.renderDate}
           />
           <Field
             label="Host"
             name="host_org_name"
             component={this.renderField}
           />
+          <Field label="Date" name="event_date" component={this.renderDate} />
           <Field label="Time" name="event_time" component={this.renderTime} />
-
           <Field
-            label="VenueName"
+            label="Venue Name"
             name="venue_name"
             component={this.renderField}
           />
 
           <Field
-            label="VenueAddress"
+            label="Venue Address"
             name="venue_address"
             component={this.renderField}
           />
           <Field
-            label="PostCode"
+            label="Post Code"
             name="venue_postcode"
             component={this.renderField}
           />
           <Field
-            label="Url"
+            label="URL"
             name="event_url"
             placeholder="Please enter a event url"
             value={this.state.url}

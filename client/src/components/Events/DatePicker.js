@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "react-dates/initialize";
 import "./datepicker.css";
 import { DateRangePicker } from "react-dates";
+import { DEFAULT_START_DATE, DEFAULT_END_DATE } from "../../helpers/constants";
 
 class DatePicker extends Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class DatePicker extends Component {
 
   passData = (startDate, endDate) => {
     this.props.onDateSearch({
-      startDate: startDate ? startDate._d.getTime() : null,
-      endDate: endDate ? endDate._d.getTime() : null
+      startDate: startDate ? startDate._d.getTime() : DEFAULT_START_DATE,
+      endDate: endDate ? endDate._d.getTime() : DEFAULT_END_DATE
     });
   };
 

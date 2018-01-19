@@ -7,14 +7,16 @@ export default props => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={props.searchTerm}
-        onChange={onChange}
-        placeholder="Enter Search Term..."
-        className="search_text_input"
-      />
+    <div className="search_box">
+      <form onSubmit={props.submitSearch}>
+        <input
+          type="text"
+          value={props.searchTerm}
+          onChange={onChange}
+          placeholder="Enter Search Term..."
+          className="search_text_input"
+        />
+      </form>
       <button
         className={props.clearBtn ? "clear_btn" : "hidden"}
         onClick={props.resetSearch}
