@@ -153,6 +153,13 @@ a:visited {
   width: calc(100% - 0.6rem);
   max-width: 40rem;
   border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.event_card:visited {
+  text-decoration: none;
+  color: inherit;
 }
 
 .info-bar {
