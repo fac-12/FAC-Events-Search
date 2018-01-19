@@ -310,6 +310,13 @@ a:visited {
   border: 1px solid white;
 }
 
+.sidebar_search > p {
+  font-size: 1rem;
+  color: white;
+  margin-left: 1rem;
+  margin-bottom: 0.3rem;
+}
+
 .sidebar_addEvent_btn {
   width: 7.3rem;
 }
@@ -353,7 +360,7 @@ a:visited {
 }
 
 .search_text_input {
-  margin: 0.5rem 0 1rem 1rem;
+  margin: 0rem 0 1rem 1rem;
   padding: 0.7rem 0.7rem 0.7rem 1rem;
   font-size: 0.9rem;
   font-weight: 300;
