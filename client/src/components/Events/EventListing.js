@@ -49,8 +49,12 @@ class EventCard extends Component {
         {events.map(item => {
           const datetime = parseDateTime(parseInt(item.event_datetime, 10));
           return (
-            <div key={item.id} className="event_card">
-              <section className="eventCard_content">
+            <div className="event_card">
+              <Link
+                to={`events/${item.id}`}
+                key={item.id}
+                className="eventCard_content"
+              >
                 <section className="event_info">
                   <h2> {item.event_name} </h2>
                   <h3>
@@ -66,7 +70,7 @@ class EventCard extends Component {
                   </h3>
                   <p> {datetime.time} </p>
                 </section>
-              </section>
+              </Link>
               <section className="info-bar">
                 <span title="Add or remove interest">
                   <label>

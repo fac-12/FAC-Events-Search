@@ -39,6 +39,7 @@ export default class SearchOption extends Component {
     return (
       <section className="sidebar_search">
         <h3>Search Events</h3>
+        <p>by keyword</p>
         <SearchByTerm
           searchTerm={this.state.searchTerm}
           onTermSearch={this.onTermSearch}
@@ -46,6 +47,7 @@ export default class SearchOption extends Component {
           resetSearch={this.resetSearch}
           submitSearch={this.submitSearch}
         />
+        <p>by date</p>
         <DatePicker onDateSearch={this.onDateSearch} />
         <button className="sidebar_btn" onClick={this.submitSearch}>
           Search

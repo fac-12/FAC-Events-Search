@@ -15,9 +15,8 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// set authentication routes
+// set routes
 require("./routes/authRoutes")(app);
-// set db routes
 require("./routes/dbGetRoutes")(app);
 require("./routes/dbPostRoutes")(app);
 require("./routes/dbPutRoutes")(app);
