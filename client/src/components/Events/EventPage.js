@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactHtmlParser from "react-html-parser";
 import * as actions from "../../actions";
 import GoogleMap from "./GoogleMap";
+import { Link } from "react-router-dom";
 import InterestedUser from "./InterestedUser";
 import { parseDateTime } from "../../helpers/conversions";
 
@@ -13,12 +14,12 @@ class EventPage extends Component {
   render() {
     const { id } = this.props.match.params;
     const { events } = this.props;
-
     const datetime = parseDateTime(parseInt(events[id].event_datetime, 10));
     return (
       <div className="event-page-container">
+        <Link to="/events"> Back to Events </Link>
         <div className="event-page-title">
-          <h1> {events[id].event_name} </h1>
+          <h1>{events[id].event_name}</h1>
           <p> Hosted By {events[id].host_org_name}</p>
         </div>
 
@@ -39,14 +40,13 @@ class EventPage extends Component {
         </div>
         <section className="event-page-info-title">
           <h2> Details </h2>
-          <h2>Faccers who are interested</h2>
         </section>
         <section className="event-page-info-container">
           <div className="details-info">
             {ReactHtmlParser(events[id].event_desc)}
           </div>
           <div className="event-page-interested-container">
-            <InterestedUser />
+            {this.props.eventusers ? <InterestedUser /> : <div />}
           </div>
         </section>
       </div>
@@ -54,5 +54,5 @@ class EventPage extends Component {
   }
 }
 
-const mapStateToProps = ({ events }) => ({ events });
+const mapStateToProps = ({ events, eventusers }) => ({ events, eventusers });
 export default connect(mapStateToProps, actions)(EventPage);

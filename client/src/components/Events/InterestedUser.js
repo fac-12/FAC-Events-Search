@@ -9,17 +9,23 @@ class InterestedUser extends Component {
     return (
       <div className="user-card-container">
         {_.map(eventusers, item => (
-          <div key={item.id} className="user-card">
-            <section>
-              <h2 className="user-card-title"> {item.name} </h2>
-              <p> {`@${item.github_username}`} </p>
-              <img
-                alt={`interested-user-${item.name}`}
-                src={item.photo_url}
-                className="user-card-img"
-              />
-            </section>
-          </div>
+          <a
+            href={`https://www.github.com/${item.github_username}`}
+            target="_blank"
+          >
+            <div key={item.id} className="user-card">
+              <section>
+                <h2 className="user-card-title"> {item.name} </h2>
+                <p>{`@${item.github_username}`}</p>
+                <img
+                  alt={`interested-user-${item.name}`}
+                  src={item.photo_url}
+                  className="user-card-img"
+                />
+                <div className="user-card-interested"> interested </div>
+              </section>
+            </div>
+          </a>
         ))}
       </div>
     );
